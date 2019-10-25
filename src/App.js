@@ -1,39 +1,45 @@
-import React from 'react';
-import ReactMediaRecorder from "react-media-recorder";
-import logo from './logo.svg';
+import React, { useState } from 'react';
+// import ReactMediaRecorder, { status, startRecording, stopRecording, mediaBlob} from "react-media-recorder";
+// import logo from './logo.svg';
 import './App.css';
+import NavBar from './components/NavBar';
+import NewShotScreen from './components/NewShotScreen';
+import LoginScreen from './components/LoginScreen';
+import DashboardScreen from './components/DashboardScreen';
+import ReviewShotsScreen from './components/ReviewShotsScreen';
+
+import {
+  BrowserRouter as Router,
+  Route
+} from 'react-router-dom'
 
 function App() {
+  // const [user, setUser] = useState("Test")
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        
-  <div>
-    <ReactMediaRecorder
-      video
-      render={({ status, startRecording, stopRecording, mediaBlob }) => (
-        <div>
-          <p>{status}</p>
-          <button onClick={startRecording}>Start Recording</button>
-          <button onClick={stopRecording}>Stop Recording</button>
-          <video src={mediaBlob} controls />
-        </div>
-      )}
-    />
-  </div>
 
+      <header className="App-header">
+        <Router>
+          <Route path="/">
+            <NavBar />  
+          </Route>
+          <Route exact path="/">
+            <LoginScreen />
+          </Route>
+
+          <Route exact path="/dashboard">
+            <DashboardScreen />
+          </Route>
+
+          <Route exact path="/new_shot">
+            <NewShotScreen />
+          </Route>
+
+          <Route exact path="/review_shots">
+            <ReviewShotsScreen />
+          </Route>
+        </Router>
       </header>
     </div>
   );
