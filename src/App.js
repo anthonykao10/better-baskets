@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 // import ReactMediaRecorder, { status, startRecording, stopRecording, mediaBlob} from "react-media-recorder";
 // import logo from './logo.svg';
 import './App.css';
+
 import NavBar from './components/NavBar';
 import NewShotScreen from './components/NewShotScreen';
 import LoginScreen from './components/LoginScreen';
@@ -14,16 +15,13 @@ import {
 } from 'react-router-dom'
 
 function App() {
-  // const [user, setUser] = useState("Test")
-
   return (
     <div className="App">
-
       <header className="App-header">
         <Router>
-          <Route path="/">
+          {/* <Route path="/">
             <NavBar />  
-          </Route>
+          </Route> */}
           <Route exact path="/">
             <LoginScreen />
           </Route>
