@@ -14,6 +14,10 @@ router.get('/dashboard', (req, res) => {
   });
 });
 
+router.use('/users', require('./users'));
+router.use('/sessions', require('./sessions'));
+router.use('/shots', require('./shots'));
+
 router.get('*', (req, res) => {
   res.sendStatus(404);
 });
