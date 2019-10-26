@@ -2,7 +2,7 @@ import React from 'react';
 import ReactMediaRecorder from "react-media-recorder";
 import logo from './logo.svg';
 import './App.css';
-import uploadVideo from './testUpload'
+import uploadVideo from './videoUpload'
 import axios from 'axios'
 
 function App() {
