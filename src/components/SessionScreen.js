@@ -1,13 +1,19 @@
 import React from "react";
 import {
-  Link
+  Link,
+  useParams
 } from 'react-router-dom'
+
+import NavBar from './NavBar';
  
-export default function ReviewShotsScreen() {
-  
+export default function SessionScreen() {
+
+  let { id } = useParams();
+
   return (
     <div>
-      <p>Review Shots Screen</p>
+      <NavBar /> 
+      <p>Session Screen: { id }</p>
       <Link to="/dashboard">Dashboard</Link><br></br>
       <Link to="/new_shot">New Shot</Link>
     </div> 

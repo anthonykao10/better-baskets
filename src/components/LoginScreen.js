@@ -1,13 +1,15 @@
 import React from "react";
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import {
-  Link
-} from 'react-router-dom'
+// import {
+//   Link
+// } from 'react-router-dom'
+
+import NavBar from './NavBar';
  
 export default function LoginScreen() {
   
   return (
     <div>
+      <NavBar /> 
       <p>Login Screen</p>
     </div> 
   );

@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
-// import ReactMediaRecorder, { status, startRecording, stopRecording, mediaBlob} from "react-media-recorder";
-// import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 
-import NavBar from './components/NavBar';
+// all "route" imports
 import NewShotScreen from './components/NewShotScreen';
 import LoginScreen from './components/LoginScreen';
 import DashboardScreen from './components/DashboardScreen';
-import ReviewShotsScreen from './components/ReviewShotsScreen';
+import ShotScreen from './components/ShotScreen';
+import SessionScreen from './components/SessionScreen';
 
 import {
   BrowserRouter as Router,
@@ -17,11 +16,7 @@ import {
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Router>
-          {/* <Route path="/">
-            <NavBar />  
-          </Route> */}
+      <Router>
           <Route exact path="/">
             <LoginScreen />
           </Route>
@@ -34,11 +29,14 @@ function App() {
             <NewShotScreen />
           </Route>
 
-          <Route exact path="/review_shots">
-            <ReviewShotsScreen />
+          <Route exact path="/session/:id">
+            <SessionScreen />
+          </Route>
+
+          <Route exact path="/session/:session_id/shot/:id">
+            <ShotScreen />
           </Route>
         </Router>
-      </header>
     </div>
   );
 }

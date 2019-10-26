@@ -3,13 +3,15 @@ import {
   Link
 } from 'react-router-dom'
  
+import NavBar from './NavBar';
+
 export default function DashboardScreen() {
   
   return (
     <div>
+      <NavBar />
       <p>Dashboard Screen</p>
-      <Link to="/new_shot">New Shot</Link><br></br>
-      <Link to="/review_shots">Review Shots</Link>
+      <Link to="/new_shot">New Shot</Link>
     </div> 
   );
 }
