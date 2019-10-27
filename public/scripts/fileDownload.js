@@ -24,7 +24,7 @@ const fileDownload = function() {
 
   var params = {
     Bucket: bucketName, 
-    Key: 'testConvertVideo.mp4'
+    Key: 'newTestANTHONY.webm'
   };
   s3.getObject(params, function(err, data) {
     if (err) {
@@ -33,7 +33,7 @@ const fileDownload = function() {
       console.log("Successfully downloaded data " + bucketName + "/" + params.Key);
       console.log(data)
 
-      fs.writeFileSync("uploadCOMPLETE2.mp4", data.Body, (err) => {
+      fs.writeFileSync("newTestANTHONY.webm", data.Body, (err) => {
         if (err) {
           console.log(err, "readFile")
         }

@@ -36,20 +36,10 @@ var bucketName = 'betterbaskets'
 
 const uploadVideo = function(video) {
 
+      var params = {Bucket: bucketName, Key: 'newTestANTHONY.webm', Body: video};
 
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', video, true);
-  xhr.responseType = 'blob';
-  xhr.onload = function(e) {
-    if (this.status == 200) {
-      var myBlob = this.response;
-      // myBlob is now the blob that the object URL pointed to.
-      console.log(myBlob)
-
-      var params = {Bucket: bucketName, Key: 'video.mp3', Body: myBlob};
       s3.putObject(params, function(err, data) {
         if (err) {
-          console.log('lskhfklsafkla')
           console.log(err)
         } else {
     
@@ -58,9 +48,5 @@ const uploadVideo = function(video) {
       });
 
     }
-  };
-  xhr.send();
-
-}
 
 export default uploadVideo
