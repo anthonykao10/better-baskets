@@ -51,7 +51,6 @@ console.log(process.env)
             <ShotScreen />
           </Route>
         </Router>
-       
     </div>
   );
 }
