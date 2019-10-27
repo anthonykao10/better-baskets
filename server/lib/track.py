@@ -7,6 +7,7 @@ import argparse
 import cv2
 import imutils
 import time
+import json
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
@@ -24,14 +25,8 @@ greenUpper = (74, 255, 255)
 
 pts = deque(maxlen=args["buffer"])
 
-# if a video path was not supplied, grab the reference
-# to the webcam
-if not args.get("video", False):
-	vs = VideoStream(src=0).start()
-
-# otherwise, grab a reference to the video file
-else:
-	vs = cv2.VideoCapture(args["video"])
+# read video file
+vs = cv2.VideoCapture(args["video"])
 
 # allow the camera or video file to warm up
 time.sleep(2.0)
@@ -90,9 +85,8 @@ while True:
 				(0, 255, 255), 2)
 			cv2.circle(frame, center, 5, (0, 0, 255), -1)
 
-	if (center != None) and (center[1] > 200):
-		# update the points queue
-		pts.appendleft(center)
+	if center != None and center[1] < 400:
+	  pts.appendleft(center)
 
 	# loop over the set of tracked points
 	for i in range(1, len(pts)):
@@ -107,7 +101,7 @@ while True:
 		cv2.line(frame, pts[i - 1], pts[i], (0, 0, 255), thickness)
 
 	# show the frame to our screen
-	cv2.imshow("Frame", frame)
+	# cv2.imshow("Frame", frame)
 	key = cv2.waitKey(1) & 0xFF
 
 	# if the 'q' key is pressed, stop the loop
@@ -121,6 +115,13 @@ if not args.get("video", False):
 # otherwise, release the camera
 else:
 	vs.release()
+
+# convert to list for seralization
+output = []
+for pt in pts:
+	output.append(pt)
+
+sys.stdout.write(json.dumps(output))
 
 # close all windows
 cv2.destroyAllWindows()
