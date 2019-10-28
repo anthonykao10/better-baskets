@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import uploadVideo from '../videoUpload'
+import uploadVideo from './videoUpload'
 // import './App.css';
 
 import 'video.js/dist/video-js.css';

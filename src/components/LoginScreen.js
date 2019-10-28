@@ -1,20 +1,24 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   Link
 } from 'react-router-dom'
 
 import NavBar from './NavBar';
+import LoginForm from './LoginComponents/LoginForm'
 
 import useLoginData from '../hooks/useLoginData';
  
 export default function LoginScreen() {
+
   
-  useLoginData();
 
   return (
     <div>
       <NavBar /> 
       <p>Login Screen</p>
-    </div> 
+      {useLoginData()}
+      <LoginForm />
+    </div>
+      
   );
 }

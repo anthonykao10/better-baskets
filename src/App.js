@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import uploadVideo from './videoUpload'
 import axios from 'axios'
 
 // all "route" imports
@@ -16,7 +15,6 @@ import {
 } from 'react-router-dom'
 
 function App() {
-console.log(process.env)
   const sendVideoToServer = function(videoBlob) {
 
     axios.post(`http://localhost:3002`, {videoBlob

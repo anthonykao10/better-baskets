@@ -3,7 +3,7 @@ import {
   Link
 } from 'react-router-dom'
 
-import MediaRecorder from './MediaRecorder';
+import MediaRecorder from './NewShotComponents/MediaRecorder';
 import NavBar from './NavBar';
 
 const videoJsOptions = {

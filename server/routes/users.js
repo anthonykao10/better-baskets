@@ -3,10 +3,12 @@ const {getAllUserData, getLoginData} = require('../models/users');
 
 router.get('/login', (req, res) => {});
 router.post('/login', (req, res) => {
+  console.log("HIT", req)
   return getLoginData("NBA Andrew") // needs to be changed
   .then((userData) => {
-    console.log(userData.rows[0])
-    return userData.rows[0]
+    res.json(userData.rows[0])
+    // console.log(userData.rows[0], "!@#!@#!@#!@#")
+    // return userData.rows[0]
   })
 
 });
