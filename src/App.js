@@ -1,6 +1,11 @@
 import React from 'react';
 import './App.css';
 
+import {
+  BrowserRouter as Router,
+  Route
+} from 'react-router-dom'
+
 // all "route" imports
 import NewShotScreen from './components/NewShotScreen';
 import LoginScreen from './components/LoginScreen';
@@ -8,16 +13,11 @@ import DashboardScreen from './components/DashboardScreen';
 import ShotScreen from './components/ShotScreen';
 import SessionScreen from './components/SessionScreen';
 
-import {
-  BrowserRouter as Router,
-  Route
-} from 'react-router-dom'
-
 function App() {
 
   return (
     <div className="App">
-      <Router>
+      <Router> 
           <Route exact path="/">
             <LoginScreen />
           </Route>
