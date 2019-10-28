@@ -14,7 +14,7 @@ router.put('/:user_id/sessions', (req, res) => {});
 router.delete('/:user_id/sessions', (req, res) => {});
 
 router.get('/:user_id/data', (req, res) => {
-  return getAllUserData(req.params.user_id)
+  getAllUserData(req.params.user_id)
   .then((userShotData) => {
     return userShotData.rows
   })
