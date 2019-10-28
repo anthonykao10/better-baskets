@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import axios from "axios";
 
-export default function useSessionData(id) {
+export default function useShotData(id) {
 
   useEffect(() => {
     Promise.all([
-      Promise.resolve(axios.get(`/sessions/${id}/data`)),
+      Promise.resolve(axios.get(`/shots/${id}/data`)),
     ]).then((all) => {
       console.log(all)
     });

@@ -11,7 +11,7 @@ export default function SessionScreen() {
 
   let { id } = useParams();
 
-  useSessionData();
+  useSessionData(id);
 
   return (
     <div>

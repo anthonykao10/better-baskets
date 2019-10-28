@@ -34,7 +34,7 @@ function App() {
             <SessionScreen />
           </Route>
 
-          <Route exact path="/session/:session_id/shot/:id">
+          <Route exact path="/shot/:id">
             <ShotScreen />
           </Route>
         </Router>

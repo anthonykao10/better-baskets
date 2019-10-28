@@ -9,7 +9,7 @@ router.put('/:session_id/shots/:id', (req, res) => {});
 router.delete('/:session_id/shots/:id', (req, res) => {});
 
 router.get('/:session_id/data', (req, res) => {
-  return getSingleSessionData(req.params.session_id)
+  getSingleSessionData(req.params.session_id)
   .then((SessionData) => {
     res.json(SessionData.rows);
   })
