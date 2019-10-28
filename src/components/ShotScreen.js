@@ -5,10 +5,13 @@ import {
 } from 'react-router-dom'
 
 import NavBar from './NavBar';
+import useShotData from "../hooks/useShotData";
  
 export default function ShotScreen() {
 
   let { session_id, id } = useParams();
+
+  useShotData(id);
 
   return (
     <div>
