@@ -16,7 +16,7 @@ router.delete('/:user_id/sessions', (req, res) => {});
 router.get('/:user_id/data', (req, res) => {
   getAllUserData(req.params.user_id)
   .then((userShotData) => {
-    return userShotData.rows
+    res.json(userShotData.rows);
   })
   .catch(err => console.log(err))
 });
