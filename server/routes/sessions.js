@@ -11,7 +11,7 @@ router.delete('/:session_id/shots/:id', (req, res) => {});
 router.get('/:session_id/data', (req, res) => {
   return getSingleSessionData(req.params.session_id)
   .then((SessionData) => {
-    return SessionData.rows;
+    res.json(SessionData.rows);
   })
   .catch(err => console.log(err))
 });
