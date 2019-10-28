@@ -5,10 +5,13 @@ import {
 } from 'react-router-dom'
 
 import NavBar from './NavBar';
+import useSessionData from '../hooks/useSessionData';
  
 export default function SessionScreen() {
 
   let { id } = useParams();
+
+  useSessionData(id);
 
   return (
     <div>
