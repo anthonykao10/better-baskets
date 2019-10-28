@@ -4,8 +4,11 @@ import {
 } from 'react-router-dom'
  
 import NavBar from './NavBar';
+import useDashboardData from '../hooks/useDashboardData';
 
 export default function DashboardScreen() {
+
+useDashboardData();
   
   return (
     <div>
