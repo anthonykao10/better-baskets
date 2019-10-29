@@ -17,6 +17,7 @@ import {
 } from 'react-router-dom'
 
 function App() {
+
   useEffect(() => {
     const fetchData = async () => {
       const res = await getClient().get('/');
@@ -25,6 +26,7 @@ function App() {
 
     fetchData()
   }, [])
+  
 
   return (
     <div className="App">
