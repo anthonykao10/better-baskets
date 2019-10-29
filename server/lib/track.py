@@ -28,6 +28,12 @@ pts = deque(maxlen=args["buffer"])
 # read video file
 vs = cv2.VideoCapture(args["video"])
 
+# initialize video out
+# fourcc = cv2.VideoWriter_fourcc(*'X264')
+# writer = cv2.VideoWriter('videoUploads/processedVideo.mp4', 0x00000021, 20.0, (int(vs.get(3)), int(vs.get(4))))
+writer = cv2.VideoWriter('videoUploads/processedVideo.mp4', 0x00000021, int(vs.get(5)), (int(vs.get(3)), int(vs.get(4))))
+
+
 # allow the camera or video file to warm up
 time.sleep(2.0)
 
@@ -99,14 +105,21 @@ while True:
 		# draw the connecting lines
 		thickness = int(np.sqrt(args["buffer"] / float(i + 1)) * 2.5)
 		cv2.line(frame, pts[i - 1], pts[i], (0, 0, 255), thickness)
+		
+	
+	# bgr = cv2.cvtColor(frame, cv2.COLOR_HSV2BGR)
+	# writer = cv2.VideoWriter('videoUploads/processedVideo.mp4', 0x00000021, int(vs.get(5)), (int(vs.get(3)), int(vs.get(4))))
+	frame = imutils.resize(frame, width=640)
+	writer.write(frame)
 
-	# show the frame to our screen
-	# cv2.imshow("Frame", frame)
-	key = cv2.waitKey(1) & 0xFF
+	# # show the frame to our screen
+	# # cv2.imshow("Frame", frame)
+	# key = cv2.waitKey(1) & 0xFF
 
-	# if the 'q' key is pressed, stop the loop
-	if key == ord("q"):
-		break
+	# # if the 'q' key is pressed, stop the loop
+	# if key == ord("q"):
+	# 	break
+
 
 # if we are not using a video file, stop the camera video stream
 if not args.get("video", False):
@@ -115,6 +128,7 @@ if not args.get("video", False):
 # otherwise, release the camera
 else:
 	vs.release()
+	writer.release()
 
 # convert to list for seralization
 output = []
