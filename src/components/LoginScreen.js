@@ -1,14 +1,8 @@
-import React, {useState} from "react";
-import {
-  Link
-} from 'react-router-dom'
-
-import NavBar from './NavBar';
+import React from "react";
 import LoginForm from './LoginComponents/LoginForm'
 import {getClient, refreshClient} from '../services/axiosClient'
 import cookies from 'js-cookie'
 
-import useLoginData from '../hooks/useLoginData';
 
  
 export default function LoginScreen(props) {
@@ -21,7 +15,6 @@ export default function LoginScreen(props) {
       .then((response) => {
         cookies.set('userID', response.data.ID)
         refreshClient()
-        console.log(response.data, " Response.data on useLoginData.js")
         props.onLogin()
       })
       .catch((err) => {

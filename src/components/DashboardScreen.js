@@ -3,7 +3,6 @@ import {
   Link
 } from 'react-router-dom'
  
-import NavBar from './NavBar';
 import useDashboardData from '../hooks/useDashboardData';
 
 export default function DashboardScreen() {

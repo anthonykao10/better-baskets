@@ -10,7 +10,6 @@ import RecordRTC from 'recordrtc';
 
 // register videojs-record plugin with this import
 import 'videojs-record/dist/css/videojs.record.css';
-import Record from 'videojs-record/dist/videojs.record.js';
 
 // Optional imports for videojs-record plugins
 /*

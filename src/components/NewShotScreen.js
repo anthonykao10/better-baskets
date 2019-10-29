@@ -4,7 +4,6 @@ import {
 } from 'react-router-dom'
 
 import MediaRecorder from './NewShotComponents/MediaRecorder';
-import NavBar from './NavBar';
 
 const videoJsOptions = {
   controls: true,

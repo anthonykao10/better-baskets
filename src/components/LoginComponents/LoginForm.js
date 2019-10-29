@@ -12,7 +12,7 @@ export default function LoginForm(props) {
   } 
   
   return (
-    <div class="container">
+    <div className="container">
       <form>
         <label>Username: </label>
         <input type="text" placeholder="Enter Username" name="username" onChange={e => setUsername(e.target.value)} required></input>

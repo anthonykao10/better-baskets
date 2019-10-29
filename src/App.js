@@ -4,8 +4,6 @@ import './App.css';
 import NavBar from './components/NavBar';
 
 // import axios from 'axios'
-
-import {getClient} from './services/axiosClient'
 // all "route" imports
 import NewShotScreen from './components/NewShotScreen';
 import LoginScreen from './components/LoginScreen';
@@ -78,7 +76,7 @@ function AuthenticatedRouter(props) {
             <SessionScreen />
           </Route>
 
-          <Route exact path="/session/:session_id/shot/:id">
+          <Route exact path="/shot/:id">
             <ShotScreen />
           </Route>
           <Route path="*">
