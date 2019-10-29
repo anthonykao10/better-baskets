@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
-import axios from 'axios'
+// import axios from 'axios'
 
+import {getClient} from './services/axiosClient'
 // all "route" imports
 import NewShotScreen from './components/NewShotScreen';
 import LoginScreen from './components/LoginScreen';
@@ -9,22 +10,21 @@ import DashboardScreen from './components/DashboardScreen';
 import ShotScreen from './components/ShotScreen';
 import SessionScreen from './components/SessionScreen';
 
+
 import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom'
 
 function App() {
-  const sendVideoToServer = function(videoBlob) {
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await getClient().get('/');
+      console.log(res.data)
+    }
 
-    axios.post(`http://localhost:3002`, {videoBlob
-    })
-    .then(() => {
-      console.log("Successful post to http://localhost:3002")
-    })
-    
-  }
-
+    fetchData()
+  }, [])
 
   return (
     <div className="App">

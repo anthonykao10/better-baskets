@@ -2,13 +2,6 @@ import { useEffect } from "react";
 import axios from "axios";
 
 export default function useLoginData(username) {
-  // console.log("Hit the login")
-  // axios.get(`http://localhost:8080/login`)
-  // .then((authenticate) => {
-  //   console.log(authenticate)
-  // })
-
-  // console.log(username, " 0000000000")
 
   useEffect(() => {
     Promise.all([

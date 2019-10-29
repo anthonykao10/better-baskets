@@ -1,17 +1,27 @@
+
 const router = require('express').Router();
 const {getAllUserData, getLoginData} = require('../models/users');
 
 router.get('/login', (req, res) => {});
 router.post('/login', (req, res) => {
-  console.log("HIT", req)
-  return getLoginData("NBA Andrew") // needs to be changed
+  return getLoginData(req.body.username) // needs to be changed
   .then((userData) => {
-    res.json(userData.rows[0])
-    // console.log(userData.rows[0], "!@#!@#!@#!@#")
-    // return userData.rows[0]
-  })
+    if (typeof userData.rows[0] == "undefined") {
+      console.log("USERNAME INVALID!")
+      res.status(500)
+    }
+    
+    else if (userData.rows[0].password !== req.body.password) {
+      console.log(userData.rows[0].password, "input Password", req.body.password)
+      console.log("WRONG PASSWORD")
+      res.status(500)
+    }
+    else {
+      res.json({username: userData.rows[0].username, ID: userData.rows[0].id})
+    }}
+  )} 
+  );
 
-});
 
 router.post('/logout', (req, res) => {});
 

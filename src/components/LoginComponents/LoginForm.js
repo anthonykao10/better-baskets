@@ -2,9 +2,14 @@
 import React, {useState} from "react";
 
 
-export default function LoginForm() {
+export default function LoginForm(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    props.onSubmit(username,password)
+  }
   
   return (
     <div class="container">
@@ -15,7 +20,7 @@ export default function LoginForm() {
         <label>Password: </label>
         <input type="password" placeholder="Enter Password" name="password" onChange = {e => setPassword(e.target.value)} required></input>
         
-        <button type="submit">Login</button>
+        <a onClick = {onSubmit}>Login</a>
       </form>
     </div>
     

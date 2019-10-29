@@ -1,7 +1,7 @@
 INSERT INTO users (username, email, password, picture)
-  VALUES ('NBA Andrew', 'doug@gmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u', 'https://cdn5.vectorstock.com/i/1000x1000/19/59/basketball-ball-clean-design-logo-mark-brand-vector-21301959.jpg'),
-  ('WNBA Suzanna', 'suzanna@gmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u', 'https://cdn5.vectorstock.com/i/1000x1000/19/59/basketball-ball-clean-design-logo-mark-brand-vector-21301959.jpg'),
-  ('Community Court Cathy', 'cathy@gmail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u', 'https://cdn5.vectorstock.com/i/1000x1000/19/59/basketball-ball-clean-design-logo-mark-brand-vector-21301959.jpg');
+  VALUES ('NBA Andrew', 'NBA_ANDREW@gmail.com', 'password', 'https://cdn5.vectorstock.com/i/1000x1000/19/59/basketball-ball-clean-design-logo-mark-brand-vector-21301959.jpg'),
+  ('WNBA Suzanna', 'suzanna@gmail.com', 'password', 'https://cdn5.vectorstock.com/i/1000x1000/19/59/basketball-ball-clean-design-logo-mark-brand-vector-21301959.jpg'),
+  ('Community Court Cathy', 'cathy@gmail.com', 'password', 'https://cdn5.vectorstock.com/i/1000x1000/19/59/basketball-ball-clean-design-logo-mark-brand-vector-21301959.jpg');
 
 INSERT INTO sessions (user_id, start_time, end_time, date)
   VALUES (1, '10:34:15', '11:34:15', '2019-10-24'),
