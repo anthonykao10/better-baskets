@@ -33,17 +33,20 @@ function App() {
     // fetchData()
 
     isLoggedIn()
+    // window.location.reload(); 
   }, [])
   
 
   const isLoggedIn = function() {
     let cookie = cookies.get("userID")
     setCookieValue(cookie)
+
   }
 
   const handleLogout = function() {
     setCookieValue(null)
     cookies.remove('userID')
+
   }
 
   return (
@@ -77,8 +80,8 @@ function AuthenticatedRouter(props) {
         </Route>
         
         <Route exact path="/logout">
-          {/* < onLogout = {props.logout}/> */}
-          <Redirect to='/' />
+         {/* <BrowserRouter forceRefresh={true} /> */}
+          {/* <Redirect to='/' /> */}
         </Route>
       </Router>
     </div>
@@ -88,6 +91,7 @@ function AuthenticatedRouter(props) {
 function UnauthenticatedRouter(props) {
   return (
     <Router>
+      <NavBar onLogout = {props.onLogout}/> 
       <Route exact path="/">
         <LoginScreen />
       </Route> 
