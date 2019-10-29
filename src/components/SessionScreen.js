@@ -12,7 +12,6 @@ export default function SessionScreen() {
 
   return (
     <div>
-      <NavBar /> 
       <p>Session Screen: { id }</p>
       <Link to="/dashboard">Dashboard</Link><br></br>
       <Link to="/new_shot">New Shot</Link>

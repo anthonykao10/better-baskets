@@ -5,7 +5,7 @@ import {
   Link
 } from 'react-router-dom'
 
-export default function NavBar() {
+export default function NavBar(props) {
   
   return (
     <Navbar bg="light" expand="lg">
@@ -21,6 +21,8 @@ export default function NavBar() {
           <NavDropdown.Divider />
           <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
         </NavDropdown>
+        <Nav.Link><Link to="/">Login</Link></Nav.Link>
+        <Nav.Link><Link to="/" onClick = {props.onLogout}>Logout</Link></Nav.Link>
       </Nav>
     </Navbar.Collapse>
   </Navbar>

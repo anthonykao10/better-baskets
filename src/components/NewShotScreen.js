@@ -25,7 +25,6 @@ export default function NewShotScreen() {
   
   return (
     <div>
-      <NavBar /> 
       <p>New Shot Screen</p>
       <Link to="/dashboard">Dashboard</Link><br></br>
       <MediaRecorder { ...videoJsOptions }/>

@@ -30,7 +30,6 @@ export default function LoginScreen() {
 
   return (
     <div>
-      <NavBar /> 
       <p>Login Screen</p>
       <LoginForm onSubmit = {submit} />
     </div>

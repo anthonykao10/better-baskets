@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import cookies from 'js-cookie'
 import './App.css';
+import NavBar from './components/NavBar';
+
 // import axios from 'axios'
 
 import {getClient} from './services/axiosClient'
@@ -39,32 +41,47 @@ function App() {
     setCookieValue(cookie)
   }
 
+  const handleLogout = function() {
+    setCookieValue(null)
+    cookies.remove('userID')
+  }
+
   return (
     <div className="App">
-      {cookieValue ? <AuthenticatedRouter /> : <UnauthenticatedRouter />}
+{cookieValue ? <AuthenticatedRouter onLogout = {handleLogout}/> : <UnauthenticatedRouter />}
     </div>
   );
 }
 
 function AuthenticatedRouter(props) {
   return (
-    <Router>
-      <Route exact path="/">
-        <DashboardScreen />
-      </Route>
+    <div>
+      
 
-      <Route exact path="/new_shot">
-        <NewShotScreen />
-      </Route>
+      <Router>
+      <NavBar onLogout = {props.onLogout}/> 
+        <Route exact path="/">
+          <DashboardScreen />
+        </Route>
 
-      <Route exact path="/session/:id">
-        <SessionScreen />
-      </Route>
+        <Route exact path="/new_shot">
+          <NewShotScreen />
+        </Route>
 
-      <Route exact path="/session/:session_id/shot/:id">
-        <ShotScreen />
-      </Route>
-    </Router>
+        <Route exact path="/session/:id">
+          <SessionScreen />
+        </Route>
+
+        <Route exact path="/session/:session_id/shot/:id">
+          <ShotScreen />
+        </Route>
+        
+        <Route exact path="/logout">
+          {/* < onLogout = {props.logout}/> */}
+          <Redirect to='/' />
+        </Route>
+      </Router>
+    </div>
   )
 }
 
@@ -84,29 +101,3 @@ function UnauthenticatedRouter(props) {
 
 export default App;
 
-
-
-
-// <header className="App-header">
- 
-// <div>
-//  <ReactMediaRecorder
-//    video
-//    blobPropertyBag={{type: "video/mp4"}}
-//    whenStopped={(video) => {
-//      uploadVideo(video) 
-//      // sendVideoToServer(video)
-//    }}
-
-//    render={({ status, startRecording, stopRecording, mediaBlob }) => (
-//      <div>
-//        <p>{status}</p>
-//        <button onClick={startRecording}>Start Recording</button>
-//       <button onClick={stopRecording}>Stop Recording</button>
-//        <video src={mediaBlob} controls />
-//      </div>
-//    )}
-//  />
-// </div>
-
-//    </header>

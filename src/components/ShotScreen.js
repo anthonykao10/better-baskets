@@ -12,7 +12,6 @@ export default function ShotScreen() {
 
   return (
     <div>
-      <NavBar /> 
       <p>Session: {session_id} </p>
       <p>Shot Screen: {id} </p>
       <Link to="/dashboard">Dashboard</Link><br></br>

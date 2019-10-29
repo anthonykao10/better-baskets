@@ -12,7 +12,6 @@ useDashboardData();
   
   return (
     <div>
-      <NavBar />
       <p>Dashboard Screen</p>
       <Link to="/new_shot">New Shot</Link>
     </div> 
