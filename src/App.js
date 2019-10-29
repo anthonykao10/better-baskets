@@ -17,6 +17,7 @@ import SessionScreen from './components/SessionScreen';
 import {
   BrowserRouter as Router,
   Route,
+  Switch,
   Redirect
 } from 'react-router-dom'
 
@@ -33,56 +34,57 @@ function App() {
     // fetchData()
 
     isLoggedIn()
-    // window.location.reload(); 
+    // 
   }, [])
   
 
   const isLoggedIn = function() {
     let cookie = cookies.get("userID")
     setCookieValue(cookie)
-
   }
 
   const handleLogout = function() {
     setCookieValue(null)
     cookies.remove('userID')
+  }
 
+  const handleLogin = function() {
+    isLoggedIn()
   }
 
   return (
     <div className="App">
-{cookieValue ? <AuthenticatedRouter onLogout = {handleLogout}/> : <UnauthenticatedRouter />}
+{cookieValue ? <AuthenticatedRouter onLogout = {handleLogout}/> : <UnauthenticatedRouter onLogin = {handleLogin}/>}
     </div>
   );
 }
 
 function AuthenticatedRouter(props) {
+
   return (
     <div>
-      
-
       <Router>
-      <NavBar onLogout = {props.onLogout}/> 
-        <Route exact path="/">
-          <DashboardScreen />
-        </Route>
+          <NavBar onLogout = {props.onLogout}/> 
+        <Switch>
+          <Route exact path="/">
+            <DashboardScreen />
+          </Route>
 
-        <Route exact path="/new_shot">
-          <NewShotScreen />
-        </Route>
+          <Route exact path="/new_shot">
+            <NewShotScreen />
+          </Route>
 
-        <Route exact path="/session/:id">
-          <SessionScreen />
-        </Route>
+          <Route exact path="/session/:id">
+            <SessionScreen />
+          </Route>
 
-        <Route exact path="/session/:session_id/shot/:id">
-          <ShotScreen />
-        </Route>
-        
-        <Route exact path="/logout">
-         {/* <BrowserRouter forceRefresh={true} /> */}
-          {/* <Redirect to='/' /> */}
-        </Route>
+          <Route exact path="/session/:session_id/shot/:id">
+            <ShotScreen />
+          </Route>
+          <Route path="*">
+            <Redirect to='/'/>
+          </Route>
+        </Switch>
       </Router>
     </div>
   )
@@ -91,13 +93,18 @@ function AuthenticatedRouter(props) {
 function UnauthenticatedRouter(props) {
   return (
     <Router>
-      <NavBar onLogout = {props.onLogout}/> 
-      <Route exact path="/">
-        <LoginScreen />
-      </Route> 
-      <Route path="*">
-        <Redirect to='/' />
-      </Route>
+      <NavBar /> 
+      <Switch>
+        <Route exact path="/">
+          <LoginScreen onLogin = {props.onLogin}/>
+        </Route> 
+
+        <Route>
+          <Redirect from='*' to='/' />
+        </Route> 
+      </Switch>
+
+
     </Router>
   )
   

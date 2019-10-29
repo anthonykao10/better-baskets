@@ -11,7 +11,7 @@ import cookies from 'js-cookie'
 import useLoginData from '../hooks/useLoginData';
 
  
-export default function LoginScreen() {
+export default function LoginScreen(props) {
 
   const submit = function(username, password) {
     getClient().post(`users/login`, {
@@ -22,6 +22,7 @@ export default function LoginScreen() {
         cookies.set('userID', response.data.ID)
         refreshClient()
         console.log(response.data, " Response.data on useLoginData.js")
+        props.onLogin()
       })
       .catch((err) => {
         console.log(err)
