@@ -13,9 +13,6 @@ app.use(bodyParser.json());
 
 app.use((req, res, next) => {
   const userID = req.headers.authorization
-
-
-
   
   const user = {} //get user from database
   req.user = user
