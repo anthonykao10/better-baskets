@@ -1,4 +1,3 @@
-
 // Load the SDK and UUID
 const fs = require('fs');
 const AWS = require('aws-sdk');
