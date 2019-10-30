@@ -4,7 +4,6 @@ import {
   useParams
 } from 'react-router-dom'
 
-import NavBar from './NavBar';
 import useShotData from "../hooks/useShotData";
  
 export default function ShotScreen() {
@@ -15,7 +14,6 @@ export default function ShotScreen() {
 
   return (
     <div>
-      <NavBar /> 
       <p>Session: {session_id} </p>
       <p>Shot Screen: {id} </p>
       <Link to="/dashboard">Dashboard</Link><br></br>

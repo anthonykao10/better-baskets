@@ -12,4 +12,12 @@ const getAllUserData = (userID) => {
   `, [userID])
 };
 
-module.exports = {getAllUserData}
+const getLoginData = (inputUsername) => {
+  return pool.query(`
+  SELECT *
+  FROM users
+  WHERE username = $1;
+  `, [inputUsername])
+};
+
+module.exports = {getAllUserData, getLoginData}

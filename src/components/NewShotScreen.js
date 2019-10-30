@@ -3,8 +3,7 @@ import {
   Link
 } from 'react-router-dom'
 
-import MediaRecorder from './MediaRecorder';
-import NavBar from './NavBar';
+import MediaRecorder from './NewShotComponents/MediaRecorder';
 
 const videoJsOptions = {
   controls: true,
@@ -25,7 +24,6 @@ export default function NewShotScreen() {
   
   return (
     <div>
-      <NavBar /> 
       <p>New Shot Screen</p>
       <Link to="/dashboard">Dashboard</Link><br></br>
       <MediaRecorder { ...videoJsOptions }/>
