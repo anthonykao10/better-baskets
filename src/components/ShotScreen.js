@@ -4,6 +4,9 @@ import {
   useParams
 } from 'react-router-dom'
 
+import LoginForm from './LoginComponents/LoginForm'
+import VideoReplay from './ShotComponents/videoReplayComponent'
+
 // import useShotData from "../hooks/useShotData";
  
 export default function ShotScreen() {
@@ -18,6 +21,7 @@ export default function ShotScreen() {
       <p>Shot Screen: {id} </p>
       <Link to="/dashboard">Dashboard</Link><br></br>
       <Link to="/new_shot">New Shot</Link>
+      <VideoReplay />
     </div> 
   );
 }
