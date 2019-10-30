@@ -80,9 +80,9 @@ function AuthenticatedRouter(props) {
           <Route path="/shot/:id">
             <ShotScreen />
           </Route>
-          {/* <Route path="*">
+          <Route path="*">
             <Redirect to='/'/>
-          </Route> */}
+          </Route>
         </Switch>
       </Router>
     </div>
