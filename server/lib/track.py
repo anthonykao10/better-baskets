@@ -30,8 +30,6 @@ vs = cv2.VideoCapture(args["video"])
 
 # initialize video out
 fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-# fourcc = cv2.cv.CV_FOURCC('m', 'p', '4', 'v')
-# writer = cv2.VideoWriter('videoUploads/processedVideo.mp4', 0x00000021, 20.0, (int(vs.get(3)), int(vs.get(4))))
 writer = cv2.VideoWriter('videoUploads/processedVideo.mp4', fourcc, int(vs.get(5)), (int(vs.get(3)), int(vs.get(4))))
 
 
