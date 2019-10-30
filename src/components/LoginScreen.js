@@ -1,16 +1,33 @@
 import React from "react";
-// import {
-//   Link
-// } from 'react-router-dom'
+import LoginForm from './LoginComponents/LoginForm'
+import {getClient, refreshClient} from '../services/axiosClient'
+import cookies from 'js-cookie'
 
-import NavBar from './NavBar';
+
  
-export default function LoginScreen() {
+export default function LoginScreen(props) {
+
+  const submit = function(username, password) {
+    getClient().post(`users/login`, {
+        username: username,
+        password: password
+      },)
+      .then((response) => {
+        cookies.set('userID', response.data.ID)
+        refreshClient()
+        props.onLogin()
+      })
+      .catch((err) => {
+        console.log(err)
+      });
+  }
   
+
   return (
     <div>
-      <NavBar /> 
       <p>Login Screen</p>
-    </div> 
+      <LoginForm onSubmit = {submit} />
+    </div>
+      
   );
 }
