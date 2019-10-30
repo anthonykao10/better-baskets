@@ -1,13 +1,9 @@
 const pool = require('../db/connection');
 
-const getAllUserData = (userID) => {
+const getUserData = (userID) => {
   return pool.query(`
   SELECT * 
-  FROM shots
-  JOIN sessions 
-  ON sessions.id = shots.session_id
-  JOIN users
-  ON users.id = sessions.user_id
+  FROM users
   WHERE users.id = $1 
   `, [userID])
 };
@@ -20,4 +16,4 @@ const getLoginData = (inputUsername) => {
   `, [inputUsername])
 };
 
-module.exports = {getAllUserData, getLoginData}
+module.exports = {getUserData, getLoginData}

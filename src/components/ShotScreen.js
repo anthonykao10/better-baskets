@@ -4,13 +4,13 @@ import {
   useParams
 } from 'react-router-dom'
 
-import useShotData from "../hooks/useShotData";
+// import useShotData from "../hooks/useShotData";
  
 export default function ShotScreen() {
 
   let { session_id, id } = useParams();
 
-  useShotData(id);
+  // useShotData(id);
 
   return (
     <div>

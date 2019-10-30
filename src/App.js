@@ -22,8 +22,6 @@ import {
 function App() {
   const [cookieValue, setCookieValue] = useState(cookies.get("userID"));
 
-
-
   // useEffect(() => {
     // const fetchData = async () => {
     //   const res = await getClient().get('/');
@@ -35,7 +33,6 @@ function App() {
     // 
   // }, [])
   
-
   const isLoggedIn = function() {
     let cookie = cookies.get("userID")
     setCookieValue(cookie)
@@ -96,16 +93,12 @@ function UnauthenticatedRouter(props) {
         <Route exact path="/">
           <LoginScreen onLogin = {props.onLogin}/>
         </Route> 
-
         <Route>
           <Redirect from='*' to='/' />
         </Route> 
       </Switch>
-
-
     </Router>
   )
-  
 }
 
 export default App;
