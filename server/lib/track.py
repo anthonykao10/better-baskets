@@ -1,5 +1,5 @@
 import sys
-sys.path.append('/usr/local/lib/python2.7/site-packages')
+# sys.path.append('/usr/local/lib/python2.7/site-packages')
 from collections import deque
 from imutils.video import VideoStream
 import numpy as np
@@ -29,9 +29,10 @@ pts = deque(maxlen=args["buffer"])
 vs = cv2.VideoCapture(args["video"])
 
 # initialize video out
-# fourcc = cv2.VideoWriter_fourcc(*'X264')
+fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+# fourcc = cv2.cv.CV_FOURCC('m', 'p', '4', 'v')
 # writer = cv2.VideoWriter('videoUploads/processedVideo.mp4', 0x00000021, 20.0, (int(vs.get(3)), int(vs.get(4))))
-writer = cv2.VideoWriter('videoUploads/processedVideo.mp4', 0x00000021, int(vs.get(5)), (int(vs.get(3)), int(vs.get(4))))
+writer = cv2.VideoWriter('videoUploads/processedVideo.mp4', fourcc, int(vs.get(5)), (int(vs.get(3)), int(vs.get(4))))
 
 
 # allow the camera or video file to warm up
@@ -109,11 +110,11 @@ while True:
 	
 	# bgr = cv2.cvtColor(frame, cv2.COLOR_HSV2BGR)
 	# writer = cv2.VideoWriter('videoUploads/processedVideo.mp4', 0x00000021, int(vs.get(5)), (int(vs.get(3)), int(vs.get(4))))
-	frame = imutils.resize(frame, width=640)
+	frame = imutils.resize(frame, width=int(vs.get(3)))
 	writer.write(frame)
 
 	# # show the frame to our screen
-	# # cv2.imshow("Frame", frame)
+	# cv2.imshow("Frame", frame)
 	# key = cv2.waitKey(1) & 0xFF
 
 	# # if the 'q' key is pressed, stop the loop

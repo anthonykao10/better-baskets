@@ -21,7 +21,7 @@ router.get('/data', (req, res) => {
     
       child.on('close', (code) => {
         console.log(`child process exited with code ${code}`);
-        fileUpload();
+        // fileUpload();
       });
 
     })
