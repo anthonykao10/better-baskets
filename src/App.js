@@ -45,7 +45,6 @@ function App() {
     setCookieValue(null)
     cookies.remove('userID')
   }
-  console.log("cookie value", cookieValue)
 
   const handleLogin = function() {
     isLoggedIn()
@@ -90,7 +89,6 @@ function AuthenticatedRouter(props) {
 }
 
 function UnauthenticatedRouter(props) {
-  console.log("UNAUTH ROUTES!")
   return (
     <Router>
       <NavBar /> 
