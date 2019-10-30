@@ -20,20 +20,20 @@ import {
 } from 'react-router-dom'
 
 function App() {
-  const [cookieValue, setCookieValue] = useState(null);
+  const [cookieValue, setCookieValue] = useState(cookies.get("userID"));
 
 
 
-  useEffect(() => {
+  // useEffect(() => {
     // const fetchData = async () => {
     //   const res = await getClient().get('/');
     //   console.log(res.data)
     // }
     // fetchData()
 
-    isLoggedIn()
+    // isLoggedIn()
     // 
-  }, [])
+  // }, [])
   
 
   const isLoggedIn = function() {
@@ -45,6 +45,7 @@ function App() {
     setCookieValue(null)
     cookies.remove('userID')
   }
+  console.log("cookie value", cookieValue)
 
   const handleLogin = function() {
     isLoggedIn()
@@ -68,20 +69,20 @@ function AuthenticatedRouter(props) {
             <DashboardScreen />
           </Route>
 
-          <Route exact path="/new_shot">
+          <Route path="/new_shot">
             <NewShotScreen />
           </Route>
 
-          <Route exact path="/session/:id">
+          <Route path="/session/:id">
             <SessionScreen />
           </Route>
 
-          <Route exact path="/shot/:id">
+          <Route path="/shot/:id">
             <ShotScreen />
           </Route>
-          <Route path="*">
+          {/* <Route path="*">
             <Redirect to='/'/>
-          </Route>
+          </Route> */}
         </Switch>
       </Router>
     </div>
@@ -89,6 +90,7 @@ function AuthenticatedRouter(props) {
 }
 
 function UnauthenticatedRouter(props) {
+  console.log("UNAUTH ROUTES!")
   return (
     <Router>
       <NavBar /> 
