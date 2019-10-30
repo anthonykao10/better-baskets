@@ -3,13 +3,9 @@ import {
   Link,
   useParams
 } from 'react-router-dom'
-
-// import useSessionData from '../hooks/useSessionData';
  
 export default function SessionScreen() {
   let { id } = useParams();
-
-  // useSessionData(id);
 
   return (
     <div>
