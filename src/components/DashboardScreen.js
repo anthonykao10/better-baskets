@@ -6,17 +6,26 @@ import {
  
 // import useDashboardData from '../hooks/useDashboardData';
 import useApplicationData from '../hooks/useApplicationData';
+import TestComponent from '../components/TestComponent';
 
 export default function DashboardScreen() {
 
 // useDashboardData();
 
-  useApplicationData(cookies.get("userID"))
+  // useApplicationData(cookies.get("userID"))
+
+  const {
+    userData,
+    sessionData,
+    shotData 
+  } = useApplicationData(cookies.get("userID"));
   
   return (
     <div>
       <p>Dashboard Screen</p>
-      <Link to="/new_shot">New Shot</Link>
+      <TestComponent userData={userData} sessionData={sessionData} shotData={shotData}/>
     </div> 
   );
 }
+
+//can't pass state as prop?
