@@ -19,10 +19,16 @@ def test_getArcMax():
   arc = helpers.getArc(xVals, yVals)
   assert helpers.getArcMax( arc[2], arc[1], arc[0] ) == 454.65
 
+def test_getArcAngle():
+  xVals = helpers.getXVals(testCoords)
+  yVals = helpers.getYVals(testCoords, 720)
+  arc = helpers.getArc(xVals, yVals)
+  assert helpers.getArcAngle( arc[2], arc[1], arc[0] ) == 19.08
 
 if __name__ == "__main__":
     test_getXVals()
     test_getYVals()
     test_getArc()
     test_getArcMax()
+    test_getArcAngle()
     print("all green")
