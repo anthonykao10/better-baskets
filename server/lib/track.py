@@ -1,5 +1,6 @@
 import sys
 sys.path.append('/usr/local/lib/python2.7/site-packages')
+import os
 from collections import deque
 from imutils.video import VideoStream
 import numpy as np
@@ -17,23 +18,25 @@ ap.add_argument("-b", "--buffer", type=int, default=64,
 	help="max buffer size")
 args = vars(ap.parse_args())
 
-# define the lower and upper boundaries of the "green"
-# ball in the HSV color space, then initialize the
-# list of tracked points
+# set lower and upper bounds for mask
 greenLower = (32, 71, 85)
 greenUpper = (74, 255, 255)
 
+# initialize list of coordinates
 pts = deque(maxlen=args["buffer"])
 
 # read video file
 vs = cv2.VideoCapture(args["video"])
 
+# initialize video out
+# fourcc = cv2.VideoWriter_fourcc(*'X264')
+path = os.path.dirname(os.path.realpath(__file__)) + '/../videos/uploads/processedVideo.mp4'
+writer = cv2.VideoWriter(path, 0x00000021, int(vs.get(5)), (int(vs.get(3)), int(vs.get(4))))
+
 # allow the camera or video file to warm up
 time.sleep(2.0)
 
-# keep looping
 while True:
-	# grab the current frame
 	frame = vs.read()
 
 	# handle the frame from VideoCapture or VideoStream
@@ -50,13 +53,12 @@ while True:
 	blurred = cv2.GaussianBlur(frame, (11, 11), 0)
 	hsv = cv2.cvtColor(blurred, cv2.COLOR_BGR2HSV)
 
-	# construct a mask for the color "green", then perform
-	# a series of dilations and erosions to remove any small
-	# blobs left in the mask
+	# create mask
 	mask = cv2.inRange(hsv, greenLower, greenUpper)
+
+	# filter noise
 	mask = cv2.erode(mask, None, iterations=2)
 	mask = cv2.dilate(mask, None, iterations=2)
-
 	kernel = np.ones((5,5),np.uint8)
 	mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
 
@@ -99,14 +101,10 @@ while True:
 		# draw the connecting lines
 		thickness = int(np.sqrt(args["buffer"] / float(i + 1)) * 2.5)
 		cv2.line(frame, pts[i - 1], pts[i], (0, 0, 255), thickness)
-
-	# show the frame to our screen
-	# cv2.imshow("Frame", frame)
-	key = cv2.waitKey(1) & 0xFF
-
-	# if the 'q' key is pressed, stop the loop
-	if key == ord("q"):
-		break
+		
+	
+	frame = imutils.resize(frame, width=int(vs.get(3)))
+	writer.write(frame)
 
 # if we are not using a video file, stop the camera video stream
 if not args.get("video", False):
@@ -115,6 +113,7 @@ if not args.get("video", False):
 # otherwise, release the camera
 else:
 	vs.release()
+	writer.release()
 
 # convert to list for seralization
 output = []
