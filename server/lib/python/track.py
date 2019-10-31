@@ -9,18 +9,17 @@ import cv2
 import imutils
 import time
 import json
+import helpers
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
-ap.add_argument("-v", "--video",
-	help="path to the (optional) video file")
-ap.add_argument("-b", "--buffer", type=int, default=64,
-	help="max buffer size")
+ap.add_argument("-v", "--video")
+ap.add_argument("-b", "--buffer", type=int, default=64)
 args = vars(ap.parse_args())
 
 # set lower and upper bounds for mask
-greenLower = (32, 71, 85)
-greenUpper = (74, 255, 255)
+greenLower = (25, 93, 101)
+greenUpper = (55, 255, 255)
 
 # initialize list of coordinates
 pts = deque(maxlen=args["buffer"])
@@ -106,21 +105,30 @@ while True:
 	frame = imutils.resize(frame, width=int(vs.get(3)))
 	writer.write(frame)
 
-# if we are not using a video file, stop the camera video stream
-if not args.get("video", False):
-	vs.stop()
-
-# otherwise, release the camera
-else:
-	vs.release()
-	writer.release()
-
 # convert to list for seralization
 output = []
 for pt in pts:
 	output.append(pt)
 
-sys.stdout.write(json.dumps(output))
+# get shot arc and shot angle:
+x_vals = helpers.getXVals(output)
+y_vals = helpers.getYVals(output, 720)
+arc = helpers.getArc(x_vals, y_vals)
 
-# close all windows
-cv2.destroyAllWindows()
+if arc is not None:
+	arcMax = helpers.getArcMax( arc[2], arc[1], arc[0] )
+	angle = helpers.getArcAngle( arc[2], arc[1], arc[0] )
+else: 
+	arcMax = None
+	angle = None
+
+sys.stdout.write(json.dumps({
+	"coordinates": output,
+	"arc": arc,
+	"arcMax": arcMax,
+	"angle": angle
+}))
+
+# release file and write stream
+vs.release()
+writer.release()
