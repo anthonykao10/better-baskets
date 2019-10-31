@@ -8,7 +8,13 @@ def test_getXVals():
 def test_getYVals():
   assert helpers.getYVals(testCoords, 720) == [339, 370, 394, 430, 404, 413, 406, 402, 396, 402, 420, 435, 446, 470, 475, 487, 484, 469, 465, 468, 404, 359]
 
+def test_getArc():
+  xVals = helpers.getXVals(testCoords)
+  yVals = helpers.getYVals(testCoords, 720)
+  assert helpers.getArc(xVals, yVals) == [330.2698234321775, 0.34583816370993475, -0.00024040241876043645]
+
 if __name__ == "__main__":
     test_getXVals()
     test_getYVals()
+    test_getArc()
     print("all green")
