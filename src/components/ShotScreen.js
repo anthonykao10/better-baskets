@@ -1,23 +1,49 @@
 import React from "react";
 import {
-  Link,
   useParams
 } from 'react-router-dom'
 
-// import useShotData from "../hooks/useShotData";
- 
-export default function ShotScreen() {
+import ShotHeader from "./ShotHeader";
+import ShotChart from "./ShotChart";
 
-  let { session_id, id } = useParams();
+export default function ShotScreen({shotData}) {
 
-  // useShotData(id);
+  let { id } = useParams();
+
+  const shots = shotData.map(
+    shot => {
+      return (
+        <ShotChart
+        key={shot.id}
+        shotID={shot.id} 
+        shotAngle={shot.angle}
+        />
+      );
+    }
+  )
+
+  const singleShot = shotData.find((item) => item.id === parseInt(id));
+
+  //Average of shot angle (all shots from all sessions)
+  const angleAverage = () => {
+    let sum = 0
+
+    shotData.forEach((item) => {
+      sum += item.angle;
+    })
+
+    const count = shotData.length;
+
+    return sum/count;
+  }
+
+  const shotAngleAverage = angleAverage();
 
   return (
     <div>
-      <p>Session: {session_id} </p>
       <p>Shot Screen: {id} </p>
-      <Link to="/dashboard">Dashboard</Link><br></br>
-      <Link to="/new_shot">New Shot</Link>
+      <ShotHeader {...singleShot} shotAngleAverage={shotAngleAverage}/>
+      {shots}
     </div> 
   );
 }

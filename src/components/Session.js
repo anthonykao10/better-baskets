@@ -1,7 +1,6 @@
 import React from "react";
 import {
-  Link,
-  useParams
+  Link
 } from 'react-router-dom'
  
 export default function Session({sessionID, date}) {

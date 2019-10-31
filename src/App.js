@@ -64,11 +64,6 @@ function AuthenticatedRouter(props) {
     shotData 
   } = useApplicationData(cookies.get("userID"));
 
-  // const sessions
-  // const session
-  // const shots
-  // const shot
-
   return (
     <div>
       <Router>
@@ -82,12 +77,12 @@ function AuthenticatedRouter(props) {
             <NewShotScreen />
           </Route>
 
-          <Route name="session" path="/session/:id">
+          <Route exact path="/session/:id">
             <SessionScreen sessionData={sessionData} shotData={shotData}/>
           </Route>
 
-          <Route path="/shot/:id">
-            <ShotScreen />
+          <Route exact path="/shot/:id">
+            <ShotScreen shotData={shotData}/>
           </Route>
           <Route path="*">
             <Redirect to='/'/>

@@ -25,5 +25,3 @@ export default function DashboardScreen({userData, sessionData, shotData}) {
     </div> 
   );
 }
-
-//can't pass state as prop?
