@@ -3,10 +3,6 @@ const path = require('path');
 // Load the SDK and UUID
 const fs = require('fs');
 const AWS = require('aws-sdk');
-// env["AWS_KEY"]
-// Create an S3 client
-
-// console.log('\nprocess.env:', process.env);
 
 const awsConfig = new AWS.Config({
   credentials: {
@@ -26,7 +22,6 @@ const fileDownload = function() {
     Bucket: bucketName, 
     Key: 'newTestANTHONY.webm'
   };
-
 
   return (() => {
     return new Promise((resolve, reject) => {
@@ -57,7 +52,6 @@ const fileDownload = function() {
       });
     })
     .catch(err => console.log(err));
-
 }
 
 module.exports = fileDownload;
