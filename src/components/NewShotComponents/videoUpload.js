@@ -21,8 +21,8 @@ var AWS = require('aws-sdk');
 
 const awsConfig = new AWS.Config({
   credentials: {
-    accessKeyId:'AKIAJNXDZCACIVYEEALQ',
-    secretAccessKey:'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'
+    accessKeyId:'',
+    secretAccessKey:''
   },
   region: 'us-west-1'
 })
