@@ -13,9 +13,9 @@ import 'videojs-record/dist/css/videojs.record.css';
 import Record from 'videojs-record/dist/videojs.record.js';
 
 import referenceGenerator from '../../services/referenceGenerator'
+import insertShotData from '../../services/insertShotData'
 
-import cookies from 'js-cookie'
-import axios from "axios";
+
 
 
 // Optional imports for videojs-record plugins
@@ -56,11 +56,9 @@ class MediaRecorder extends Component {
           // recordedData is a blob object containing the recorded data that
           // can be downloaded by the user, stored on server etc.
           const reference = referenceGenerator();
-
-          uploadVideo(this.player.recordedData, reference);
+          insertShotData(reference);
+        //   uploadVideo(this.player.recordedData, reference);
           console.log(reference, "~~~~~~~~~");
-
-
       });
 
       // error handling

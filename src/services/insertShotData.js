@@ -3,11 +3,16 @@ import axios from "axios";
 
 const insertShotData = function(referenceString) {
   axios.post(`shots/new`, {
-    user_ID: 1,
-    session_ID: 1,
+    session_id: 1,
     reference: referenceString
   })
+  .then((response) => {
+    console.log(response)
 
+  })
+  .catch((err) => {
+    throw err
+  })
 }
 
 
