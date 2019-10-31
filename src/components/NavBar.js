@@ -4,13 +4,16 @@ import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import {
   Link
 } from 'react-router-dom'
+import './styles/Nav.css';
 
 export default function NavBar({ onLogout, currentUser }) {
   
   return (
     <Navbar bg="light" expand="lg">
-    <Navbar.Brand href="#home">Better Baskets</Navbar.Brand>
-    <Link to="/dashboard">Home</Link>
+    <div className="leftContainer">
+      <i className="fas fa-basketball-ball fa-2x leftItem"></i>
+      <Link to="/dashboard" className="nav_logo leftItem">Better Baskets</Link>
+    </div>
     <Link to="/new_shot">New Shot</Link>
     <Link to="/">Login</Link>
     <Link to="/" onClick = {onLogout}>Logout</Link>
