@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const {getSingleShotData} = require('../models/shots');
+const {getShotData} = require('../models/shots');
 
 router.get('/', (req, res) => {});
 router.get('/:id', (req, res) => {});
 
-router.get('/:shot_id/data', (req, res) => {
-  getSingleShotData(req.params.shot_id)
+router.get('/:user_id/data', (req, res) => {
+  getShotData(req.params.user_id)
   .then((ShotData) => {
     res.json(ShotData.rows);
   })

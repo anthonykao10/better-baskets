@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import uploadVideo from '../videoUpload'
+import uploadVideo from '../../services/videoUpload'
 // import './App.css';
 
 import 'video.js/dist/video-js.css';
@@ -81,26 +81,3 @@ class MediaRecorder extends Component {
 export default MediaRecorder
 
 
-// <header className="App-header">
- 
-// <div>
-//  <ReactMediaRecorder
-//    video
-//    blobPropertyBag={{type: "video/mp4"}}
-//    whenStopped={(video) => {
-//      uploadVideo(video) 
-//      // sendVideoToServer(video)
-//    }}
-
-//    render={({ status, startRecording, stopRecording, mediaBlob }) => (
-//      <div>
-//        <p>{status}</p>
-//        <button onClick={startRecording}>Start Recording</button>
-//       <button onClick={stopRecording}>Stop Recording</button>
-//        <video src={mediaBlob} controls />
-//      </div>
-//    )}
-//  />
-// </div>
-
-//    </header>
