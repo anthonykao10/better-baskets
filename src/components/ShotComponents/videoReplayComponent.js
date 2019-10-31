@@ -1,4 +1,6 @@
+
 import React from "react";
+
 
 
 export default function VideoReplay(props) {
@@ -11,3 +13,6 @@ export default function VideoReplay(props) {
     </div>
   );
 }
+
+
+

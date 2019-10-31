@@ -8,6 +8,9 @@ import ShotChart from "./ShotComponents/ShotChart";
 
 import VideoReplay from './ShotComponents/videoReplayComponent'
 
+import LoginForm from './LoginComponents/LoginForm'
+import VideoReplay from './ShotComponents/videoReplayComponent'
+ 
 export default function ShotScreen({shotData}) {
 
   let { id } = useParams();
