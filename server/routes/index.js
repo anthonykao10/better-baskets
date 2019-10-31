@@ -2,7 +2,6 @@
 const fileUpload = require('../util/fileUpload')
 const router = require('express').Router();
 const { spawn } = require('child_process');
-// const sadfad = require('../videos/newTestANTHONY.webm')
 
 router.get('/', (req, res) => {
   res.send('homepage');
