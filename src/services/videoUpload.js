@@ -15,7 +15,7 @@
 **/
 
 // Load the SDK and UUID
-var AWS = require('aws-sdk');
+const AWS = require('aws-sdk');
 // env["AWS_KEY"]
 // Create an S3 client
 
@@ -27,16 +27,14 @@ const awsConfig = new AWS.Config({
   region: 'us-west-1'
 })
 
-console.log(awsConfig)
 
-var s3 = new AWS.S3(awsConfig);
+const s3 = new AWS.S3(awsConfig);
 
-// Create a bucket and upload something into it
-var bucketName = 'betterbaskets'
+const bucketName = 'betterbaskets'
 
 const uploadVideo = function(video) {
 
-      var params = {Bucket: bucketName, Key: 'newTestANTHONY.webm', Body: video};
+      const params = {Bucket: bucketName, Key: 'newTestANTHONY.webm', Body: video};
 
       s3.putObject(params, function(err, data) {
         if (err) {

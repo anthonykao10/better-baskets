@@ -6,6 +6,9 @@ import {
 import ShotHeader from "./ShotHeader";
 import ShotChart from "./ShotChart";
 
+import LoginForm from './LoginComponents/LoginForm'
+import VideoReplay from './ShotComponents/videoReplayComponent'
+ 
 export default function ShotScreen({shotData}) {
 
   let { id } = useParams();
@@ -44,6 +47,7 @@ export default function ShotScreen({shotData}) {
       <p>Shot Screen: {id} </p>
       <ShotHeader {...singleShot} shotAngleAverage={shotAngleAverage}/>
       {shots}
+      <VideoReplay />
     </div> 
   );
 }
