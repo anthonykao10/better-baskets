@@ -13,8 +13,16 @@ def test_getArc():
   yVals = helpers.getYVals(testCoords, 720)
   assert helpers.getArc(xVals, yVals) == [330.2698234321775, 0.34583816370993475, -0.00024040241876043645]
 
+def test_getArcMax():
+  xVals = helpers.getXVals(testCoords)
+  yVals = helpers.getYVals(testCoords, 720)
+  arc = helpers.getArc(xVals, yVals)
+  assert helpers.getArcMax( arc[2], arc[1], arc[0] ) == 454.65
+
+
 if __name__ == "__main__":
     test_getXVals()
     test_getYVals()
     test_getArc()
+    test_getArcMax()
     print("all green")
