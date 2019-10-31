@@ -1,7 +1,7 @@
 import React from "react";
  
-import TestComponent from '../components/TestComponent';
-import Session from '../components/Session';
+import TestComponent from './DashboardComponents/TestComponent';
+import Session from '../components/SessionComponents/Session';
 
 export default function DashboardScreen({userData, sessionData, shotData}) {
 

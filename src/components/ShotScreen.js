@@ -3,8 +3,10 @@ import {
   useParams
 } from 'react-router-dom'
 
-import ShotHeader from "./ShotHeader";
-import ShotChart from "./ShotChart";
+import ShotHeader from "./ShotComponents/ShotHeader";
+import ShotChart from "./ShotComponents/ShotChart";
+
+import VideoReplay from './ShotComponents/videoReplayComponent'
 
 import LoginForm from './LoginComponents/LoginForm'
 import VideoReplay from './ShotComponents/videoReplayComponent'

@@ -1,11 +1,10 @@
 import React from "react";
 import {
-  Link,
   useParams
 } from 'react-router-dom'
 
-import Shot from '../components/Shot';
-import SessionHeader from './SessionHeader';
+import Shot from './ShotComponents/Shot';
+import SessionHeader from './SessionComponents/SessionHeader';
 
 export default function SessionScreen({shotData, sessionData}) {
   let { id } = useParams();
