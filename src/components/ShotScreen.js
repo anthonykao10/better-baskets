@@ -3,8 +3,10 @@ import {
   useParams
 } from 'react-router-dom'
 
-import ShotHeader from "./ShotHeader";
-import ShotChart from "./ShotChart";
+import ShotHeader from "./ShotComponents/ShotHeader";
+import ShotChart from "./ShotComponents/ShotChart";
+
+import VideoReplay from './ShotComponents/videoReplayComponent'
 
 export default function ShotScreen({shotData}) {
 
@@ -44,6 +46,7 @@ export default function ShotScreen({shotData}) {
       <p>Shot Screen: {id} </p>
       <ShotHeader {...singleShot} shotAngleAverage={shotAngleAverage}/>
       {shots}
+      <VideoReplay />
     </div> 
   );
 }
