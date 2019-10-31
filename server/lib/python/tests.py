@@ -5,6 +5,10 @@ testCoords = [ [79,381],[106,350],[141,326],[181,290],[236,316],[274,307],[321,3
 def test_getXVals():
   assert helpers.getXVals(testCoords) == [79, 106, 141, 181, 236, 274, 321, 367, 411, 465, 515, 570, 628, 682, 741, 794, 848, 895, 947, 1000, 1033, 1069]
 
+def test_getYVals():
+  assert helpers.getYVals(testCoords, 720) == [339, 370, 394, 430, 404, 413, 406, 402, 396, 402, 420, 435, 446, 470, 475, 487, 484, 469, 465, 468, 404, 359]
+
 if __name__ == "__main__":
     test_getXVals()
+    test_getYVals()
     print("all green")
