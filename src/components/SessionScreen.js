@@ -7,7 +7,6 @@ import {
 import useSessionData from '../hooks/useSessionData';
  
 export default function SessionScreen() {
-  console.log("HELLO ~~~~~")
   let { id } = useParams();
 
   useSessionData(id);

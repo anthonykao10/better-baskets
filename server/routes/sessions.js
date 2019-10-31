@@ -1,8 +1,15 @@
 const router = require('express').Router();
-const {getSingleSessionData} = require('../models/sessions');
+const {getSingleSessionData, createNewSession} = require('../models/sessions');
 
 router.get('/', (req, res) => {});
 router.get('/:id', (req, res) => {});
+
+router.post('/new', (req, res) => {
+  createNewSession(req.body.cookie)
+  .then((session) => {
+    res.json(session.rows[0])
+  })
+});
 
 router.post('/:session_id/shots/:id', (req, res) => {});
 router.put('/:session_id/shots/:id', (req, res) => {});

@@ -62,7 +62,7 @@ function AuthenticatedRouter(props) {
   return (
     <div>
       <Router>
-          <NavBar onLogout = {props.onLogout}/> 
+          <NavBar onLogout = {props.onLogout} /> 
         <Switch>
           <Route exact path="/">
             <DashboardScreen />

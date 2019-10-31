@@ -17,9 +17,9 @@ CREATE TABLE users (
 CREATE TABLE sessions (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  start_time TIME,
+  start_time TIME DEFAULT NOW(),
   end_time TIME,
-  date DATE, -- DATE: Stores date in the format YYYY-MM-DD
+  date DATE , -- DATE: Stores date in the format YYYY-MM-DD
   avg_angle FLOAT(2) DEFAULT NULL,
   avg_arc_max JSON DEFAULT NULL,
   avg_arc JSON DEFAULT NULL,

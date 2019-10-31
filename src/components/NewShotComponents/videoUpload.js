@@ -21,22 +21,22 @@ var AWS = require('aws-sdk');
 
 const awsConfig = new AWS.Config({
   credentials: {
-    accessKeyId:'AKIAJUQXCWRNBPLVQK5Q',
-    secretAccessKey:'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'
+    accessKeyId:'AKIAJNXDZCACIVYEEALQ',
+    secretAccessKey:'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'
   },
   region: 'us-west-1'
 })
-
-console.log(awsConfig)
 
 var s3 = new AWS.S3(awsConfig);
 
 // Create a bucket and upload something into it
 var bucketName = 'betterbaskets'
 
-const uploadVideo = function(video) {
+const uploadVideo = function(video, reference) {
 
-      var params = {Bucket: bucketName, Key: 'newTestANTHONY.webm', Body: video};
+
+      var params = {Bucket: bucketName, Key: `${reference}.webm`, Body: video, ACL: 'public-read'};
+      console.log(params)
 
       s3.putObject(params, function(err, data) {
         if (err) {

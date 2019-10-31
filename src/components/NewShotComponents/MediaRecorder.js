@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import uploadVideo from './videoUpload'
+import uploadVideo from './VideoUpload'
 // import './App.css';
 
 import 'video.js/dist/video-js.css';
@@ -11,6 +11,12 @@ import RecordRTC from 'recordrtc';
 // register videojs-record plugin with this import
 import 'videojs-record/dist/css/videojs.record.css';
 import Record from 'videojs-record/dist/videojs.record.js';
+
+import referenceGenerator from '../../services/referenceGenerator'
+
+import cookies from 'js-cookie'
+import axios from "axios";
+
 
 // Optional imports for videojs-record plugins
 /*
@@ -49,8 +55,12 @@ class MediaRecorder extends Component {
       this.player.on('finishRecord', () => {
           // recordedData is a blob object containing the recorded data that
           // can be downloaded by the user, stored on server etc.
-          uploadVideo(this.player.recordedData);
-        //   console.log('finished recording: ', this.player.recordedData);
+          const reference = referenceGenerator();
+
+          uploadVideo(this.player.recordedData, reference);
+          console.log(reference, "~~~~~~~~~");
+
+
       });
 
       // error handling
@@ -81,26 +91,3 @@ class MediaRecorder extends Component {
 export default MediaRecorder
 
 
-// <header className="App-header">
- 
-// <div>
-//  <ReactMediaRecorder
-//    video
-//    blobPropertyBag={{type: "video/mp4"}}
-//    whenStopped={(video) => {
-//      uploadVideo(video) 
-//      // sendVideoToServer(video)
-//    }}
-
-//    render={({ status, startRecording, stopRecording, mediaBlob }) => (
-//      <div>
-//        <p>{status}</p>
-//        <button onClick={startRecording}>Start Recording</button>
-//       <button onClick={stopRecording}>Stop Recording</button>
-//        <video src={mediaBlob} controls />
-//      </div>
-//    )}
-//  />
-// </div>
-
-//    </header>
