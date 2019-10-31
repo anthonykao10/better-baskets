@@ -30,7 +30,8 @@ vs = cv2.VideoCapture(args["video"])
 
 # initialize video out
 # fourcc = cv2.VideoWriter_fourcc(*'X264')
-writer = cv2.VideoWriter(os.path.realpath(__file__) + 'videoUploads/processedVideo.mp4', 0x00000021, int(vs.get(5)), (int(vs.get(3)), int(vs.get(4))))
+path = os.path.dirname(os.path.realpath(__file__)) + '/../videos/uploads/processedVideo.mp4'
+writer = cv2.VideoWriter(path, 0x00000021, int(vs.get(5)), (int(vs.get(3)), int(vs.get(4))))
 
 # allow the camera or video file to warm up
 time.sleep(2.0)

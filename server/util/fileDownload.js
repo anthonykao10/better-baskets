@@ -1,3 +1,4 @@
+const path = require('path');
 
 // Load the SDK and UUID
 const fs = require('fs');
@@ -43,7 +44,7 @@ const fileDownload = function() {
   })()
     .then((data) => {
       return new Promise((resolve, reject) => {
-        fs.writeFile(`videos/newTestANTHONY.webm`, data.Body, (err) => {
+        fs.writeFile(path.resolve(__dirname, '../videos/downloads/newTestANTHONY.webm'), data.Body, (err) => {
           if (err) {
             console.log(err, "readFile");
             reject(err);
@@ -58,6 +59,5 @@ const fileDownload = function() {
     .catch(err => console.log(err));
 
 }
-
 
 module.exports = fileDownload;
