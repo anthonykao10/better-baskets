@@ -10,7 +10,7 @@ router.get('/data', (req, res) => {
 
   require('../util/fileDownload')()
     .then((x) => {
-      const child = spawn('python', [path.resolve(__dirname, '../lib/track.py'), '-v', path.resolve(__dirname, '../videos/newTestANTHONY.webm')]);
+      const child = spawn('python', [path.resolve(__dirname, '../lib/track.py'), '-v', path.resolve(__dirname, '../videos/downloads/newTestANTHONY.webm')]);
 
       child.stdout.on('data', (data) => {
         console.log(`stdout: ${data}`);
