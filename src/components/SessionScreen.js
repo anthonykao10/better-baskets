@@ -9,7 +9,10 @@ import SessionHeader from './SessionComponents/SessionHeader';
 export default function SessionScreen({shotData, sessionData}) {
   let { id } = useParams();
 
-  const shots = shotData.map(
+  //find shots by the session and iterate
+  const shotsBySession = shotData.filter((item) => item.session_id === parseInt(id));
+
+  const shots = shotsBySession.map(
     shot => {
       return (
         <Shot
@@ -21,6 +24,7 @@ export default function SessionScreen({shotData, sessionData}) {
     }
   )
 
+  //find information for the single session
   const singleSession = sessionData.find((item) => item.id === parseInt(id));
 
   return (
