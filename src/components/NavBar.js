@@ -5,7 +5,7 @@ import {
   Link
 } from 'react-router-dom'
 
-export default function NavBar(props) {
+export default function NavBar({ onLogout, currentUser }) {
   
   return (
     <Navbar bg="light" expand="lg">
@@ -13,7 +13,8 @@ export default function NavBar(props) {
     <Link to="/dashboard">Home</Link>
     <Link to="/new_shot">New Shot</Link>
     <Link to="/">Login</Link>
-    <Link to="/" onClick = {props.onLogout}>Logout</Link>
+    <Link to="/" onClick = {onLogout}>Logout</Link>
+    <h5>{currentUser}</h5>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="mr-auto">

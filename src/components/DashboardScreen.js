@@ -1,22 +1,27 @@
 import React from "react";
-import cookies from 'js-cookie'
-import {
-  Link
-} from 'react-router-dom'
  
-// import useDashboardData from '../hooks/useDashboardData';
-import useApplicationData from '../hooks/useApplicationData';
+import TestComponent from '../components/TestComponent';
+import Session from '../components/Session';
 
-export default function DashboardScreen() {
+export default function DashboardScreen({userData, sessionData, shotData}) {
 
-// useDashboardData();
-
-  useApplicationData(cookies.get("userID"))
+  const sessions = sessionData.map(
+    session => {
+      return (
+        <Session
+        key={session.id}
+        sessionID={session.id} 
+        date={session.date}
+        />
+      );
+    }
+  )
   
   return (
     <div>
       <p>Dashboard Screen</p>
-      <Link to="/new_shot">New Shot</Link>
+      <TestComponent userData={userData} sessionData={sessionData} shotData={shotData}/>
+      {sessions}
     </div> 
   );
 }

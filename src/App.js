@@ -11,6 +11,7 @@ import DashboardScreen from './components/DashboardScreen';
 import ShotScreen from './components/ShotScreen';
 import SessionScreen from './components/SessionScreen';
 
+import useApplicationData from './hooks/useApplicationData';
 
 import {
   BrowserRouter as Router,
@@ -56,25 +57,32 @@ function App() {
 
 function AuthenticatedRouter(props) {
 
+  const {
+    currentUser,
+    userData,
+    sessionData,
+    shotData 
+  } = useApplicationData(cookies.get("userID"));
+
   return (
     <div>
       <Router>
-          <NavBar onLogout = {props.onLogout}/> 
+          <NavBar onLogout = {props.onLogout} currentUser={currentUser}/> 
         <Switch>
           <Route exact path="/">
-            <DashboardScreen />
+            <DashboardScreen userData={userData} sessionData={sessionData} shotData={shotData}/>
           </Route>
 
           <Route path="/new_shot">
             <NewShotScreen />
           </Route>
 
-          <Route path="/session/:id">
-            <SessionScreen />
+          <Route exact path="/session/:id">
+            <SessionScreen sessionData={sessionData} shotData={shotData}/>
           </Route>
 
-          <Route path="/shot/:id">
-            <ShotScreen />
+          <Route exact path="/shot/:id">
+            <ShotScreen shotData={shotData}/>
           </Route>
           <Route path="*">
             <Redirect to='/'/>
