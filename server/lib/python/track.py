@@ -1,7 +1,3 @@
-
-
-
-
 import sys
 sys.path.append('/usr/local/lib/python2.7/site-packages')
 import os
@@ -25,6 +21,7 @@ args = vars(ap.parse_args())
 # set lower and upper bounds for mask
 greenLower = (25, 93, 101)
 greenUpper = (55, 255, 255)
+success = False
 
 # initialize list of coordinates
 pts = deque(maxlen=args["buffer"])
@@ -56,6 +53,10 @@ while True:
 	frame = imutils.resize(frame, width=1200)
 	blurred = cv2.GaussianBlur(frame, (11, 11), 0)
 	hsv = cv2.cvtColor(blurred, cv2.COLOR_BGR2HSV)
+
+	# draw success box
+	cv2.rectangle(frame,(950,250),(1050,350),(0,255,0),3)
+	cv2.rectangle(frame,(980,280),(1020,320),(255,0,0),3)
 
 	# create mask
 	mask = cv2.inRange(hsv, greenLower, greenUpper)
@@ -91,7 +92,7 @@ while True:
 				(0, 255, 255), 2)
 			cv2.circle(frame, center, 5, (0, 0, 255), -1)
 
-	if center != None and center[1] < 400:
+	if center != None and center[1] < 500:
 	  pts.appendleft(center)
 
 	# loop over the set of tracked points
@@ -123,6 +124,8 @@ arc = helpers.getArc(x_vals, y_vals)
 if arc is not None:
 	arcMax = helpers.getArcMax( arc[2], arc[1], arc[0] )
 	angle = helpers.getArcAngle( arc[2], arc[1], arc[0] )
+	if helpers.checkSuccess(980, 1020, 280, 320, 720, arc):
+		success = True
 else: 
 	arcMax = None
 	angle = None
@@ -131,7 +134,8 @@ sys.stdout.write(json.dumps({
 	"coordinates": output,
 	"arc": arc,
 	"arcMax": arcMax,
-	"angle": angle
+	"angle": angle,
+	"success": success
 }))
 
 # release file and write stream
