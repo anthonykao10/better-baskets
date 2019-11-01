@@ -3,7 +3,7 @@ import sympy as sp
 import math
 
 def getXVals(coords):
-  return map(lambda coord: coord[0], coords)
+  return map( lambda coord: coord[0], coords )
 
 def getYVals(coords, res_height):
   return map( lambda coord: res_height - coord[1], coords )
@@ -58,3 +58,19 @@ def getArcAngle(c, b, a):
   fprime = sp.diff( f(x, c, b, a) )
   if fprime.diff(x) < 0:
     return round( math.degrees(math.atan(fprime.args[0])), 2 )
+
+def checkSuccess(x1, x2, y1, y2, y_res, arc):
+  """Returns true if arc passes through box.
+  Parameters:
+    x1, x2 (int) - x coordinate of box
+    y1, y2 (int) - y coordinate of box
+    y_res  (int) - frame height
+    arc    (arr) - 2nd order polynomial coefficients
+  """
+  # calibrate y values with frame resolution
+  y1 = y_res - y1
+  y2 = y_res - y2
+  for i in range(x1, x2 + 1):
+    arc_y = int(f(i, arc[2], arc[1], arc[0]))
+    if arc_y in range(y2, y1 + 1):
+      return True
