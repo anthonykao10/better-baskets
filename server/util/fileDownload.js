@@ -14,14 +14,17 @@ const awsConfig = new AWS.Config({
 
 var s3 = new AWS.S3(awsConfig);
 
+
 var bucketName = 'betterbaskets'
 
-const fileDownload = function() {
+const fileDownload = function(referenceID) {
 
   var params = {
     Bucket: bucketName, 
-    Key: 'newTestANTHONY.webm'
+    Key: `${referenceID}.webm`
   };
+
+  console.log(params)
 
   return (() => {
     return new Promise((resolve, reject) => {
@@ -39,7 +42,7 @@ const fileDownload = function() {
   })()
     .then((data) => {
       return new Promise((resolve, reject) => {
-        fs.writeFile(path.resolve(__dirname, '../videos/downloads/monetizetunisiandinar.webm'), data.Body, (err) => {
+        fs.writeFile(path.resolve(__dirname, '../videos/downloads/unprocessedVideo.webm'), data.Body, (err) => {
           if (err) {
             console.log(err, "readFile");
             reject(err);

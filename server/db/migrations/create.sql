@@ -17,9 +17,9 @@ CREATE TABLE users (
 CREATE TABLE sessions (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  start_time TIME,
+  start_time TIME DEFAULT NOW(),
   end_time TIME,
-  date DATE, -- DATE: Stores date in the format YYYY-MM-DD
+  date DATE , -- DATE: Stores date in the format YYYY-MM-DD
   avg_angle FLOAT(2) DEFAULT NULL,
   avg_arc_max JSON DEFAULT NULL,
   avg_arc JSON DEFAULT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE shots (
   id SERIAL PRIMARY KEY NOT NULL,
   session_id INTEGER REFERENCES sessions(id) ON DELETE CASCADE,
   angle FLOAT(2),
-  arc_max JSON,
+  arc_max FLOAT(2),
   coordinates JSON,
   video_reference VARCHAR(255) NOT NULL,
   distance FLOAT(2),

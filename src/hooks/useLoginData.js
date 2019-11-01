@@ -12,7 +12,3 @@ export default function useLoginData(username) {
   })
 
 }
-
-
-// TWO ISSUES 1) Cant pull username and password from react component
-// 2) Can't send the data from back end to front end

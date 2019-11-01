@@ -3,8 +3,6 @@ import cookies from 'js-cookie'
 import './App.css';
 import NavBar from './components/NavBar';
 
-// import axios from 'axios'
-// all "route" imports
 import NewShotScreen from './components/NewShotScreen';
 import LoginScreen from './components/LoginScreen';
 import DashboardScreen from './components/DashboardScreen';
@@ -22,17 +20,6 @@ import {
 
 function App() {
   const [cookieValue, setCookieValue] = useState(cookies.get("userID"));
-
-  // useEffect(() => {
-    // const fetchData = async () => {
-    //   const res = await getClient().get('/');
-    //   console.log(res.data)
-    // }
-    // fetchData()
-
-    // isLoggedIn()
-    // 
-  // }, [])
   
   const isLoggedIn = function() {
     let cookie = cookies.get("userID")
