@@ -17,7 +17,25 @@ const insertShot = (input) => {
   `, [Number(input.session_id), input.angle, input.arc_max, input.coordinates, input.reference])
 };
 
-module.exports = {getShotData, insertShot}
+const updateShot = (success, shotId) => {
+  return pool.query(`
+    UPDATE shots
+    SET success = $1
+    WHERE id = $2
+    RETURNING *;
+  `, [success, shotId])
+    .then(res => {
+      if (!res.rows.length) return undefined;
+      return res.rows[0];
+    })
+    .catch(err => console.log('ERR updateShot:', err));
+};
+
+module.exports = {
+  getShotData, 
+  insertShot,
+  updateShot
+}
 
 
 // id SERIAL PRIMARY KEY NOT NULL,
