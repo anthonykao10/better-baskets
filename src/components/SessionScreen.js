@@ -1,21 +1,36 @@
 import React from "react";
 import {
-  Link,
   useParams
 } from 'react-router-dom'
+import Shot from './ShotComponents/Shot';
+import SessionHeader from './SessionComponents/SessionHeader';
 
-import useSessionData from '../hooks/useSessionData';
- 
-export default function SessionScreen() {
+export default function SessionScreen({shotData, sessionData}) {
   let { id } = useParams();
 
-  useSessionData(id);
+  //find shots by the session and iterate
+  const shotsBySession = shotData.filter((item) => item.session_id === parseInt(id));
+
+  const shots = shotsBySession.map(
+    shot => {
+      return (
+        <Shot
+        key={shot.id}
+        shotID={shot.id} 
+        shotAngle={shot.angle}
+        />
+      );
+    }
+  )
+
+  //find information for the single session
+  const singleSession = sessionData.find((item) => item.id === parseInt(id));
 
   return (
     <div>
       <p>Session Screen: { id }</p>
-      <Link to="/dashboard">Dashboard</Link><br></br>
-      <Link to="/new_shot">New Shot</Link>
+      <SessionHeader {...singleSession}/>
+      {shots}
     </div> 
   );
 }

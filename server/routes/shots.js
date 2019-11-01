@@ -1,24 +1,42 @@
+
+const path = require('path')
 const router = require('express').Router();
-const {getSingleShotData} = require('../models/shots');
 const fileUpload = require('../util/fileUpload')
 const { spawn } = require('child_process');
+const {getShotData, insertShot} = require('../models/shots');
 
 
 router.post('/new', (req, res) => {
-
-  require('../util/fileDownload')()
+  require('../util/fileDownload')(req.body.reference)
     .then((x) => {
-      const child = spawn('python', ['lib/track.py', '-v', 'videos/newTestANTHONY.webm']);
+      const child = spawn('python', [path.resolve(__dirname, '../lib/python/track.py'), '-v', path.resolve(__dirname, '../videos/downloads/unprocessedVideo.webm')]);
+
 
       child.stdout.on('data', (data) => {
-        // console.log(`stdout: ${data}`, req.body);
-        // res.send(JSON.parse(data));
-        console.log(JSON.parse(data))
+        let pythonData = JSON.parse(data)
+
+ 
+        const insertShotData = {
+          session_id: req.body.session_id,
+          angle: pythonData.angle,
+          arc_max: pythonData.arcMax,
+          coordinates: JSON.stringify(pythonData.coordinates),
+          reference: req.body.reference
+        }
+        console.log(insertShotData, "DFASFDASFAD")
+        insertShot(insertShotData)
+        .then((response) => {
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+
       });
     
       child.on('close', (code) => {
         console.log(`child process exited with code ${code}`);
-        fileUpload();
+        fileUpload(req.body.reference);
+        res.status(204).send()
       });
 
     })
@@ -27,9 +45,8 @@ router.post('/new', (req, res) => {
 });
 router.get('/:id', (req, res) => {});
 
-
-router.get('/:shot_id/data', (req, res) => {
-  getSingleShotData(req.params.shot_id)
+router.get('/:user_id/data', (req, res) => {
+  getShotData(req.params.user_id)
   .then((ShotData) => {
     res.json(ShotData.rows);
   })

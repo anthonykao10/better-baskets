@@ -30,7 +30,7 @@ CREATE TABLE shots (
   id SERIAL PRIMARY KEY NOT NULL,
   session_id INTEGER REFERENCES sessions(id) ON DELETE CASCADE,
   angle FLOAT(2),
-  arc_max JSON,
+  arc_max FLOAT(2),
   coordinates JSON,
   video_reference VARCHAR(255) NOT NULL,
   distance FLOAT(2),

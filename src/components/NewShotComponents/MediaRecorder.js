@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import uploadVideo from './VideoUpload'
+ 
+import uploadVideo from '../../services/videoUpload'
 // import './App.css';
 
 import 'video.js/dist/video-js.css';
@@ -13,11 +14,7 @@ import 'videojs-record/dist/css/videojs.record.css';
 import Record from 'videojs-record/dist/videojs.record.js';
 
 import referenceGenerator from '../../services/referenceGenerator'
-import insertShotData from '../../services/insertShotData'
-
-
-
-
+    
 // Optional imports for videojs-record plugins
 /*
 // webm-wasm plugin (npm install webm-wasm @mattiasbuelens/web-streams-polyfill)
@@ -56,11 +53,9 @@ class MediaRecorder extends Component {
           // recordedData is a blob object containing the recorded data that
           // can be downloaded by the user, stored on server etc.
           const reference = referenceGenerator();
-          insertShotData(reference);
-        //   uploadVideo(this.player.recordedData, reference);
-          console.log(reference, "~~~~~~~~~");
+          uploadVideo(this.player.recordedData, reference);
       });
-
+ 
       // error handling
       this.player.on('error', (element, error) => {
           console.warn(error);

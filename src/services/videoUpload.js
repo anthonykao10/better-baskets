@@ -13,28 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 **/
+import insertShotData from './insertShotData'
 
 // Load the SDK and UUID
-var AWS = require('aws-sdk');
+const AWS = require('aws-sdk');
 // env["AWS_KEY"]
 // Create an S3 client
 
 const awsConfig = new AWS.Config({
   credentials: {
+    accessKeyId:'',
+    secretAccessKey:''
   },
   region: 'us-west-1'
 })
 
-var s3 = new AWS.S3(awsConfig);
 
-// Create a bucket and upload something into it
-var bucketName = 'betterbaskets'
+const s3 = new AWS.S3(awsConfig);
+
+const bucketName = 'betterbaskets'
 
 const uploadVideo = function(video, reference) {
 
 
       var params = {Bucket: bucketName, Key: `${reference}.webm`, Body: video, ACL: 'public-read'};
-      console.log(params)
 
       s3.putObject(params, function(err, data) {
         if (err) {
@@ -42,6 +44,9 @@ const uploadVideo = function(video, reference) {
         } else {
     
           console.log("Successfully uploaded data to " + bucketName + "/" + params.Key);
+
+          insertShotData(reference);
+
         }
       });
 

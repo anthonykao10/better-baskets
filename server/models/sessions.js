@@ -1,13 +1,11 @@
 const pool = require('../db/connection');
 
-const getSingleSessionData = (sessionID) => {
+const getSessionData = (userID) => {
   return pool.query(`
   SELECT * 
-  FROM shots
-  JOIN sessions 
-  ON sessions.id = shots.session_id
-  WHERE sessions.id = $1 
-  `, [sessionID])
+  FROM sessions
+  WHERE sessions.user_id = $1 
+  `, [userID])
 };
 
 const createNewSession = (id) => {
@@ -19,4 +17,4 @@ const createNewSession = (id) => {
   `, [id])
 }
 
-module.exports = {getSingleSessionData, createNewSession}
+module.exports = {getSessionData, createNewSession}

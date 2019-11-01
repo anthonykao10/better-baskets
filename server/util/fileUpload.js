@@ -17,13 +17,13 @@ var bucketName = 'betterbaskets'
 
 const fileUpload = function(video) {
   
-  fs.readFile(__dirname + '/../videoUploads/processedVideo.mp4', (err, data) => {
+  fs.readFile(__dirname + '/../videos/uploads/processedVideo.mp4', (err, data) => {
     if (err) {
       throw err;
     }
     else {
 
-      const params = {Bucket: bucketName, Key: 'processedVideo123.mp4', Body: data, ACL: 'public-read'};
+      const params = {Bucket: bucketName, Key: `post-${video}.mp4`, Body: data, ACL: 'public-read'};
 
       s3.putObject(params, function(err, data) {
         if (err) {

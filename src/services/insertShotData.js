@@ -3,18 +3,17 @@ import axios from "axios";
 
 const insertShotData = function(referenceString) {
   axios.post(`shots/new`, {
-    session_id: 1,
+    session_id: cookies.get("sessionID"),
     reference: referenceString
   })
   .then((response) => {
-    console.log(response)
-
+    return response
   })
   .catch((err) => {
     throw err
   })
 }
-
+ 
 
 export default insertShotData
 

@@ -1,10 +1,8 @@
+const path = require('path');
+
 // Load the SDK and UUID
 const fs = require('fs');
 const AWS = require('aws-sdk');
-// env["AWS_KEY"]
-// Create an S3 client
-
-// console.log('\nprocess.env:', process.env);
 
 const awsConfig = new AWS.Config({
   credentials: {
@@ -16,15 +14,17 @@ const awsConfig = new AWS.Config({
 
 var s3 = new AWS.S3(awsConfig);
 
+
 var bucketName = 'betterbaskets'
 
-const fileDownload = function() {
+const fileDownload = function(referenceID) {
 
   var params = {
     Bucket: bucketName, 
-    Key: 'newTestANTHONY.webm'
+    Key: `${referenceID}.webm`
   };
 
+  console.log(params)
 
   return (() => {
     return new Promise((resolve, reject) => {
@@ -42,7 +42,7 @@ const fileDownload = function() {
   })()
     .then((data) => {
       return new Promise((resolve, reject) => {
-        fs.writeFile(`videos/newTestANTHONY.webm`, data.Body, (err) => {
+        fs.writeFile(path.resolve(__dirname, '../videos/downloads/unprocessedVideo.webm'), data.Body, (err) => {
           if (err) {
             console.log(err, "readFile");
             reject(err);
@@ -55,8 +55,6 @@ const fileDownload = function() {
       });
     })
     .catch(err => console.log(err));
-
 }
-
 
 module.exports = fileDownload;
