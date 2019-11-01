@@ -17,7 +17,7 @@ const insertShot = (input) => {
   `, [Number(input.session_id), input.angle, input.arc_max, input.coordinates, input.reference])
 };
 
-const updateShot = (success, shotId) => {
+const updateShotSuccess = (success, shotId) => {
   return pool.query(`
     UPDATE shots
     SET success = $1
@@ -34,15 +34,5 @@ const updateShot = (success, shotId) => {
 module.exports = {
   getShotData, 
   insertShot,
-  updateShot
+  updateShotSuccess
 }
-
-
-// id SERIAL PRIMARY KEY NOT NULL,
-// session_id INTEGER REFERENCES sessions(id) ON DELETE CASCADE,
-// angle FLOAT(2),
-// arc_max JSON,
-// coordinates JSON,
-// video_reference VARCHAR(255) NOT NULL,
-// distance FLOAT(2),
-// success BOOLEAN DEFAULT TRUE
