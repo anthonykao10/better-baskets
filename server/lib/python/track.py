@@ -1,3 +1,7 @@
+
+
+
+
 import sys
 sys.path.append('/usr/local/lib/python2.7/site-packages')
 import os
@@ -10,6 +14,7 @@ import imutils
 import time
 import json
 import helpers
+
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
@@ -28,9 +33,9 @@ pts = deque(maxlen=args["buffer"])
 vs = cv2.VideoCapture(args["video"])
 
 # initialize video out
-# fourcc = cv2.VideoWriter_fourcc(*'X264')
+fourcc = cv2.VideoWriter_fourcc(*'mp4v')
 path = os.path.dirname(os.path.realpath(__file__)) + '/../../videos/uploads/processedVideo.mp4'
-writer = cv2.VideoWriter(path, 0x00000021, int(vs.get(5)), (int(vs.get(3)), int(vs.get(4))))
+writer = cv2.VideoWriter(path, fourcc, int(vs.get(5)), (int(vs.get(3)), int(vs.get(4))))
 
 # allow the camera or video file to warm up
 time.sleep(2.0)

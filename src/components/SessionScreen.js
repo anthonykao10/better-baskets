@@ -2,7 +2,6 @@ import React from "react";
 import {
   useParams
 } from 'react-router-dom'
-
 import Shot from './ShotComponents/Shot';
 import SessionHeader from './SessionComponents/SessionHeader';
 

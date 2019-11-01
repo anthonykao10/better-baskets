@@ -8,4 +8,13 @@ const getSessionData = (userID) => {
   `, [userID])
 };
 
-module.exports = {getSessionData}
+const createNewSession = (id) => {
+  newID = Number(id)
+  return pool.query(`
+  INSERT INTO sessions (user_id)
+  VALUES ($1)
+  RETURNING *
+  `, [id])
+}
+
+module.exports = {getSessionData, createNewSession}
