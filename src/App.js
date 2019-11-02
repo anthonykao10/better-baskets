@@ -74,11 +74,11 @@ function AuthenticatedRouter(props) {
           <NavBar onLogout = {props.onLogout} currentUser={currentUser}/> 
         <Switch>
           <Route exact path="/">
-            <DashboardScreen userData={userData} sessionData={sessionData} shotData={shotData} addSession={addSession}/>
+            <DashboardScreen userData={userData} sessionData={sessionData} shotData={shotData} addSession={addSession} setShotUploadComplete={setShotUploadComplete}/>
           </Route>
 
           <Route path="/new_shot">
-            <NewShotScreen addShot={addShot} refreshShotData={refreshShotData} shotUploadComplete={shotUploadComplete} setShotUploadComplete={setShotUploadComplete}/>
+            <NewShotScreen addShot={addShot} refreshShotData={refreshShotData} shotUploadComplete={shotUploadComplete} />
           </Route>
 
           <Route exact path="/session/:id">

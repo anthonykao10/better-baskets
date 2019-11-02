@@ -1,17 +1,28 @@
 
 import React, {useState} from "react";
-import {Redirect} from "react-router-dom";
 
+import {
+  Redirect
+} from 'react-router-dom'
 
-// console.log('setState:', useState);
 let sessionID;
-export default function DashboardPageButton() {
+export default function DashboardPageButton({finishShot}) {
+  const [redirect, setRedirect] = useState(false);
+
+
+  const submit = function() {
+    setRedirect("/dashboard")
+  }
 
   return (
+    !redirect ?
     <div className="endSessionButton">
-      <button onSubmit={<Redirect to={{pathname: `/dashboard`}}/>}>
+      <button onClick = {()=> submit()}>
         Back to Dashboard
       </button>
     </div>
+    : 
+    <Redirect to={redirect}/>
+    
   );
 }

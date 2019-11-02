@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   Link
 } from 'react-router-dom'
@@ -24,15 +24,17 @@ const videoJsOptions = {
 };
  
 export default function NewShotScreen({addShot, refreshShotData, shotUploadComplete}) {
+  const [finishShot, setFinishShot] = useState(false);
+
   
   return (
     <div>
       <p>New Shot Screen</p>
       <Link to="/dashboard">Dashboard</Link><br></br>
       <MediaRecorder { ...videoJsOptions } refreshShotData={refreshShotData}/>
-      {shotUploadComplete ? <EndSessionButton addShot={addShot}></EndSessionButton> : <p>Please take a shot!</p>}
-      <DashboardPageButton></DashboardPageButton>
-      // TODO: Have button to goes to previous screen without changing the session
+      {shotUploadComplete ? 
+      <EndSessionButton addShot={addShot} finishShot ={finishShot} setFinishShot = {setFinishShot}></EndSessionButton> 
+      : <DashboardPageButton finishShot ={finishShot} setFinishShot = {setFinishShot}></DashboardPageButton>}
     </div> 
   );
 }

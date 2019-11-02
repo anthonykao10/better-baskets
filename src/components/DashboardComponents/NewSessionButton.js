@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, {useState} from "react";
 import cookies from 'js-cookie'
 import axios from "axios";
 import {
@@ -9,9 +9,11 @@ import {
 
 
 
-export default function NewSessionButton({addSession}) {
+export default function NewSessionButton({addSession, setShotUploadComplete}) {
+  const [redirect, setRedirect] = useState(false);
 
   const submit = function() {
+
     axios.post('sessions/new', {
       cookie: cookies.get('userID')
     })
@@ -19,21 +21,23 @@ export default function NewSessionButton({addSession}) {
       console.log(response.data)
       cookies.set('sessionID', response.data.id)
       addSession(response.data);
-      // window.location.href="new_shot"  // HARD REFRESH
+      setRedirect("/new_shot")  
+      setShotUploadComplete(false)    
+
     })
     .catch((err) => {
       console.log(err)
     })
   }
-  
 
   return (
+    !redirect ?
     <div className="newSessionButton">
-      <Link to="new_shot" onClick = {submit}>
+      <button to="/dashboard" onClick = {submit} >
         Create new session
-      </Link>
-      
+      </button>
     </div>
+    : <Redirect to ={redirect} />
     
   );
 }

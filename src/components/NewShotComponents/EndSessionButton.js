@@ -6,10 +6,9 @@ import {Redirect} from "react-router-dom";
 
 // console.log('setState:', useState);
 let sessionID;
-export default function EndSessionButton({addShot}) {
+export default function EndSessionButton({addShot, finishShot, setFinishShot}) {
 
   sessionID = sessionID || cookies.get('sessionID');
-  const [finishShot, setFinishShot] = useState(false);
 
   const submit = function(e) {
     e.preventDefault()

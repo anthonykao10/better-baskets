@@ -38,17 +38,7 @@ const uploadVideo = function(video, reference) {
       return s3.putObject(params).promise().then((data) => {
         return insertShotData(reference);
       });
-      // }), function(err, data) {
-      //   if (err) {
-      //     console.log(err)
-      //   } else {
-    
-      //     console.log("Successfully uploaded data to " + bucketName + "/" + params.Key);
 
-      //     insertShotData(reference);
-
-      //   }
-      // });
 
     }
 
