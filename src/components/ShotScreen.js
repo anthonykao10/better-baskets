@@ -44,7 +44,7 @@ export default function ShotScreen({shotData}) {
   return (
     <div>
       <p>Shot Screen: {id} </p>
-      <VideoReplay />
+      <VideoReplay {...singleShot}/>
       <ShotHeader {...singleShot} shotAngleAverage={shotAngleAverage}/>
       {shots}
       

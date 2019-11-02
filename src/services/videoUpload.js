@@ -39,7 +39,6 @@ const uploadVideo = async function (video, reference) {
     return insertShotData(reference);
   });
 
-
 }
 
 export default uploadVideo
