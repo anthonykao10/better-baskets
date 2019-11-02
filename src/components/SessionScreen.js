@@ -4,11 +4,10 @@ import {
 } from 'react-router-dom'
 import Shot from './ShotComponents/Shot';
 import SessionHeader from './SessionComponents/SessionHeader';
+import SessionDeleteButton from './SessionComponents/sessionDeleteButton'
 
-export default function SessionScreen({shotData, sessionData}) {
+export default function SessionScreen({shotData, sessionData, refreshShotData, refreshSessionData}) {
   let { id } = useParams();
-
-  console.log("FROM INSIDE SESSION SCREEN", shotData)
 
   //find shots by the session and iterate
   const shotsBySession = shotData.filter((item) => item.session_id === parseInt(id));
@@ -32,6 +31,7 @@ export default function SessionScreen({shotData, sessionData}) {
     <div>
       <p>Session Screen: { id }</p>
       <SessionHeader {...singleSession}/>
+      <SessionDeleteButton sessionId={id} refreshShotData={refreshShotData} refreshSessionData={refreshSessionData}></SessionDeleteButton>
       {shots}
     </div> 
   );

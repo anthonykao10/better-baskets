@@ -31,8 +31,14 @@ const updateShotSuccess = (success, shotId) => {
     .catch(err => console.log('ERR updateShot:', err));
 };
 
+const deleteShot = (shotId) => {
+  return pool.query(`DELETE FROM shots
+  WHERE id = $1`, [shotId])
+}
+
 module.exports = {
   getShotData, 
   insertShot,
-  updateShotSuccess
+  updateShotSuccess,
+  deleteShot
 }

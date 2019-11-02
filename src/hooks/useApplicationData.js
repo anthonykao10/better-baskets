@@ -14,8 +14,8 @@ export default function useDashboardData(id) {
     setShot(newShots);
   };
  
-  const addSession = (newSession) => {
-    setSession([...sessionData, newSession]);
+  const addSession = (newSessions) => {
+    setSession(newSessions);
   };
 
   const addShot = (newShots) => {

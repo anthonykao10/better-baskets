@@ -6,6 +6,8 @@ import {
 import ShotHeader from "./ShotComponents/ShotHeader";
 import ShotChart from "./ShotComponents/ShotChart";
 import ShotSuccessButton from "./ShotComponents/ShotSuccessButton";
+import ShotDeleteButton from "./ShotComponents/shotDeleteButton";
+
 
 import VideoReplay from './ShotComponents/videoReplayComponent'
  
@@ -66,6 +68,7 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
       <p>Shot Screen: {id} </p>
       <VideoReplay />
       <ShotHeader {...singleShot} shotAngleAverage={shotAngleAverage}/>
+      <ShotDeleteButton shotId={id} refreshShotData={refreshShotData}></ShotDeleteButton>
       <h3>success:</h3>
       <ShotSuccessButton shotId={id} updateSuccess={updateSuccess} successValue = {successValue} setSuccessValue={setSuccessValue} refreshShotData={refreshShotData}/>
     </div> 
