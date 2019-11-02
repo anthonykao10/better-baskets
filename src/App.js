@@ -50,7 +50,8 @@ function AuthenticatedRouter(props) {
     userData,
     sessionData,
     shotData,
-    addShot, 
+    updateSuccess,
+    addShot,
     addSession,
     shotUploadComplete,
     setShotUploadComplete
@@ -86,7 +87,7 @@ function AuthenticatedRouter(props) {
           </Route>
 
           <Route exact path="/shot/:id">
-            <ShotScreen shotData={shotData}/>
+            <ShotScreen shotData={shotData} updateSuccess={updateSuccess}/>
           </Route>
           <Route path="*">
             <Redirect to='/'/>

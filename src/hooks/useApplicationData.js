@@ -10,13 +10,17 @@ export default function useDashboardData(id) {
 
   const currentUser = userData.username;
 
+  const updateSuccess = (newShots) => {
+    setShot(newShots);
+  };
+
   const addSession = (newSession) => {
     setSession([...sessionData, newSession]);
-  }
+  };
 
   const addShot = (newShots) => {
     setShot(newShots);
-  }
+  };
   
   useEffect(() => {
     Promise.all([
@@ -34,5 +38,5 @@ export default function useDashboardData(id) {
     });   
   }, [id])
 
-  return({currentUser, userData, sessionData, shotData, addShot, addSession, shotUploadComplete, setShotUploadComplete})
+  return({currentUser, userData, sessionData, shotData, addShot, addSession, shotUploadComplete, setShotUploadComplete, updateSuccess})
 }
