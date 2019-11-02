@@ -45,6 +45,7 @@ router.post('/new', (req, res) => {
 });
 
 router.put('/:id/success', (req, res) => {
+  console.log('shots route req.body:', req.body)
   shotData = req.body.success;
   shotID = req.params.id;
 
