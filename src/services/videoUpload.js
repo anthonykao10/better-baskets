@@ -20,26 +20,26 @@ const AWS = require('aws-sdk');
 // env["AWS_KEY"]
 // Create an S3 client
 
-const awsConfig = new AWS.Config({
+const uploadVideo = async function (video, reference) {
+  const credentials = await fetch('/S3creds')
+    .then((res) => res.json());
 
-  region: 'us-west-1'
-})
+  const awsConfig = new AWS.Config({
+    credentials,
+    region: 'us-west-1'
+  })
+  
+  const s3 = new AWS.S3(awsConfig);
+
+  const bucketName = 'betterbaskets'
+
+  var params = { Bucket: bucketName, Key: `${reference}.webm`, Body: video, ACL: 'public-read' };
+
+  return s3.putObject(params).promise().then((data) => {
+    return insertShotData(reference);
+  });
 
 
-const s3 = new AWS.S3(awsConfig);
-
-const bucketName = 'betterbaskets'
-
-const uploadVideo = function(video, reference) {
-
-
-      var params = {Bucket: bucketName, Key: `${reference}.webm`, Body: video, ACL: 'public-read'};
-
-      return s3.putObject(params).promise().then((data) => {
-        return insertShotData(reference);
-      });
-
-
-    }
+}
 
 export default uploadVideo
