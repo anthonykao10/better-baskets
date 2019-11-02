@@ -3,7 +3,6 @@ import {
   Link
 } from 'react-router-dom'
  
-import useDashboardData from '../hooks/useDashboardData';
 import NewSessionButton from './DashboardComponents/NewSessionButton'
 import TestComponent from './DashboardComponents/TestComponent';
 import Session from '../components/SessionComponents/Session';

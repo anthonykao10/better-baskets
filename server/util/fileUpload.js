@@ -22,7 +22,7 @@ const fileUpload = function(video) {
   const videoConversion = spawn('python',[path.resolve(__dirname, '../lib/python/ffmpeg.py')]);
 
   videoConversion.on('close', () => {
-    
+    console.log("it worked?")
     fs.readFile(__dirname + '/../videos/uploads/processedVideo.webm', (err, data) => {
       if (err) {
         throw err;
@@ -38,8 +38,6 @@ const fileUpload = function(video) {
             console.log("Successfully uploaded data to " + bucketName + "/" + params.Key)
           }
         })
-  
-  
       }
     })
 });
