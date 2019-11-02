@@ -16,17 +16,17 @@ export default function ShotScreen({shotData, updateSuccess}) {
   console.log('shotData:', shotData);
   console.log('useParams id:', id);
   
-  const shots = shotData.map(
-    shot => {
-      return (
-        <ShotChart
-        key={shot.id}
-        shotID={shot.id} 
-        shotAngle={shot.angle}
-        />
-      );
-    }
-  )
+  // const shots = shotData.map(
+  //   shot => {
+  //     return (
+  //       <ShotChart
+  //       key={shot.id}
+  //       shotID={shot.id} 
+  //       shotAngle={shot.angle}
+  //       />
+  //     );
+  //   }
+  // )
 
   const singleShot = shotData.find((item) => item.id === parseInt(id));
 
@@ -50,11 +50,12 @@ export default function ShotScreen({shotData, updateSuccess}) {
   console.log('shotIdx:', shotIdx);
   let updatedShots = shotData;
   let successVal = null;
-  if (!shotIdx) {
-    successVal = shotData[shotIdx].success;  
-    let updatedSuccess = !shotData[shotIdx].success;
-    updatedShots[shotIdx] = {...shotData[shotIdx], success: updatedSuccess};
-    console.log(updatedShots, successVal)
+  if (shotIdx !== -1) {
+    successVal = shotData[shotIdx].success;
+    console.log('successVal:', successVal);
+    // let updatedSuccess = !shotData[shotIdx].success;
+    // updatedShots[shotIdx] = {...shotData[shotIdx], success: updatedSuccess};
+    // console.log(updatedShots, successVal)
   }
   console.log('my shot!!!:', shotData[shotIdx]);
 
@@ -64,8 +65,7 @@ export default function ShotScreen({shotData, updateSuccess}) {
       <VideoReplay />
       <ShotHeader {...singleShot} shotAngleAverage={shotAngleAverage}/>
       <h3>success:</h3>
-      <ShotSuccessButton shotId={id} successVal={successVal} updatedShots={updatedShots} updateSuccess={updateSuccess}/>
-      {shots}
+      <ShotSuccessButton shotId={id} successVal={successVal} updateSuccess={updateSuccess}/>
       
     </div> 
   );

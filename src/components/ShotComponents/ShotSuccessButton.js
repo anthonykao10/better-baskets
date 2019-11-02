@@ -1,16 +1,16 @@
 import React from 'react';
 import axios from "axios";
 
-export default function EditButton({shotId, successVal, updatedShots, updateSuccess}) {
+export default function ShotSuccessButton({shotId, successVal, updateSuccess}) {
 
   const submit = function() {
     console.log('button')
     axios.put(`http://localhost:8002/shots/${shotId}/success`, {
-      success: successVal
+      success: !successVal
     })
-    .then((response) => {
-      console.log(response.data);
-      updateSuccess(updatedShots);
+    .then((updatedShots) => {
+      console.log('!!!updatedShots:', updatedShots);
+      updateSuccess(updatedShots.data);
     })
     .catch((err) => console.log(err));
   }
@@ -18,7 +18,7 @@ export default function EditButton({shotId, successVal, updatedShots, updateSucc
   return (
     <div className="">
       <button onClick = {submit}>
-        +
+        {!successVal ? '+' : '-'}
       </button>
     </div>
   );

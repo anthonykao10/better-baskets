@@ -22,7 +22,7 @@ const videoJsOptions = {
       }
   }
 };
- 
+
 export default function NewShotScreen({addShot, refreshShotData, shotUploadComplete}) {
   
   return (
