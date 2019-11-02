@@ -10,6 +10,7 @@ import ShotScreen from './components/ShotScreen';
 import SessionScreen from './components/SessionScreen';
 
 import useApplicationData from './hooks/useApplicationData';
+import axios from "axios";
 
 import {
   BrowserRouter as Router,
@@ -49,8 +50,24 @@ function AuthenticatedRouter(props) {
     userData,
     sessionData,
     shotData,
-    updateSuccess
+    updateSuccess,
+    addShot,
+    addSession,
+    shotUploadComplete,
+    setShotUploadComplete
   } = useApplicationData(cookies.get("userID"));
+
+  function refreshShotData() {
+    console.log('refreshShotData called');
+    axios.get(`/shots/${cookies.get("userID")}/data`)
+    .then((updatedShots) => {
+      console.log('calling addShot with:', updatedShots.data);
+      addShot(updatedShots.data)
+      setShotUploadComplete(true);
+    })
+  }
+
+  console.log('shotData:', shotData);
 
   return (
     <div>
@@ -58,11 +75,11 @@ function AuthenticatedRouter(props) {
           <NavBar onLogout = {props.onLogout} currentUser={currentUser}/> 
         <Switch>
           <Route exact path="/">
-            <DashboardScreen userData={userData} sessionData={sessionData} shotData={shotData}/>
+            <DashboardScreen userData={userData} sessionData={sessionData} shotData={shotData} addSession={addSession}/>
           </Route>
 
           <Route path="/new_shot">
-            <NewShotScreen />
+            <NewShotScreen addShot={addShot} refreshShotData={refreshShotData} shotUploadComplete={shotUploadComplete} setShotUploadComplete={setShotUploadComplete}/>
           </Route>
 
           <Route exact path="/session/:id">
