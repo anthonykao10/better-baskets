@@ -21,10 +21,7 @@ const AWS = require('aws-sdk');
 // Create an S3 client
 
 const awsConfig = new AWS.Config({
-  credentials: {
-    accessKeyId:'',
-    secretAccessKey:''
-  },
+
   region: 'us-west-1'
 })
 
@@ -38,17 +35,10 @@ const uploadVideo = function(video, reference) {
 
       var params = {Bucket: bucketName, Key: `${reference}.webm`, Body: video, ACL: 'public-read'};
 
-      s3.putObject(params, function(err, data) {
-        if (err) {
-          console.log(err)
-        } else {
-    
-          console.log("Successfully uploaded data to " + bucketName + "/" + params.Key);
-
-          insertShotData(reference);
-
-        }
+      return s3.putObject(params).promise().then((data) => {
+        return insertShotData(reference);
       });
+
 
     }
 

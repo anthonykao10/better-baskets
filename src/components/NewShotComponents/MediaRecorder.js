@@ -14,6 +14,7 @@ import 'videojs-record/dist/css/videojs.record.css';
 import Record from 'videojs-record/dist/videojs.record.js';
 
 import referenceGenerator from '../../services/referenceGenerator'
+import insertShotData from '../../services/insertShotData';
     
 // Optional imports for videojs-record plugins
 /*
@@ -48,13 +49,24 @@ class MediaRecorder extends Component {
           console.log('started recording!');
       });
 
-      // user completed recording and stream is available
+      // user completed recording and stream is available 
       this.player.on('finishRecord', () => {
           // recordedData is a blob object containing the recorded data that
           // can be downloaded by the user, stored on server etc.
           const reference = referenceGenerator();
-          uploadVideo(this.player.recordedData, reference);
-      });
+          uploadVideo(this.player.recordedData, reference)
+          .then(({config}) => {
+            this.props.refreshShotData()
+            })
+            .catch((err) => console.error('upload video error:', err)
+          )
+        })
+              
+            //   console.log('uploadVideo promise resolved:', config.data);
+            //   const {session_id, reference} = JSON.parse(config.data);
+            //   return insertShotData(reference);
+        //   }).then((postData) => this.props.refreshShotData()).catch((err) => console.error('upload video error:', err));
+    //   });
  
       // error handling
       this.player.on('error', (element, error) => {
