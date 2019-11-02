@@ -2,16 +2,18 @@ import cookies from 'js-cookie'
 import axios from "axios";
 
 const insertShotData = function(referenceString) {
-  axios.post(`shots/new`, {
+  return axios.post(`shots/new`, {
     session_id: cookies.get("sessionID"),
     reference: referenceString
-  })
-  .then((response) => {
-    return response
-  })
-  .catch((err) => {
-    throw err
-  })
+  });
+  // .then((response) => {
+  //   console.log('shot inserted:', response);
+  //   return response
+  // })
+  // .catch((err) => {
+  //   console.log('error: shot inserted:', err);
+  //   throw err
+  // })
 }
  
 
