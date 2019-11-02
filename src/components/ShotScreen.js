@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {
   useParams
 } from 'react-router-dom'
@@ -9,12 +9,27 @@ import ShotSuccessButton from "./ShotComponents/ShotSuccessButton";
 
 import VideoReplay from './ShotComponents/videoReplayComponent'
  
-export default function ShotScreen({shotData, updateSuccess}) {
-  
+export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
+  const [successValue, setSuccessValue] = useState(false);
+
   let { id } = useParams();
 
-  console.log('shotData:', shotData);
-  console.log('useParams id:', id);
+  useEffect(() => {  
+    successValueFunction()
+  }, [shotData])
+
+  const successValueFunction = function() {
+    // Create updated shot object
+    const shotIdx = shotData.findIndex((item) => item.id === parseInt(id));
+    console.log("SHOT DATA LENGTH", shotData.length)
+    if (shotData.length > 0){
+      setSuccessValue(shotData[shotIdx].success)
+    }
+    else {
+      return
+    }
+}
+  
   
   // const shots = shotData.map(
   //   shot => {
@@ -45,19 +60,6 @@ export default function ShotScreen({shotData, updateSuccess}) {
 
   const shotAngleAverage = angleAverage();
 
-  // Create updated shot object
-  const shotIdx = shotData.findIndex((item) => item.id === parseInt(id));
-  console.log('shotIdx:', shotIdx);
-  let updatedShots = shotData;
-  let successVal = null;
-  if (shotIdx !== -1) {
-    successVal = shotData[shotIdx].success;
-    console.log('successVal:', successVal);
-    // let updatedSuccess = !shotData[shotIdx].success;
-    // updatedShots[shotIdx] = {...shotData[shotIdx], success: updatedSuccess};
-    // console.log(updatedShots, successVal)
-  }
-  console.log('my shot!!!:', shotData[shotIdx]);
 
   return (
     <div>
@@ -65,8 +67,7 @@ export default function ShotScreen({shotData, updateSuccess}) {
       <VideoReplay />
       <ShotHeader {...singleShot} shotAngleAverage={shotAngleAverage}/>
       <h3>success:</h3>
-      <ShotSuccessButton shotId={id} successVal={successVal} updateSuccess={updateSuccess}/>
-      
+      <ShotSuccessButton shotId={id} updateSuccess={updateSuccess} successValue = {successValue} setSuccessValue={setSuccessValue} refreshShotData={refreshShotData}/>
     </div> 
   );
 }

@@ -21,10 +21,7 @@ const AWS = require('aws-sdk');
 // Create an S3 client
 
 const awsConfig = new AWS.Config({
-  credentials: {
-    accessKeyId:'AKIAJITV3GEWLLVQBLOQ',
-    secretAccessKey:'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'
-  },
+
   region: 'us-west-1'
 })
 

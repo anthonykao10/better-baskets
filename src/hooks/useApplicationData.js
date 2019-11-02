@@ -13,7 +13,7 @@ export default function useDashboardData(id) {
   const updateSuccess = (newShots) => {
     setShot(newShots);
   };
-
+ 
   const addSession = (newSession) => {
     setSession([...sessionData, newSession]);
   };

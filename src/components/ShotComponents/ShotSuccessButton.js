@@ -1,16 +1,16 @@
 import React from 'react';
 import axios from "axios";
 
-export default function ShotSuccessButton({shotId, successVal, updateSuccess}) {
+export default function ShotSuccessButton({shotId, updateSuccess, setSuccessValue, successValue, refreshShotData}) {
 
+ 
   const submit = function() {
-    console.log('button')
-    axios.put(`http://localhost:8002/shots/${shotId}/success`, {
-      success: !successVal
+    axios.put(`http://localhost:8080/shots/${shotId}/success`, {
+      success: !successValue
     })
     .then((updatedShots) => {
-      console.log('!!!updatedShots:', updatedShots);
-      updateSuccess(updatedShots.data);
+      setSuccessValue(!successValue)
+      refreshShotData()
     })
     .catch((err) => console.log(err));
   }
@@ -18,7 +18,7 @@ export default function ShotSuccessButton({shotId, successVal, updateSuccess}) {
   return (
     <div className="">
       <button onClick = {submit}>
-        {!successVal ? '+' : '-'}
+        {!successValue ? '+' : '-'}
       </button>
     </div>
   );

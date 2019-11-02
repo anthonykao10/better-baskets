@@ -44,7 +44,7 @@ function App() {
 }
 
 function AuthenticatedRouter(props) {
-
+ 
   const {
     currentUser,
     userData,
@@ -87,7 +87,7 @@ function AuthenticatedRouter(props) {
           </Route>
 
           <Route exact path="/shot/:id">
-            <ShotScreen shotData={shotData} updateSuccess={updateSuccess}/>
+            <ShotScreen shotData={shotData} updateSuccess={updateSuccess} refreshShotData={refreshShotData}/>
           </Route>
           <Route path="*">
             <Redirect to='/'/>
