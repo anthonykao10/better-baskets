@@ -8,6 +8,8 @@ import SessionHeader from './SessionComponents/SessionHeader';
 export default function SessionScreen({shotData, sessionData}) {
   let { id } = useParams();
 
+  console.log("FROM INSIDE SESSION SCREEN", shotData)
+
   //find shots by the session and iterate
   const shotsBySession = shotData.filter((item) => item.session_id === parseInt(id));
 

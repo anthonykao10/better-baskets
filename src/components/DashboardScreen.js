@@ -7,7 +7,7 @@ import NewSessionButton from './DashboardComponents/NewSessionButton'
 import TestComponent from './DashboardComponents/TestComponent';
 import Session from '../components/SessionComponents/Session';
 
-export default function DashboardScreen({userData, sessionData, shotData}) {
+export default function DashboardScreen({userData, sessionData, shotData, addSession, setShotUploadComplete}) {
 
   const sessions = sessionData.map(
     session => {
@@ -24,8 +24,7 @@ export default function DashboardScreen({userData, sessionData, shotData}) {
   return (
     <div>
       <p>Dashboard Screen</p>
-      <Link to="/new_shot">New Shot</Link>
-      <NewSessionButton />
+      <NewSessionButton addSession={addSession} setShotUploadComplete={setShotUploadComplete}/>
       <TestComponent userData={userData} sessionData={sessionData} shotData={shotData}/>
       {sessions}
     </div> 

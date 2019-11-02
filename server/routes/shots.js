@@ -23,7 +23,7 @@ router.post('/new', (req, res) => {
           coordinates: JSON.stringify(pythonData.coordinates),
           reference: req.body.reference
         }
-        console.log(insertShotData, "DFASFDASFAD")
+        console.log(insertShotData)
         insertShot(insertShotData)
         .then((response) => {
         })

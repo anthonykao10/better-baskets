@@ -1,4 +1,4 @@
-
+import cookies from 'js-cookie'
 import React from "react";
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import {
@@ -7,7 +7,8 @@ import {
 import './styles/Nav.css';
 
 export default function NavBar({ onLogout, currentUser }) {
-  
+  // {shotUploadComplete ? <EndSessionButton addShot={addShot}></EndSessionButton> : <DashboardPageButton></DashboardPageButton>}
+// {cookies.get()}
   return (
     <Navbar bg="light" expand="lg">
     <div className="leftContainer">
