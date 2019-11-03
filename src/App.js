@@ -71,7 +71,7 @@ function AuthenticatedRouter(props) {
   return (
     <div>
       <Router>
-          <NavBar onLogout = {props.onLogout} currentUser={currentUser}/> 
+          <NavBar onLogout = {props.onLogout} currentUser={currentUser} cookieValue addSession={addSession} setShotUploadComplete={setShotUploadComplete}/> 
         <Switch>
           <Route exact path="/">
             <DashboardScreen userData={userData} sessionData={sessionData} shotData={shotData} addSession={addSession} setShotUploadComplete={setShotUploadComplete}/>

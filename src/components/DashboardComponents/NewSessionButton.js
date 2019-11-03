@@ -7,8 +7,6 @@ import {
   Link
 } from 'react-router-dom'
 
-
-
 export default function NewSessionButton({addSession, setShotUploadComplete}) {
   const [redirect, setRedirect] = useState(false);
 

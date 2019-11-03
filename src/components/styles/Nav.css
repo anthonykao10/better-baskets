@@ -13,19 +13,12 @@ Navbar {
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+  margin-left: 20px;
 }
 
-/* .leftItem {
-  align-self: center;
-} */
+.centerContainer {
 
-/* .centerContainer {
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
-} */
+}
 
 .rightContainer {
   display: flex;
@@ -35,12 +28,16 @@ Navbar {
   margin-right: 20px;
 }
 
+.user{
+  margin-top: 15px;
+  margin-right: 5px;
+}
+
 .fas {
   color: #FA8320;
 }
 
 .nav_logo {
-
   color: black;
   font-family: 'Courier New', Courier, monospace;
   font-size: 1.8rem;
