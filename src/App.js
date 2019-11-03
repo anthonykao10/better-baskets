@@ -66,7 +66,7 @@ function AuthenticatedRouter(props) {
       setShotUploadComplete(true);
     })
   }
-
+ 
   function refreshSessionData() {
     console.log('refreshSessionData called');
     axios.get(`/sessions/${cookies.get("userID")}/data`)
