@@ -18,10 +18,8 @@ export default function NewSessionButton({addSession, setShotUploadComplete}) {
     .then((response) => {
       console.log(response.data)
       cookies.set('sessionID', response.data.id)
-      addSession(response.data);
       setRedirect("/new_shot")  
       setShotUploadComplete(false)    
-
     })
     .catch((err) => {
       console.log(err)

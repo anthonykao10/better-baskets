@@ -3,7 +3,7 @@ const path = require('path')
 const router = require('express').Router();
 const fileUpload = require('../util/fileUpload')
 const { spawn } = require('child_process');
-const {getShotData, insertShot} = require('../models/shots');
+const {getShotData, insertShot, updateShotSuccess, deleteShot} = require('../models/shots');
 
 
 router.post('/new', (req, res) => {
@@ -43,7 +43,24 @@ router.post('/new', (req, res) => {
     .catch(err => console.log(err));
 
 });
-router.get('/:id', (req, res) => {});
+
+router.put('/:id/success', (req, res) => {
+  console.log('shots route req.body:', req.body)
+  shotData = req.body.success;
+  shotID = req.params.id;
+
+  updateShotSuccess(shotData, shotID)
+    .then((response) => res.end())
+    .catch((err) => console.log(err));
+});
+
+router.post('/:id/delete', (req, res) => {
+  console.log(req.params.id)
+  deleteShot(req.params.id)
+  .then((response) => {
+    res.end()
+  })
+});
 
 router.get('/:user_id/data', (req, res) => {
   getShotData(req.params.user_id)

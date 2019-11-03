@@ -15,7 +15,7 @@ export default function EndSessionButton({addShot, finishShot, setFinishShot}) {
     cookies.remove('sessionID')
       setFinishShot(true);
   }
-
+ 
   return (
     !finishShot ?
     <div className="endSessionButton">

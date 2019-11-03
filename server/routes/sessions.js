@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {getSessionData, createNewSession} = require('../models/sessions');
+const {getSessionData, createNewSession, deleteSession} = require('../models/sessions');
 
 router.get('/', (req, res) => {});
 router.get('/:id', (req, res) => {});
@@ -11,8 +11,15 @@ router.post('/new', (req, res) => {
   })
 });
 
+router.post('/:session_id/delete', (req, res) => {
+  console.log(req.params.session_id, "PARAMS ID")
+  deleteSession(req.params.session_id)
+  .then((response) => {
+    res.status(204).send()
+  })
 
-router.post('/:session_id/shots/:id', (req, res) => {});
+});
+
 router.put('/:session_id/shots/:id', (req, res) => {});
 router.delete('/:session_id/shots/:id', (req, res) => {});
 

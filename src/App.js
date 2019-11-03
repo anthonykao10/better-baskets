@@ -44,13 +44,14 @@ function App() {
 }
 
 function AuthenticatedRouter(props) {
-
+ 
   const {
     currentUser,
     userData,
     sessionData,
     shotData,
-    addShot, 
+    updateSuccess,
+    addShot,
     addSession,
     shotUploadComplete,
     setShotUploadComplete
@@ -63,6 +64,15 @@ function AuthenticatedRouter(props) {
       console.log('calling addShot with:', updatedShots.data);
       addShot(updatedShots.data)
       setShotUploadComplete(true);
+    })
+  }
+ 
+  function refreshSessionData() {
+    console.log('refreshSessionData called');
+    axios.get(`/sessions/${cookies.get("userID")}/data`)
+    .then((updatedSessions) => {
+      console.log('calling addSession with:', updatedSessions.data);
+      addSession(updatedSessions.data)
     })
   }
 
@@ -83,11 +93,11 @@ function AuthenticatedRouter(props) {
           </Route>
 
           <Route exact path="/session/:id">
-            <SessionScreen sessionData={sessionData} shotData={shotData}/>
+            <SessionScreen sessionData={sessionData} shotData={shotData} refreshShotData={refreshShotData} refreshSessionData={refreshSessionData}/>
           </Route>
 
           <Route exact path="/shot/:id">
-            <ShotScreen shotData={shotData}/>
+            <ShotScreen shotData={shotData} updateSuccess={updateSuccess} refreshShotData={refreshShotData}/>
           </Route>
           <Route path="*">
             <Redirect to='/'/>

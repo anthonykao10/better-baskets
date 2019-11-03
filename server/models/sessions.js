@@ -17,4 +17,10 @@ const createNewSession = (id) => {
   `, [id])
 }
 
-module.exports = {getSessionData, createNewSession}
+const deleteSession = (sessionId) => {
+  return pool.query(`
+  DELETE FROM sessions
+  WHERE id =  $1`, [sessionId])
+}
+
+module.exports = {getSessionData, createNewSession, deleteSession}
