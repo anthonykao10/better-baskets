@@ -1,16 +1,37 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {
   useParams
 } from 'react-router-dom'
 import Shot from './ShotComponents/Shot';
 import SessionHeader from './SessionComponents/SessionHeader';
 import SessionDeleteButton from './SessionComponents/sessionDeleteButton'
+import {sessionFieldGoalCalculation, sessionAngleAverage} from '../services/sessionCalculations'
 
 export default function SessionScreen({shotData, sessionData, refreshShotData, refreshSessionData}) {
+  const [sessionFG, setSessionFG] = useState(0);
+  const [sessionFGPercentage, setSessionFGPercentage] = useState(0);
+  const [sessionAngle, setSessionAngle] = useState(null);
+  const [arc, setArc] = useState(null);
+
   let { id } = useParams();
+  console.log("S?ESSION ANGLE: ", sessionAngle)
+  console.log()
+
 
   //find shots by the session and iterate
   const shotsBySession = shotData.filter((item) => item.session_id === parseInt(id));
+  console.log("SHOTS BY SESSION: ", shotsBySession)
+
+  useEffect(() => {  
+    let successNumber = sessionFieldGoalCalculation(shotsBySession)
+    let val = (successNumber/shotsBySession.length)
+    setSessionFG(successNumber)
+    setSessionFGPercentage(val)
+    setSessionAngle(sessionAngleAverage(shotsBySession))
+    
+
+  }, [shotData])
+
 
   const shots = shotsBySession.map(
     shot => {
