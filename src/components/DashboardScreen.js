@@ -8,6 +8,7 @@ import Session from '../components/SessionComponents/Session';
 
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import './styles/Carousel.css';
 
 export default function DashboardScreen({userData, sessionData, shotData, addSession, setShotUploadComplete}) {
 
@@ -26,8 +27,8 @@ export default function DashboardScreen({userData, sessionData, shotData, addSes
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-      slidesToSlide: 3, // optional, default to 1.
+      items: 5,
+      slidesToSlide: 5, // optional, default to 1.
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -64,6 +65,7 @@ export default function DashboardScreen({userData, sessionData, shotData, addSes
         // deviceType={this.props.deviceType}
         dotListClass="custom-dot-list-style"
         itemClass="carousel-item-padding-20-px"
+        // centerMode={true}
       >
         {sessions}
       </Carousel> 
