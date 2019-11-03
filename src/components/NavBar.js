@@ -5,6 +5,7 @@ import {
   Link
 } from 'react-router-dom'
 import './styles/Nav.css';
+import { whileStatement } from '@babel/types';
 
 export default function NavBar({ onLogout, currentUser, cookieValue }) {
   // {shotUploadComplete ? <EndSessionButton addShot={addShot}></EndSessionButton> : <DashboardPageButton></DashboardPageButton>}
@@ -13,9 +14,9 @@ export default function NavBar({ onLogout, currentUser, cookieValue }) {
   const sessionCookie = cookies.get("sessionID");
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar className="navBar" expand="lg">
     <div className="leftContainer">
-      <i className="fas fa-basketball-ball fa-2x"></i>
+      <i className="fas fa-basketball-ball fa-3x"></i>
       <Link to="/dashboard" className="nav_logo">BetterBaskets</Link>
     </div>
 
