@@ -21,6 +21,8 @@ import {
 
 function App() {
   const [cookieValue, setCookieValue] = useState(cookies.get("userID"));
+
+
   
   const isLoggedIn = function() {
     let cookie = cookies.get("userID")
@@ -55,6 +57,7 @@ function AuthenticatedRouter(props) {
     addSession,
     shotUploadComplete,
     setShotUploadComplete
+
   } = useApplicationData(cookies.get("userID"));
 
   function refreshShotData() {

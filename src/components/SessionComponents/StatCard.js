@@ -10,13 +10,13 @@ export default function StatCard({name, statistic}) {
 
   return (
      <>
-      <Card bg="light" style={{ width: '10rem' }}>
+      <Card bg="light" style={{ width: '10rem', height: '10rem' }}>
         <Card.Header>{name}</Card.Header>
         <Card.Body>
-          <Card.Title>x</Card.Title>
-          <Card.Text>
+          <Card.Title>{statistic}</Card.Title>
+          {/* <Card.Text>
             {statistic}
-          </Card.Text>
+          </Card.Text> */}
         </Card.Body>
       </Card>
       <br />
