@@ -116,6 +116,7 @@ function UnauthenticatedRouter(props) {
   return (
     <Router>
       <NavBar /> 
+      <div className="mainContainer">
       <Switch>
         <Route exact path="/">
           <LoginScreen onLogin = {props.onLogin}/>
@@ -124,6 +125,7 @@ function UnauthenticatedRouter(props) {
           <Redirect from='*' to='/' />
         </Route> 
       </Switch>
+      </div>
     </Router>
   )
 }

@@ -1,0 +1,25 @@
+.canvas {
+  position: absolute;
+  z-index: 1; 
+  height: 100vh;
+}
+
+.loginForm {
+  /* z-index: 1; */
+}
+/* 
+.HomeWrp {
+  position: relative;
+  text-align: left; }
+  @media (min-width: 768px) {
+    .HomeWrp {
+      height: 100%; } }
+  .HomeWrp .Home {
+    text-align: center; }
+    .HomeWrp .Home h1 {
+      margin-top: 20px; }
+  .HomeWrp .Canvas {
+    position: absolute;
+    top: -20px;
+    left: 0;
+    z-index: 1; } */

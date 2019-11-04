@@ -10,7 +10,7 @@ export default function StatCard({name, statistic}) {
 
   return (
      <>
-      <Card bg="light" style={{ width: '10rem', height: '10rem' }}>
+      <Card bg="light" style={{ width: '10rem', height: '10rem' }} className="statCard">
         <Card.Header>{name}</Card.Header>
         <Card.Body>
           <Card.Title>{statistic}</Card.Title>

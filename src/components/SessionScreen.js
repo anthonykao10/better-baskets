@@ -50,8 +50,8 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
       return (
         <Shot
         key={shot.id}
-        shotID={shot.id} 
-        shotAngle={shot.angle}
+        shotID={shot.id}
+        success={shot.success} 
         />
       );
     }

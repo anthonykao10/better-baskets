@@ -13,6 +13,7 @@
   padding-top: 20px;
   padding-bottom: 20px;
   flex-direction: column;
+  box-shadow: 0 6px 15px -4px rgba(0, 0, 0, 0.15);
   }
 
   .sessionStatContainer {
@@ -20,6 +21,7 @@
     flex-direction: row;
     justify-content: space-evenly;
     margin-bottom: 20px;
+    
 
   }
 
@@ -27,4 +29,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+  }
+  
+  .statCard {
+    box-shadow: 0 6px 15px -4px rgba(0, 0, 0, 0.15);
   }

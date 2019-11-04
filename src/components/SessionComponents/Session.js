@@ -40,7 +40,7 @@ export default function Session({sessionID, date, shotData}) {
     <div className="sessionCardDiv">
       <Card bg="light" style={{ width: '16rem' }} className="sessionCard">
         <Card.Header>
-          <Link to={`/session/${sessionID}`}>Session: {sessionID}</Link>
+          <strong><Link to={`/session/${sessionID}`}>Session: {sessionID}</Link></strong>
         </Card.Header>
         <Card.Body>
           <Card.Title>Date: {sessionDate}</Card.Title>
