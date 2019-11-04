@@ -15,7 +15,6 @@ export const sessionFieldGoalCalculation = function(shots) {
 }
 
 export const sessionAngleAverage = function(shots) {
-  console.log("SHOTS BY ANGLE", shots, "SDFASFDSA")
   let result = 0;
   for (const i in shots) {
     result += shots[i].angle

@@ -6,16 +6,16 @@ import Shot from './ShotComponents/Shot';
 import SessionHeader from './SessionComponents/SessionHeader';
 import SessionDeleteButton from './SessionComponents/sessionDeleteButton'
 import {sessionFieldGoalCalculation, sessionAngleAverage} from '../services/sessionCalculations'
+import SessionStatContainer from './SessionComponents/SessionStatContainer'
 
 export default function SessionScreen({shotData, sessionData, refreshShotData, refreshSessionData}) {
   const [sessionFG, setSessionFG] = useState(0);
   const [sessionFGPercentage, setSessionFGPercentage] = useState(0);
   const [sessionAngle, setSessionAngle] = useState(null);
-  const [arc, setArc] = useState(null);
+  const [sessionArc, setArc] = useState("High");
 
   let { id } = useParams();
-  console.log("S?ESSION ANGLE: ", sessionAngle)
-  console.log()
+  console.log("SESSION ANGLE: ", sessionAngle)
 
 
   //find shots by the session and iterate
@@ -24,8 +24,8 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
 
   useEffect(() => {  
     let successNumber = sessionFieldGoalCalculation(shotsBySession)
-    let val = (successNumber/shotsBySession.length)
-    setSessionFG(successNumber)
+    let val = ((successNumber/shotsBySession.length) * 100) + "%"
+    setSessionFG(successNumber + "/" + shotsBySession.length)
     setSessionFGPercentage(val)
     setSessionAngle(sessionAngleAverage(shotsBySession))
     
@@ -53,6 +53,7 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
       <p>Session Screen: { id }</p>
       <SessionHeader {...singleSession}/>
       <SessionDeleteButton sessionId={id} refreshShotData={refreshShotData} refreshSessionData={refreshSessionData}></SessionDeleteButton>
+      <SessionStatContainer sessionFG={sessionFG} sessionFGPercentage={sessionFGPercentage} sessionAngle={sessionAngle} sessionArc={sessionArc}></SessionStatContainer>
       {shots}
     </div> 
   );
