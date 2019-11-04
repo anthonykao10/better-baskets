@@ -94,7 +94,7 @@ while True:
 				(0, 255, 255), 2)
 			cv2.circle(frame, center, 5, (0, 0, 255), -1)
 
-	if center != None and center[1] < 500:
+	if center != None and center[1] < 350:
 	  pts.appendleft(center)
 
 	# loop over the set of tracked points
@@ -126,6 +126,11 @@ arc = helpers.getArc(x_vals, y_vals)
 if arc is not None:
 	arcMax = helpers.getArcMax( arc[2], arc[1], arc[0] )
 	angle = helpers.getArcAngle( arc[2], arc[1], arc[0] )
+
+	# generate new coordinates
+	# output = helpers.formatCoordinates(arc, output[0][0], output[len(output) - 1][0])
+	output = helpers.formatCoordinates(arc, 10, 1100)
+
 	# if helpers.checkSuccess(980, 1020, 280, 320, 720, arc):
 	# 	success = True	
 	if helpers.checkSuccess(1020, 1080, 370, 430, 720, arc):
