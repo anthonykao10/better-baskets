@@ -24,5 +24,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-
 mypython
+
+server/videos/downloads/unprocessedVideo.webm
+server/videos/uploads/processedVideo.mp4
+server/videos/uploads/processedVideo.webm

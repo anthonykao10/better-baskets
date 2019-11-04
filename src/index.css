@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(244, 243, 239);
 }
 
 code {
@@ -12,6 +13,4 @@ code {
     monospace;
 }
 
-#myVideo {
-  background-color: #ACB2F2;
-}
+
