@@ -12,6 +12,7 @@
     "react": "^16.11.0",
     "react-bootstrap": "^1.0.0-beta.14",
     "react-dom": "^16.11.0",
+    "react-google-charts": "^3.0.15",
     "react-media-recorder": "^0.7.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
