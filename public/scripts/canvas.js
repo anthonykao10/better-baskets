@@ -1,5 +1,3 @@
-console.log('HI');
-
 let canvas = document.getElementById("c");
 let ctx = c.getContext("2d");
 
