@@ -17,7 +17,7 @@ export default function Shot({shotID, shotAngle, success}) {
           <Card.Text>
           <br/>
           {success && <i className="fas fa-trophy fa-3x"></i>}
-          {!success && <i class="far fa-frown-open fa-3x"></i>}
+          {!success && <i className="far fa-frown-open fa-3x"></i>}
           </Card.Text>
         </Card.Body>
       </Card>

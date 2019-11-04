@@ -22,8 +22,6 @@ import {
 function App() {
   const [cookieValue, setCookieValue] = useState(cookies.get("userID"));
 
-
-  
   const isLoggedIn = function() {
     let cookie = cookies.get("userID")
     setCookieValue(cookie)

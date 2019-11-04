@@ -1,7 +1,6 @@
 import StatCard from '../SessionComponents/StatCard'
 import {userFieldGoalCalculation, userAngleAverage} from '../../services/overallCalculations'
 
-
 import '../styles/SessionStatContainer.css'
 
 import React, { useEffect, useState } from "react";
@@ -14,11 +13,6 @@ export default function DashboardStatContainer({shotData, sessionData}) {
   const [totalSessions, setTotalSessions] = useState(0);
   const [totalPracticeTime, setTotalPracticeTime] = useState(0);
   const [avgShotsInSession, setAvgShotsInSession] = useState(0);
-
-
-
-
-
 
   useEffect(() => {  
 
@@ -53,11 +47,7 @@ export default function DashboardStatContainer({shotData, sessionData}) {
       <StatCard name={"Friends Balling Ranking"} statistic = {"23rd"} ></StatCard>
     </div>
 
-
-
-
-
-     </div>
+    </div>
      </>
   );
 }
