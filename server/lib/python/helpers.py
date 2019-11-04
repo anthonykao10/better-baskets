@@ -1,3 +1,4 @@
+import numpy as np
 import numpy.polynomial.polynomial as poly
 import sympy as sp
 import math
@@ -74,3 +75,13 @@ def checkSuccess(x1, x2, y1, y2, y_res, arc):
     arc_y = int(f(i, arc[2], arc[1], arc[0]))
     if arc_y in range(y2, y1 + 1):
       return True
+  
+def formatCoordinates(arc, start, end):
+  if (end < start):
+    temp = end
+    end = start
+    start = temp
+  coords = []
+  for i in range(start, end):
+    coords.append( [i, f(i, arc[2], arc[1], arc[0])] )
+  return coords
