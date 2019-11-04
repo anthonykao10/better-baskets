@@ -15,6 +15,7 @@ import Record from 'videojs-record/dist/videojs.record.js';
 
 import referenceGenerator from '../../services/referenceGenerator'
 import insertShotData from '../../services/insertShotData';
+import '../styles/MediaRecorder.css';
     
 // Optional imports for videojs-record plugins
 /*
@@ -76,6 +77,16 @@ class MediaRecorder extends Component {
       this.player.on('deviceError', () => {
           console.error('device error:', this.player.deviceErrorCode);
       });
+
+      // load canvas script
+      const script = document.createElement("script");
+      script.src = "scripts/canvas.js";
+      script.async = true;
+      document.body.appendChild(script);
+
+    //   const canvasRef = React.useRef();
+    //   const ctx = canvasRef.current.context;
+    //     ctx.drawCircle();
   }
 
   // destroy player on unmount
@@ -83,11 +94,12 @@ class MediaRecorder extends Component {
       if (this.player) {
           this.player.dispose();
       }
-  }
-  render() {
+    }
+    render() {
       return (
       <div data-vjs-player>
           <video id="myVideo" ref={node => this.videoNode = node} className="video-js vjs-default-skin" playsInline></video>
+          <canvas id="c"></canvas>
       </div>
       );
   }
