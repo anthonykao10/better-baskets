@@ -55,8 +55,10 @@ while True:
 	hsv = cv2.cvtColor(blurred, cv2.COLOR_BGR2HSV)
 
 	# draw success box
-	cv2.rectangle(frame,(950,250),(1050,350),(0,255,0),3)
-	cv2.rectangle(frame,(980,280),(1020,320),(255,0,0),3)
+	# cv2.rectangle(frame,(950,250),(1050,350),(0,255,0),3)
+	# cv2.rectangle(frame,(980,280),(1020,320),(255,0,0),3)
+	cv2.rectangle(frame,(1000,350),(1100,450),(0,255,0),3)
+	cv2.rectangle(frame,(1030,380),(1070,420),(255,0,0),3)
 
 	# create mask
 	mask = cv2.inRange(hsv, greenLower, greenUpper)
@@ -124,7 +126,9 @@ arc = helpers.getArc(x_vals, y_vals)
 if arc is not None:
 	arcMax = helpers.getArcMax( arc[2], arc[1], arc[0] )
 	angle = helpers.getArcAngle( arc[2], arc[1], arc[0] )
-	if helpers.checkSuccess(980, 1020, 280, 320, 720, arc):
+	# if helpers.checkSuccess(980, 1020, 280, 320, 720, arc):
+	# 	success = True	
+	if helpers.checkSuccess(1020, 1080, 370, 430, 720, arc):
 		success = True
 else: 
 	arcMax = None
