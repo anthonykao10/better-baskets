@@ -1,9 +1,5 @@
 
-import SessionStatAngle from './SessionStatCards/SessionStatAngle'
-import SessionStatFG from './SessionStatCards/SessionStatFG'
-import SessionStatFGPercentage from './SessionStatCards/SessionStatFGPercentage'
-import SessionStatArc from './SessionStatCards/SessionStatArc'
-import SessionStatEFG from './SessionStatCards/SessionStatEFG'
+
 import StatCard from './StatCard'
 
 import '../styles/SessionStatContainer.css'
@@ -17,7 +13,7 @@ export default function SessionStatContainer({sessionAngle, sessionFG, sessionFG
      <>
      <div className="statContainer">
 
-       <div className="sessionStatContainer">
+       <div className="statContainerTop">
         <StatCard name={"Session FG Percentage"} statistic = {sessionFGPercentage} ></StatCard>
         <StatCard name={"Session Field Goals"} statistic = {sessionFG} ></StatCard>
         <StatCard name={"Session Average Angle"} statistic = {sessionAngle} ></StatCard>
@@ -25,7 +21,7 @@ export default function SessionStatContainer({sessionAngle, sessionFG, sessionFG
         <StatCard name={"Session EFG Percentage"} statistic = {"39.7%"} ></StatCard>
       </div>
 
-      <div className ="overallStatContainer">
+      <div className ="statContainerBottom">
 
         <StatCard name={"Overall FG Percentage"} statistic = {userFGPercentage}></StatCard>
         <StatCard name={"Overall Field Goals"} statistic = {userFG} ></StatCard>

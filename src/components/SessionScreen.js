@@ -31,16 +31,16 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
 
   useEffect(() => {  
     let successNumber = sessionFieldGoalCalculation(shotsBySession)
-    let val = ((successNumber/shotsBySession.length) * 100) + "%"
+    let val = ((successNumber/shotsBySession.length) * 100).toFixed(2) + "%"
     setSessionFG(successNumber + "/" + shotsBySession.length)
     setSessionFGPercentage(val)
-    setSessionAngle(sessionAngleAverage(shotsBySession))
+    setSessionAngle(sessionAngleAverage(shotsBySession).toFixed(2)+ "°")
 
     let userSuccessNumber = userFieldGoalCalculation(shotData)
-    let userVal = ((userSuccessNumber/shotData.length) * 100) + "%"
+    let userVal = ((userSuccessNumber/shotData.length) * 100).toFixed(2) + "%"
     setUserFG(userSuccessNumber + "/" + shotData.length)
     setUserFGPercentage(userVal)
-    setUserAngle(userAngleAverage(shotData))
+    setUserAngle(userAngleAverage(shotData).toFixed(2) + "°")
     
   }, [shotData, shotsBySession])
 

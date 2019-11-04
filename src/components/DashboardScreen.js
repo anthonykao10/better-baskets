@@ -9,6 +9,7 @@ import Session from '../components/SessionComponents/Session';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import './styles/Carousel.css';
+import DashboardStatContainer from './DashboardComponents/DashboardStatContainer'
 
 export default function DashboardScreen({userData, sessionData, shotData, addSession, setShotUploadComplete}) {
 
@@ -47,6 +48,16 @@ export default function DashboardScreen({userData, sessionData, shotData, addSes
     <div>
       <h3>{userData.username}'s Dashboard</h3>
       <NewSessionButton addSession={addSession} setShotUploadComplete={setShotUploadComplete}/>
+
+      <br></br>
+      <br></br>
+
+
+      <DashboardStatContainer shotData={shotData} sessionData={sessionData}></DashboardStatContainer>
+
+      <br></br>
+      <br></br>
+
 
       <Carousel
         swipeable={false}
