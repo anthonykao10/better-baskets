@@ -11,7 +11,7 @@ export const getClient = () => {
 
 
     axiosClient = axios.create({
-      baseURL: 'http://localhost:8002',
+      baseURL: 'http://localhost:8080',
       timeout: 5000,
       headers: {
         authorization: userID
