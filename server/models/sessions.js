@@ -18,6 +18,7 @@ const createNewSession = (id) => {
 }
 
 const updateSession = (id) => {
+  console.log("update session function", id)
   return pool.query(`
     UPDATE sessions
     SET end_time = CURRENT_TIMESTAMP

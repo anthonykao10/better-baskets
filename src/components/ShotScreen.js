@@ -67,7 +67,7 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
     <div>
       <h3>Shot {id} </h3>
       <div className="backButton">
-        <i class="fas fa-arrow-left fa-3x" onClick={() => window.history.back()}></i><p>Back to Session</p>
+        <i className="fas fa-arrow-left fa-3x" onClick={() => window.history.back()}></i><p>Back to Session</p>
       </div>
       {/* <button variant="primary" onClick={() => window.history.back()}>Back to Session</button> */}
       <VideoReplay {...singleShot}/>

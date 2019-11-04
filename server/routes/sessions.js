@@ -23,7 +23,7 @@ router.delete('/:session_id/shots/:id', (req, res) => {});
 
 router.put('/:session_id/end_session', (req, res) => {
   console.log('session end route req.body:', req.body)
-  const id = (req.cookies.sessionID);
+  const id = (req.params.session_id);
   updateSession(id)
     .then(() => res.end())
     .catch((err) => console.log(err));

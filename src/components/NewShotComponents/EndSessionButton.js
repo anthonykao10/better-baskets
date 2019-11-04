@@ -12,13 +12,13 @@ export default function EndSessionButton({addShot, finishShot, setFinishShot}) {
 
   const submit = function(e) {
     e.preventDefault()
+    axios.put(`/sessions/${sessionID}/end_session`)
+      .then(() => console.log("ended session"))
+      .catch((err) => {
+        console.log(err);
+      })
     cookies.remove('sessionID')
-      setFinishShot(true);
-      axios.put(`/sessions/${sessionID}/end_session`)
-        .then(() => console.log("ended session"))
-        .catch((err) => {
-          console.log(err);
-        })
+    setFinishShot(true);  
   }
  
   return (
