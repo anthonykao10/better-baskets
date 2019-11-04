@@ -114,6 +114,7 @@ function AuthenticatedRouter(props) {
 
 function UnauthenticatedRouter(props) {
   return (
+    
     <Router>
       <NavBar /> 
       <div className="mainContainer">
@@ -126,7 +127,7 @@ function UnauthenticatedRouter(props) {
         </Route> 
       </Switch>
       </div>
-    </Router>
+    </Router>  
   )
 }
 

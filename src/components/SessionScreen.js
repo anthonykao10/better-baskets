@@ -42,7 +42,7 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
     setUserFGPercentage(userVal)
     setUserAngle(userAngleAverage(shotData))
     
-  }, [shotData])
+  }, [shotData, shotsBySession])
 
 
   const shots = shotsBySession.map(
@@ -85,6 +85,8 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
       <SessionDeleteButton sessionId={id} refreshShotData={refreshShotData} refreshSessionData={refreshSessionData}></SessionDeleteButton>
       <SessionStatContainer sessionFG={sessionFG} sessionFGPercentage={sessionFGPercentage} sessionAngle={sessionAngle} sessionArc={sessionArc} userFG={userFG} userFGPercentage={userFGPercentage} userAngle={userAngle} userArc={userArc}></SessionStatContainer>
       <br></br>
+      <br></br>
+      {/* <br></br> */}
       <Carousel
         swipeable={false}
         draggable={true}

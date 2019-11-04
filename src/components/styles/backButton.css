@@ -1,0 +1,14 @@
+.backButton {
+  display: flex;
+  direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.fa-arrow-left {
+  color: #6bd098;
+}
+
+.fa-arrow-left:hover {
+  color: #6bd098;
+}

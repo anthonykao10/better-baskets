@@ -25,9 +25,9 @@ export default function NavBar({ onLogout, currentUser, cookieValue }) {
     </div> */}
 
     <div className="rightContainer">
-    {!cookieValue && <Link to="/">Login</Link>}
+    {!cookieValue && <strong><Link to="/">Login</Link></strong>}
     {cookieValue && <p className="user">{currentUser} |</p>}
-    {cookieValue && <Link to="/" onClick = {onLogout}>Logout</Link>}
+    {cookieValue && <strong><Link to="/" onClick = {onLogout}>Logout</Link></strong>}
     </div>
     {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">

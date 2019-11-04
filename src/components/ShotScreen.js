@@ -7,9 +7,9 @@ import ShotHeader from "./ShotComponents/ShotHeader";
 import ShotChart from "./ShotComponents/ShotChart";
 import ShotSuccessButton from "./ShotComponents/ShotSuccessButton";
 import ShotDeleteButton from "./ShotComponents/shotDeleteButton";
+import VideoReplay from './ShotComponents/videoReplayComponent';
 
-
-import VideoReplay from './ShotComponents/videoReplayComponent'
+import "./styles/backButton.css";
  
 export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
   const [successValue, setSuccessValue] = useState(false);
@@ -66,6 +66,10 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
   return (
     <div>
       <h3>Shot {id} </h3>
+      <div className="backButton">
+        <i class="fas fa-arrow-left fa-3x" onClick={() => window.history.back()}></i><p>Back to Session</p>
+      </div>
+      {/* <button variant="primary" onClick={() => window.history.back()}>Back to Session</button> */}
       <VideoReplay {...singleShot}/>
       <ShotHeader {...singleShot} shotAngleAverage={shotAngleAverage}/>
       <ShotDeleteButton shotId={id} refreshShotData={refreshShotData}></ShotDeleteButton>
