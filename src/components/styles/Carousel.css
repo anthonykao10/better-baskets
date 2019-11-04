@@ -2,12 +2,32 @@
 .sessionCardDiv {
   display: flex;
   justify-content: center;
+  /* align-items: center; */
 }
 
 .sessionCard {
-  box-shadow: 0 6px 15px -4px rgba(0, 0, 0, 0.15);
+  /* box-shadow: 0 6px 15px -4px rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-/* .react-multi-carousel-item {
-  width: 500px !important;
-} */
+.shotCardDiv {
+  display: flex;
+  justify-content: center; 
+  margin-bottom: 50px;
+  /* align-items: center; */
+
+}
+
+.shotCard {
+  /* box-shadow: 0 6px 15px -4px rgba(0, 0, 0, 0.15); */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.fa-trophy {
+  color:  rgb(251, 198, 88);
+}
+
+.fa-frown-open {
+  color:  #51bcda;
+}

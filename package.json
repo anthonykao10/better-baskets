@@ -11,6 +11,7 @@
     "js-cookie": "^2.2.1",
     "react": "^16.11.0",
     "react-bootstrap": "^1.0.0-beta.14",
+    "react-canvas-js": "^1.0.1",
     "react-dom": "^16.11.0",
     "react-media-recorder": "^0.7.1",
     "react-multi-carousel": "^2.4.0",
