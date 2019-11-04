@@ -14,6 +14,11 @@ export default function EndSessionButton({addShot, finishShot, setFinishShot}) {
     e.preventDefault()
     cookies.remove('sessionID')
       setFinishShot(true);
+      axios.put(`/sessions/${sessionID}/end_session`)
+        .then(() => console.log("ended session"))
+        .catch((err) => {
+          console.log(err);
+        })
   }
  
   return (
