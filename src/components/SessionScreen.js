@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom'
 import Shot from './ShotComponents/Shot';
 import SessionHeader from './SessionComponents/SessionHeader';
-import SessionDeleteButton from './SessionComponents/sessionDeleteButton'
+import SessionDeleteButton from './SessionComponents/sessionDeleteButton';
 
 export default function SessionScreen({shotData, sessionData, refreshShotData, refreshSessionData}) {
   let { id } = useParams();
