@@ -45,7 +45,7 @@ export default function DashboardScreen({userData, sessionData, shotData, addSes
   
   return (
     <div>
-      <p>Dashboard Screen</p>
+      <h3>{userData.username}'s Dashboard</h3>
       <NewSessionButton addSession={addSession} setShotUploadComplete={setShotUploadComplete}/>
 
       <Carousel

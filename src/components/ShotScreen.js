@@ -65,7 +65,7 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
 
   return (
     <div>
-      <p>Shot Screen: {id} </p>
+      <h3>Shot {id} </h3>
       <VideoReplay {...singleShot}/>
       <ShotHeader {...singleShot} shotAngleAverage={shotAngleAverage}/>
       <ShotDeleteButton shotId={id} refreshShotData={refreshShotData}></ShotDeleteButton>

@@ -80,7 +80,7 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
 
   return (
     <div>
-      <p>Session Screen: { id }</p>
+      <h3>Session { id }</h3>
       <SessionHeader {...singleSession}/>
       <SessionDeleteButton sessionId={id} refreshShotData={refreshShotData} refreshSessionData={refreshSessionData}></SessionDeleteButton>
       <SessionStatContainer sessionFG={sessionFG} sessionFGPercentage={sessionFGPercentage} sessionAngle={sessionAngle} sessionArc={sessionArc} userFG={userFG} userFGPercentage={userFGPercentage} userAngle={userAngle} userArc={userArc}></SessionStatContainer>
