@@ -1,0 +1,30 @@
+.statContainer {
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* background-color: lightgrey; */
+  border-style: solid;
+  border-color: #c2bebe;
+  border-width: 1px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  flex-direction: column;
+  }
+
+  .sessionStatContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+
+  }
+
+  .overallStatContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
