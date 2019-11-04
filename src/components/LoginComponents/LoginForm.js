@@ -14,13 +14,13 @@ export default function LoginForm(props) {
   return (
     <div className="container">
       <form>
-        <label>Username: </label>
+        <strong><label>Username: </label></strong>
         <input type="text" placeholder="Enter Username" name="username" onChange={e => setUsername(e.target.value)} required></input>
-
-        <label>Password: </label>
+        <br></br>
+        <strong><label>Password: </label></strong>
         <input type="password" placeholder="Enter Password" name="password" onChange = {e => setPassword(e.target.value)} required></input>
-        
-        <a onClick = {onSubmit}>Login</a>
+        <br></br>
+        <button onClick={onSubmit}>Login</button>
       </form>
     </div>
     
