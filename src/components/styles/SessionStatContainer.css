@@ -18,7 +18,7 @@
 
   }
 
-  .sessionStatContainer {
+  .statContainerTop {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -27,7 +27,7 @@
 
   }
 
-  .overallStatContainer {
+  .statContainerBottom {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
