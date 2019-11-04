@@ -18,7 +18,7 @@ export default function DashboardScreen({userData, sessionData, shotData, addSes
         <Session
         key={session.id}
         sessionID={session.id} 
-        date={session.date}
+        date={session.start_time}
         shotData={shotData}
         />
       );

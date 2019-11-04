@@ -4,7 +4,6 @@ import {
 } from 'react-router-dom'
 import { Card } from 'react-bootstrap';
 import '../styles/Carousel.css';
-import { FileSystemCredentials } from "aws-sdk";
  
 export default function Session({sessionID, date, shotData}) {
 
@@ -31,23 +30,24 @@ export default function Session({sessionID, date, shotData}) {
 
   const sessionSuccessPercent = successPercent();
 
+  const dateString= () => {
+   return date.slice(0, 10);   
+  }
+
+  const sessionDate = dateString();
+
   return (
     <div className="sessionCardDiv">
-      {/* <p>Session: {sessionID}</p>
-      <i class="fas fa-basketball-hoop"></i>
-      <p>Date: {date}</p>
-      <Link to={`/session/${sessionID}`}>Session Link</Link> */}
-
       <Card bg="light" style={{ width: '16rem' }} className="sessionCard">
         <Card.Header>
           <Link to={`/session/${sessionID}`}>Session: {sessionID}</Link>
         </Card.Header>
         <Card.Body>
-          <Card.Title>Date: {date}</Card.Title>
+          <Card.Title>Date: {sessionDate}</Card.Title>
           <Card.Text>
-          
-          <p>Number of Shots: {numberOfShots}</p>
-          <p>{sessionSuccessPercent}</p>
+          Number of Shots: {numberOfShots}
+          <br/>
+          {sessionSuccessPercent}
           </Card.Text>
         </Card.Body>
       </Card>
