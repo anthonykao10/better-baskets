@@ -71,6 +71,7 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
       <ShotDeleteButton shotId={id} refreshShotData={refreshShotData}></ShotDeleteButton>
       <h3>success:</h3>
       <ShotSuccessButton shotId={id} updateSuccess={updateSuccess} successValue = {successValue} setSuccessValue={setSuccessValue} refreshShotData={refreshShotData}/>
+      <ShotChart/>
     </div> 
   );
 }

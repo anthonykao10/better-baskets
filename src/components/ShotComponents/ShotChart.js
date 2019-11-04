@@ -6,7 +6,7 @@ export default function ShotChart({ shotAngle }) {
     <div>
       <p>*****</p>
       <p>Shot Chart</p>
-      <p>Shot Angle: {shotAngle}</p>
+      <div id="shot-chart"></div>
       <p>*****</p>
     </div> 
   );
