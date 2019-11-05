@@ -38,14 +38,14 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
     let val = ((successNumber/shotsBySession.length) * 100).toFixed(2) + "%"
     setSessionFG(successNumber + "/" + shotsBySession.length)
     setSessionFGPercentage(val)
-    setSessionAngle(sessionAngleAverage(shotsBySession).toFixed(2)+ "°")
+    setSessionAngle(sessionAngleAverage(shotsBySession).toFixed(2))
     setArc(sessionArcDetermination(shotsBySession))
 
     let userSuccessNumber = userFieldGoalCalculation(shotData)
     let userVal = ((userSuccessNumber/shotData.length) * 100).toFixed(2) + "%"
     setUserFG(userSuccessNumber + "/" + shotData.length)
     setUserFGPercentage(userVal)
-    setUserAngle(userAngleAverage(shotData).toFixed(2) + "°")
+    setUserAngle(userAngleAverage(shotData).toFixed(2))
     setUserArc(userArcDetermination(shotData))
     
     
