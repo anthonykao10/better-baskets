@@ -1,5 +1,5 @@
 import StatCard from '../SessionComponents/StatCard'
-import {userFieldGoalCalculation, userAngleAverage} from '../../services/overallCalculations'
+import {userFieldGoalCalculation, userAngleAverage, userArcDetermination} from '../../services/overallCalculations'
 
 
 import '../styles/SessionStatContainer.css'
@@ -15,11 +15,6 @@ export default function DashboardStatContainer({shotData, sessionData}) {
   const [totalPracticeTime, setTotalPracticeTime] = useState(0);
   const [avgShotsInSession, setAvgShotsInSession] = useState(0);
 
-
-
-
-
-
   useEffect(() => {  
 
     let userSuccessNumber = userFieldGoalCalculation(shotData)
@@ -29,10 +24,10 @@ export default function DashboardStatContainer({shotData, sessionData}) {
     setUserAngle(userAngleAverage(shotData).toFixed(2)+ "°")
     setTotalSessions(sessionData.length)
     setAvgShotsInSession(shotData.length/sessionData.length)
+    setUserArc(userArcDetermination(shotData))
     
   }, [shotData])
 
-  console.log("USERFG12312312312", userFG, "userFGPERCENTAGE", userFGPercentage, "userAngle", userAngle, "userArc", userArc)
   return (
      <>
      <div className="statContainer">
@@ -46,7 +41,7 @@ export default function DashboardStatContainer({shotData, sessionData}) {
     </div>
 
     <div className="statContainerBottom">
-      <StatCard name={"Total Session"} statistic = {totalSessions} ></StatCard>
+      <StatCard name={"Total Sessions"} statistic = {totalSessions} ></StatCard>
       <StatCard name={"Total Practice Time"} statistic = {2} ></StatCard>
       <StatCard name={"Average Shots Per Session"} statistic = {avgShotsInSession.toFixed(2)} ></StatCard>
       <StatCard name={"Global Balling Ranking"} statistic = {"211th"} ></StatCard>

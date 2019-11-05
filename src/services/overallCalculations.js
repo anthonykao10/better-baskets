@@ -24,4 +24,24 @@ export const userAngleAverage = function(shots) {
   return result
 }
 
+export const userArcDetermination = function(shots) {
+  let arcAvg = 0;
+  for (const i in shots) {
+    arcAvg += shots[i].arc_max
+  }
+  arcAvg = arcAvg/shots.length
+
+  console.log(arcAvg)
+
+  if (arcAvg < 560) {
+    return "Low"
+  }
+  else if (arcAvg > 620) {
+    return "High"
+  }
+  else {
+    return "Medium"
+  }
+
+}
 

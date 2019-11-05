@@ -5,9 +5,9 @@ import {
 import Shot from './ShotComponents/Shot';
 import SessionHeader from './SessionComponents/SessionHeader';
 import SessionDeleteButton from './SessionComponents/sessionDeleteButton'
-import {sessionFieldGoalCalculation, sessionAngleAverage} from '../services/sessionCalculations'
+import {sessionFieldGoalCalculation, sessionAngleAverage, sessionArcDetermination} from '../services/sessionCalculations'
 import SessionStatContainer from './SessionComponents/SessionStatContainer'
-import {userFieldGoalCalculation, userAngleAverage} from '../services/overallCalculations'
+import {userFieldGoalCalculation, userAngleAverage, userArcDetermination} from '../services/overallCalculations'
 
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -35,12 +35,15 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
     setSessionFG(successNumber + "/" + shotsBySession.length)
     setSessionFGPercentage(val)
     setSessionAngle(sessionAngleAverage(shotsBySession).toFixed(2)+ "°")
+    setArc(sessionArcDetermination(shotsBySession))
 
     let userSuccessNumber = userFieldGoalCalculation(shotData)
     let userVal = ((userSuccessNumber/shotData.length) * 100).toFixed(2) + "%"
     setUserFG(userSuccessNumber + "/" + shotData.length)
     setUserFGPercentage(userVal)
     setUserAngle(userAngleAverage(shotData).toFixed(2) + "°")
+    setUserArc(userArcDetermination(shotData))
+    
     
   }, [shotData, shotsBySession])
 
