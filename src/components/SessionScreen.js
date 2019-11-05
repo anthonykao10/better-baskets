@@ -69,12 +69,10 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
 
   const generateAllShotCoordinates = (shotsArr) => {
 
-    console.log('shotsArr:', shotsArr);
     if( shotsArr && shotsArr[0] && shotsArr[0].coordinates) {
       
       let output = [];
       for(let [shotIndex, shot] of shotsArr.entries()) {
-        console.log('sdfs', shot)
         for(let [index, coords] of shot.coordinates.entries()) {
           if(!output[index]){
             output[index] = [];
