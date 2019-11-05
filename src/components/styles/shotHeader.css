@@ -1,0 +1,17 @@
+.shotHeader {
+  background-color: white;
+  width: 80%;
+  height: auto;
+  margin: auto;
+  margin-bottom: 50px;
+  position: relative;
+  padding: 2em 2em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.videoChart {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

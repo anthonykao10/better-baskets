@@ -1,8 +1,13 @@
 
+.Carousel {
+  width: 80%;
+  margin: auto;
+}
+
 .sessionCardDiv {
   display: flex;
   justify-content: center;
-  /* align-items: center; */
+  margin-bottom: 50px;
 }
 
 .sessionCard {
@@ -14,8 +19,6 @@
   display: flex;
   justify-content: center; 
   margin-bottom: 50px;
-  /* align-items: center; */
-
 }
 
 .shotCard {

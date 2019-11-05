@@ -30,7 +30,7 @@ export default function NewSessionButton({addSession, setShotUploadComplete}) {
     !redirect ?
     <div className="newSessionButton">
       <button to="/dashboard" onClick = {submit} >
-        Create new session
+        Start New Session
       </button>
     </div>
     : <Redirect to ={redirect} />

@@ -86,7 +86,7 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
       <SessionStatContainer sessionFG={sessionFG} sessionFGPercentage={sessionFGPercentage} sessionAngle={sessionAngle} sessionArc={sessionArc} userFG={userFG} userFGPercentage={userFGPercentage} userAngle={userAngle} userArc={userArc}></SessionStatContainer>
       <br></br>
       <br></br>
-      {/* <br></br> */}
+      <div className="Carousel">
       <Carousel
         swipeable={false}
         draggable={true}
@@ -109,6 +109,7 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
       >
         {shots}
       </Carousel> 
+      </div>
     </div> 
   );
 }

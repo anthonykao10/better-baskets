@@ -11,7 +11,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  margin-left: 20px;
+  margin-left: 40px;
 }
 
 .rightContainer {
@@ -19,7 +19,7 @@
   flex-direction: row;
   align-items: center;
   margin-left: auto;
-  margin-right: 20px;
+  margin-right: 40px;
 }
 
 .user{
@@ -32,6 +32,7 @@
 
 .fas {
   color: #FA8320;
+  padding-right: 10px;
 }
 
 .nav_logo {

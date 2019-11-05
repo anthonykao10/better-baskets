@@ -1,8 +1,7 @@
 .statContainer {
-  width: 80%;
+  width: 77%;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
   /* background-color: lightgrey; */
   border-style: solid;
   border-color: #c2bebe;
@@ -10,31 +9,30 @@
   border-radius: 20px;
   display: flex;
   justify-content: space-evenly;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   flex-direction: column;
   /* box-shadow: 0 6px 15px -4px rgba(0, 0, 0, 0.15); */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
   }
 
   .statContainerTop {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    margin-bottom: 20px;
-    
-
+    justify-content: center;
+    margin-bottom: 30px;
+    margin-right: -90px;
   }
 
   .statContainerBottom {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
+    margin-right: -90px;
   }
   
   .statCard {
     /* box-shadow: 0 6px 15px -4px rgba(0, 0, 0, 0.15); */
+    margin-right: 100px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
   }
