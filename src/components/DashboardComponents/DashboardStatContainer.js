@@ -47,6 +47,7 @@ export default function DashboardStatContainer({shotData, sessionData}) {
       <StatCard name={"Global Balling Ranking"} statistic = {"211th"} ></StatCard>
       <StatCard name={"Friends Balling Ranking"} statistic = {"31st"} ></StatCard>
     </div>
+    
 
     </div>
      </>

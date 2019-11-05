@@ -3,33 +3,43 @@
 
 
 export const userFieldGoalCalculation = function(shots) {
-  console.log("OverallCalculation: ", shots)
   let count = 0;
   for (const i in shots) {
     if (shots[i].success) {
       count ++
     }
-    }
+  }
 
     return count
 }
 
 export const userAngleAverage = function(shots) {
+  // Successful shots only
   let result = 0;
+  let count = 0;
   for (const i in shots) {
-    result += shots[i].angle
+    if (shots[i].success === true) {
+      result += shots[i].angle
+      count ++
+    }
+    
   }
-  result = result/shots.length
+  result = result/count
 
   return result
 }
 
 export const userArcDetermination = function(shots) {
+  // Successful shots only
   let arcAvg = 0;
+  let count = 0;
   for (const i in shots) {
-    arcAvg += shots[i].arc_max
+    if (shots[i].success) {
+      arcAvg += shots[i].arc_max
+      count ++
+    }
   }
-  arcAvg = arcAvg/shots.length
+  arcAvg = arcAvg/count
   if (arcAvg < 560) {
     return "Low"
   }

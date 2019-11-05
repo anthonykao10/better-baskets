@@ -23,7 +23,7 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
   const successValueFunction = function() {
     // Create updated shot object
     const shotIdx = shotData.findIndex((item) => item.id === parseInt(id));
-    console.log("SHOT DATA LENGTH", shotData.length)
+    // console.log("SHOT DATA LENGTH", shotData.length)
     if (shotData.length > 0){
       setSuccessValue(shotData[shotIdx].success)
     }
@@ -45,6 +45,20 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
   // )
 
   const singleShot = shotData.find((item) => item.id === parseInt(id));
+
+  const generateShotCoordinates = (shot) => {
+    if( shot && shot.coordinates.length ) {
+      // console.log('IN GENERATE', [['x', shot.id], ...shot.coordinates]);
+      console.log('GENERATE SHOT COORDS', shot);
+      return [['x', `${shot.id}`], ...shot.coordinates];
+    }
+    return [];
+  };
+
+  const shotCoords = generateShotCoordinates(singleShot);
+
+
+  // console.log(shotCoords);
 
   //Average of shot angle (all shots from all sessions)
   const angleAverage = () => {
@@ -76,7 +90,7 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
         <ShotDeleteButton shotId={id} refreshShotData={refreshShotData}></ShotDeleteButton>
         <div className="videoChart">
         <VideoReplay {...singleShot}/>
-        <ShotChart {...singleShot}/>
+        <ShotChart coordinates={shotCoords}/>}
         </div>
       </Jumbotron>      
     </div> 

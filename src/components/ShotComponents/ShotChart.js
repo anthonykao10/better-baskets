@@ -4,17 +4,14 @@ import '../styles/ShotChart.css';
 import { whileStatement } from "@babel/types";
  
 export default function ShotChart({ coordinates }) {
-
   if (coordinates !== undefined) {
     return (
       <>
-        {/* <p>*****</p>
-        <p>Shot Chart</p> */}
         <div className="chart-container">
           <Chart
             className="shot-chart"
             chartType="LineChart"
-            data={[["x", "y"], ...coordinates]}
+            data={[...coordinates]}
             width="75%"
             height="480px"
             options={{
@@ -34,7 +31,7 @@ export default function ShotChart({ coordinates }) {
                 title: "y-axis"
               },
               legend: 'none',
-              pointSize: 5
+              pointSize: 3
             }}
           />
         </div>
@@ -44,6 +41,6 @@ export default function ShotChart({ coordinates }) {
     return (
       <>
       </>
-    )
+    );
   }
 }

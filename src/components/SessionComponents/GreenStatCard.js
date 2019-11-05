@@ -6,15 +6,14 @@ import { Card } from 'react-bootstrap';
 
 import React from "react";
  
-export default function StatCard({name, statistic}) {
+export default function GreenStatCard({name, statistic}) {
 
   return (
      <>
-      <Card style={{ width: '10rem', height: '10rem' }} className="statCard">
+      <Card border="success" style={{ width: '10rem' }} className="statCard greenStatCard">
         <Card.Header>{name}</Card.Header>
         <Card.Body>
           <Card.Title>{statistic}</Card.Title>
-
         </Card.Body>
       </Card>
       <br />

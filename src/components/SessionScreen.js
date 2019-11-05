@@ -38,14 +38,14 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
     let val = ((successNumber/shotsBySession.length) * 100).toFixed(2) + "%"
     setSessionFG(successNumber + "/" + shotsBySession.length)
     setSessionFGPercentage(val)
-    setSessionAngle(sessionAngleAverage(shotsBySession).toFixed(2)+ "°")
+    setSessionAngle(sessionAngleAverage(shotsBySession).toFixed(2))
     setArc(sessionArcDetermination(shotsBySession))
 
     let userSuccessNumber = userFieldGoalCalculation(shotData)
     let userVal = ((userSuccessNumber/shotData.length) * 100).toFixed(2) + "%"
     setUserFG(userSuccessNumber + "/" + shotData.length)
     setUserFGPercentage(userVal)
-    setUserAngle(userAngleAverage(shotData).toFixed(2) + "°")
+    setUserAngle(userAngleAverage(shotData).toFixed(2))
     setUserArc(userArcDetermination(shotData))
     
     
@@ -64,35 +64,34 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
     }
   )
 
-  console.log('[sesh screen]: shotsBySession:', shotsBySession);
-
-
   const generateAllShotCoordinates = (shotsArr) => {
-
-    console.log('shotsArr:', shotsArr);
     if( shotsArr && shotsArr[0] && shotsArr[0].coordinates) {
-      
+
       let output = [];
       for(let [shotIndex, shot] of shotsArr.entries()) {
-        console.log('sdfs', shot)
         for(let [index, coords] of shot.coordinates.entries()) {
           if(!output[index]){
             output[index] = [];
           }
-          output[index][shotIndex]= coords[1];
+          output[index][shotIndex] = coords[1];
         }
       }
+      output = output.map((arr, i) => [i, ...arr]);
+
+      // get shot id's:
+      const shotIDs = shotsArr.map(shot => `${shot.id}`);
+      shotIDs.unshift('x');
+
+      output = [shotIDs, ...output];
       return output;
-      
     }
+    
     return [];
-  
   };
 
-  console.log('generateAllShotCoords:', generateAllShotCoordinates(shotsBySession));
+  // console.log('generateAllShotCoords:', generateAllShotCoordinates(shotsBySession));
 
   const coords = generateAllShotCoordinates(shotsBySession);
-
 
   //find information for the single session
   const singleSession = sessionData.find((item) => item.id === parseInt(id));
@@ -122,6 +121,7 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
       <SessionDeleteButton sessionId={id} refreshShotData={refreshShotData} refreshSessionData={refreshSessionData}></SessionDeleteButton>
       <br></br>
       <br></br>
+      <ShotChart coordinates={coords}/>
       <SessionStatContainer sessionFG={sessionFG} sessionFGPercentage={sessionFGPercentage} sessionAngle={sessionAngle} sessionArc={sessionArc} userFG={userFG} userFGPercentage={userFGPercentage} userAngle={userAngle} userArc={userArc}></SessionStatContainer>
       <br></br>
       <br></br>
@@ -129,7 +129,6 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
       <Carousel
         swipeable={false}
         draggable={true}
-        // showDots={true}
         responsive={responsive}
         ssr={true} // means to render carousel on server-side.
         infinite={true}
