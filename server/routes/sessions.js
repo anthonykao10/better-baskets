@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {getSessionData, createNewSession, deleteSession} = require('../models/sessions');
+const {getSessionData, createNewSession, updateSession, deleteSession} = require('../models/sessions');
 
 router.get('/', (req, res) => {});
 router.get('/:id', (req, res) => {});
@@ -19,9 +19,15 @@ router.post('/:session_id/delete', (req, res) => {
   })
 
 });
-
-router.put('/:session_id/shots/:id', (req, res) => {});
 router.delete('/:session_id/shots/:id', (req, res) => {});
+
+router.put('/:session_id/end_session', (req, res) => {
+  console.log('session end route req.body:', req.body)
+  const id = (req.params.session_id);
+  updateSession(id)
+    .then(() => res.end())
+    .catch((err) => console.log(err));
+});
 
 router.get('/:user_id/data', (req, res) => {
   getSessionData(req.params.user_id)
