@@ -27,7 +27,7 @@ export default function ShotChart({ coordinates }) {
                 textPosition: 'none'
               },
               legend: 'none',
-              pointSize: 5
+              pointSize: 3
             }}
           />
         </div>
