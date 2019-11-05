@@ -17,7 +17,7 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
   let { id } = useParams();
 
   useEffect(() => {  
-    successValueFunction()
+    successValueFunction();
   }, [shotData])
 
   const successValueFunction = function() {
@@ -30,8 +30,8 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
     else {
       return
     }
-}
-  
+  }
+
   
   // const shots = shotData.map(
   //   shot => {
@@ -71,7 +71,7 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
       <ShotDeleteButton shotId={id} refreshShotData={refreshShotData}></ShotDeleteButton>
       <h3>success:</h3>
       <ShotSuccessButton shotId={id} updateSuccess={updateSuccess} successValue = {successValue} setSuccessValue={setSuccessValue} refreshShotData={refreshShotData}/>
-      <ShotChart/>
+      <ShotChart {...singleShot}/>
     </div> 
   );
 }
