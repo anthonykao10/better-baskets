@@ -77,7 +77,7 @@ function AuthenticatedRouter(props) {
     })
   }
 
-  console.log('shotData:', shotData);
+  // console.log('shotData:', shotData);
 
   return (
     <div>

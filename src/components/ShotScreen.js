@@ -17,6 +17,8 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
   let { id } = useParams();
 
   useEffect(() => {  
+    console.log("SOMETHING")
+
     successValueFunction();
   }, [shotData])
 
@@ -57,9 +59,6 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
 
   const shotCoords = generateShotCoordinates(singleShot);
 
-
-  // console.log(shotCoords);
-
   //Average of shot angle (all shots from all sessions)
   const angleAverage = () => {
     let sum = 0
@@ -75,7 +74,6 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
 
   const shotAngleAverage = angleAverage();
 
-
   return (
     <div>
       <Jumbotron className="shotHeader">
@@ -83,15 +81,18 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
         <Button variant="primary" onClick={() => window.history.back()}>Back to Session</Button>
         <br></br>
         <br></br>
-        <h3>success:</h3>
+        <h3>Success:</h3>
         <ShotSuccessButton shotId={id} updateSuccess={updateSuccess} successValue = {successValue} setSuccessValue={setSuccessValue} refreshShotData={refreshShotData}/>
         <br></br>
         <br></br>
         <ShotDeleteButton shotId={id} refreshShotData={refreshShotData}></ShotDeleteButton>
+        <br></br>
+        <br></br>
         <div className="videoChart">
-        <VideoReplay {...singleShot}/>
-        <ShotChart coordinates={shotCoords}/>}
+        {singleShot && <VideoReplay {...singleShot}/>}
+        <ShotChart coordinates={shotCoords}/>
         </div>
+
       </Jumbotron>      
     </div> 
   );
