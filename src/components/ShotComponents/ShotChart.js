@@ -12,8 +12,8 @@ export default function ShotChart({ coordinates }) {
             className="shot-chart"
             chartType="LineChart"
             data={[...coordinates]}
-            width="75%"
-            height="480px"
+            width="642px"
+            height="482px"
             options={{
               curveType: 'function',
               backgroundColor: '#f1f8e9',
