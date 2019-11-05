@@ -50,7 +50,7 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
   const generateShotCoordinates = (shot) => {
     if( shot && shot.coordinates.length ) {
       // console.log('IN GENERATE', [['x', shot.id], ...shot.coordinates]);
-      console.log('GENERATE SHOT COORDS', shot);
+      // console.log('GENERATE SHOT COORDS', shot);
       return [['x', `${shot.id}`], ...shot.coordinates];
     }
     return [];
@@ -89,7 +89,7 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
       <ShotDeleteButton shotId={id} refreshShotData={refreshShotData}></ShotDeleteButton>
       <h3>success:</h3>
       <ShotSuccessButton shotId={id} updateSuccess={updateSuccess} successValue = {successValue} setSuccessValue={setSuccessValue} refreshShotData={refreshShotData}/>
-      <ShotChart coordinates={shotCoords}/>}
+      <ShotChart coordinates={shotCoords}/>
     </div> 
   );
 }
