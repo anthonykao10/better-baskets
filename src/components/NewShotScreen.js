@@ -23,7 +23,7 @@ const videoJsOptions = {
   }
 };
 
-export default function NewShotScreen({addShot, refreshShotData, shotUploadComplete}) {
+export default function NewShotScreen({addShot, refreshShotData, refreshSessionData, shotUploadComplete}) {
   const [finishShot, setFinishShot] = useState(false);
 
   
@@ -33,8 +33,8 @@ export default function NewShotScreen({addShot, refreshShotData, shotUploadCompl
       <Link to="/dashboard">Dashboard</Link><br></br>
       <MediaRecorder { ...videoJsOptions } refreshShotData={refreshShotData}/>
       {shotUploadComplete ? 
-      <EndSessionButton addShot={addShot} finishShot ={finishShot} setFinishShot = {setFinishShot}></EndSessionButton> 
-      : <DashboardPageButton finishShot ={finishShot} setFinishShot = {setFinishShot}></DashboardPageButton>}
+      <EndSessionButton addShot={addShot} finishShot={finishShot} setFinishShot={setFinishShot} refreshSessionData={refreshSessionData}></EndSessionButton> 
+      : <DashboardPageButton finishShot={finishShot} setFinishShot={setFinishShot}></DashboardPageButton>}
     </div> 
   );
 }

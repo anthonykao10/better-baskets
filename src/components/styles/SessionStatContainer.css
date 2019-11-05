@@ -1,5 +1,20 @@
+
+@media only screen and (min-width: 1600px) {
+
+  .statContainer {
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 1599px) {
+
+  .statContainer {
+    width: 90%;
+  }
+}
+
 .statContainer {
-  width: 77%;
+  /* width: 90%; */
   display: block;
   margin: auto;
   /* background-color: lightgrey; */

@@ -28,8 +28,6 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
   console.log('[sesh screen]: shotData:', shotData);
   console.log('[sesh screen]: sessionData:', shotData);
 
-
-
   //find shots by the session and iterate
   const shotsBySession = shotData.filter((item) => item.session_id === parseInt(id));
 
@@ -97,10 +95,15 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
   const singleSession = sessionData.find((item) => item.id === parseInt(id));
 
   const responsive = {
-    desktop: {
+    desktop_wide: {
       breakpoint: { max: 3000, min: 1024 },
       items: 5,
       slidesToSlide: 5, // optional, default to 1.
+    },
+    desktop: {
+      breakpoint: { max: 1599, min: 1025 },
+      items: 4,
+      slidesToSlide: 4, // optional, default to 1.
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -127,10 +130,8 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
       <br></br>
       <div className="Carousel">
       <Carousel
-        swipeable={false}
-        draggable={true}
+        swipeable={true}
         responsive={responsive}
-        ssr={true} // means to render carousel on server-side.
         infinite={true}
         // autoPlay={this.props.deviceType !== "mobile" ? true : false}
         // autoPlay={true}
