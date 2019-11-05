@@ -3,17 +3,14 @@ import { Chart } from "react-google-charts";
 import '../styles/ShotChart.css';
  
 export default function ShotChart({ coordinates }) {
-
   if (coordinates !== undefined) {
     return (
       <>
-        <p>*****</p>
-        <p>Shot Chart</p>
         <div className="chart-container">
           <Chart
             className="shot-chart"
             chartType="LineChart"
-            data={[["x", "y"], ...coordinates]}
+            data={[...coordinates]}
             width="75%"
             height="480px"
             options={{
@@ -40,6 +37,6 @@ export default function ShotChart({ coordinates }) {
     return (
       <>
       </>
-    )
+    );
   }
 }

@@ -64,35 +64,34 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
     }
   )
 
-  console.log('[sesh screen]: shotsBySession:', shotsBySession);
-
-
   const generateAllShotCoordinates = (shotsArr) => {
-
-    console.log('shotsArr:', shotsArr);
     if( shotsArr && shotsArr[0] && shotsArr[0].coordinates) {
-      
+
       let output = [];
       for(let [shotIndex, shot] of shotsArr.entries()) {
-        console.log('sdfs', shot)
         for(let [index, coords] of shot.coordinates.entries()) {
           if(!output[index]){
             output[index] = [];
           }
-          output[index][shotIndex]= coords[1];
+          output[index][shotIndex] = coords[1];
         }
       }
+      output = output.map((arr, i) => [i, ...arr]);
+
+      // get shot id's:
+      const shotIDs = shotsArr.map(shot => `${shot.id}`);
+      shotIDs.unshift('x');
+
+      output = [shotIDs, ...output];
       return output;
-      
     }
+    
     return [];
-  
   };
 
-  console.log('generateAllShotCoords:', generateAllShotCoordinates(shotsBySession));
+  // console.log('generateAllShotCoords:', generateAllShotCoordinates(shotsBySession));
 
   const coords = generateAllShotCoordinates(shotsBySession);
-
 
   //find information for the single session
   const singleSession = sessionData.find((item) => item.id === parseInt(id));
@@ -120,6 +119,7 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
       <h3>Session { id }</h3>
       <SessionHeader {...singleSession}/>
       <SessionDeleteButton sessionId={id} refreshShotData={refreshShotData} refreshSessionData={refreshSessionData}></SessionDeleteButton>
+      <ShotChart coordinates={coords}/>
       <SessionStatContainer sessionFG={sessionFG} sessionFGPercentage={sessionFGPercentage} sessionAngle={sessionAngle} sessionArc={sessionArc} userFG={userFG} userFGPercentage={userFGPercentage} userAngle={userAngle} userArc={userArc}></SessionStatContainer>
       <br></br>
       <br></br>
