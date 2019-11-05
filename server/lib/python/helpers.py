@@ -82,6 +82,6 @@ def formatCoordinates(arc, start, end):
     end = start
     start = temp
   coords = []
-  for i in range(start, end):
+  for i in range(start, end, 2):
     coords.append( [i, f(i, arc[2], arc[1], arc[0])] )
   return coords
