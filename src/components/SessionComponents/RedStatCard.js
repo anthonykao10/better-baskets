@@ -10,7 +10,7 @@ export default function RedStatCard({name, statistic}) {
 
   return (
      <>
-      <Card border="danger" style={{ width: '10rem' }} className="statCard">
+      <Card border="danger" style={{ width: '10rem' }} className="statCard redStatCard">
         <Card.Header>{name}</Card.Header>
         <Card.Body>
           <Card.Title>{statistic}</Card.Title>
