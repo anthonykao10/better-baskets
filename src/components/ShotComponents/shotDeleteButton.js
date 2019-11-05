@@ -3,6 +3,8 @@ import axios from "axios";
 import {
   Redirect
 } from 'react-router-dom'
+import { Button } from 'react-bootstrap';
+
 
 export default function ShotDeleteButton({shotId, refreshShotData}) {
   const [redirect, setRedirect] = useState(false);
@@ -20,9 +22,9 @@ export default function ShotDeleteButton({shotId, refreshShotData}) {
   return (
     !redirect ?
     <div className="">
-      <button onClick = {submit}>
+      <Button onClick = {submit}>
         Delete shot
-      </button>
+      </Button>
     </div>
       : 
       <Redirect to={{pathname: `/`}}/>

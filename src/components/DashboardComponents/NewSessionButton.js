@@ -6,6 +6,8 @@ import {
   Redirect,
   Link
 } from 'react-router-dom'
+import { Button } from 'react-bootstrap';
+
 
 export default function NewSessionButton({addSession, setShotUploadComplete}) {
   const [redirect, setRedirect] = useState(false);
@@ -27,11 +29,12 @@ export default function NewSessionButton({addSession, setShotUploadComplete}) {
   }
 
   return (
+
     !redirect ?
     <div className="newSessionButton">
-      <button to="/dashboard" onClick = {submit} >
+      <Button variant="primary" to="/dashboard" onClick = {submit} >
         Create new session
-      </button>
+      </Button>
     </div>
     : <Redirect to ={redirect} />
     

@@ -1,5 +1,7 @@
 
 import React, {useState} from "react";
+import { Button } from 'react-bootstrap';
+
 
 import {
   Redirect
@@ -17,9 +19,9 @@ export default function DashboardPageButton({finishShot}) {
   return (
     !redirect ?
     <div className="endSessionButton">
-      <button onClick = {()=> submit()}>
+      <Button onClick = {()=> submit()}>
         Back to Dashboard
-      </button>
+      </Button>
     </div>
     : 
     <Redirect to={redirect}/>

@@ -35,6 +35,16 @@
   
   .statCard {
     /* box-shadow: 0 6px 15px -4px rgba(0, 0, 0, 0.15); */
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
+
+  }
+
+  .redStatCard {
+    border-width: 2px;
+  }
+
+  .greenStatCard {
+    border-width: 2px;
   }

@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from "axios";
+import { Button } from 'react-bootstrap';
+
 
 export default function ShotSuccessButton({shotId, updateSuccess, setSuccessValue, successValue, refreshShotData}) {
 
@@ -17,9 +19,9 @@ export default function ShotSuccessButton({shotId, updateSuccess, setSuccessValu
   
   return (
     <div className="">
-      <button onClick = {submit}>
+      <Button onClick = {submit}>
         {!successValue ? '+' : '-'}
-      </button>
+      </Button>
     </div>
   );
 };
