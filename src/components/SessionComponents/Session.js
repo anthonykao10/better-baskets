@@ -30,7 +30,7 @@ export default function Session({sessionID, date, shotData}) {
 
   const sessionSuccessPercent = successPercent();
 
-  const dateString= () => {
+  const dateString = () => {
    return date.slice(0, 10);   
   }
 

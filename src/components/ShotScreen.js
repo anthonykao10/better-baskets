@@ -6,6 +6,7 @@ import {
 import ShotSuccessButton from "./ShotComponents/ShotSuccessButton";
 import ShotDeleteButton from "./ShotComponents/shotDeleteButton";
 import VideoReplay from './ShotComponents/videoReplayComponent';
+import ShotChart from './ShotComponents/ShotChart';
 import { Jumbotron, Button } from 'react-bootstrap';
 import "./styles/backButton.css";
 import "./styles/shotHeader.css";
@@ -31,7 +32,6 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
     }
   }
 
-  
   // const shots = shotData.map(
   //   shot => {
   //     return (

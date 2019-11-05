@@ -1,14 +1,15 @@
 import React from "react";
 import { Chart } from "react-google-charts";
 import '../styles/ShotChart.css';
+import { whileStatement } from "@babel/types";
  
 export default function ShotChart({ coordinates }) {
 
   if (coordinates !== undefined) {
     return (
       <>
-        <p>*****</p>
-        <p>Shot Chart</p>
+        {/* <p>*****</p>
+        <p>Shot Chart</p> */}
         <div className="chart-container">
           <Chart
             className="shot-chart"
@@ -20,14 +21,17 @@ export default function ShotChart({ coordinates }) {
               curveType: 'function',
               backgroundColor: '#f1f8e9',
               chartArea: { width: '70%' },
+              title: "chart title",
               hAxis: {
                 minValue: 0,
                 maxValue: 1280,
-                textPosition: 'none'
+                textPosition: 'none',
+                title: 'x-axis'
               },
               vAxis: {
                 maxValue: 720,
-                textPosition: 'none'
+                textPosition: 'none',
+                title: "y-axis"
               },
               legend: 'none',
               pointSize: 5
