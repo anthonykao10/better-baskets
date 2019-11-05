@@ -123,13 +123,12 @@ x_vals = helpers.getXVals(output)
 y_vals = helpers.getYVals(output, 720)
 arc = helpers.getArc(x_vals, y_vals)
 
+# generate formatted coordinates
+output = helpers.formatCoordinates(arc, 10, 1100)
+
 if arc is not None:
 	arcMax = helpers.getArcMax( arc[2], arc[1], arc[0] )
 	angle = helpers.getArcAngle( arc[2], arc[1], arc[0] )
-
-	# generate new coordinates
-	# output = helpers.formatCoordinates(arc, output[0][0], output[len(output) - 1][0])
-	output = helpers.formatCoordinates(arc, 10, 1100)
 
 	# if helpers.checkSuccess(980, 1020, 280, 320, 720, arc):
 	# 	success = True	

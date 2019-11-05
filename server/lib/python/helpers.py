@@ -83,5 +83,14 @@ def formatCoordinates(arc, start, end):
     start = temp
   coords = []
   for i in range(start, end, 1):
-    coords.append( [i, f(i, arc[2], arc[1], arc[0])] )
+    if arc is None:
+      coords.append([i, 0])
+      continue
+  
+    y = f(i, arc[2], arc[1], arc[0])
+    # add coord if within screen bounds
+    if (y < 900) and (y > 0):
+      coords.append([i, y])
+    else:
+      coords.append([i, 0])
   return coords
