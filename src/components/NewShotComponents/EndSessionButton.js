@@ -6,7 +6,7 @@ import {Redirect} from "react-router-dom";
 import { Button } from 'react-bootstrap';
 
 let sessionID;
-export default function EndSessionButton({addShot, finishShot, setFinishShot}) {
+export default function EndSessionButton({addShot, finishShot, refreshSessionData, setFinishShot}) {
 
   sessionID = sessionID || cookies.get('sessionID');
 
@@ -14,11 +14,14 @@ export default function EndSessionButton({addShot, finishShot, setFinishShot}) {
     e.preventDefault()
     axios.put(`/sessions/${sessionID}/end_session`)
       .then(() => console.log("ended session"))
+      .then(() => refreshSessionData())
+      .then(() => cookies.remove('sessionID'))
+      .then(() => setFinishShot(true))
       .catch((err) => {
         console.log(err);
       })
-    cookies.remove('sessionID')
-    setFinishShot(true);  
+    // cookies.remove('sessionID')
+    // setFinishShot(true);  
   }
  
   return (

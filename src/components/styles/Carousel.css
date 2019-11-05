@@ -1,6 +1,20 @@
 
+@media only screen and (min-width: 1600px) {
+
+  .Carousel {
+    width: 77%;
+  }
+}
+
+@media only screen and (max-width: 1599px) {
+
+  .Carousel {
+    width: 90%;
+  }
+}
+
 .Carousel {
-  width: 80%;
+  /* width: 95%; */
   margin: auto;
 }
 
