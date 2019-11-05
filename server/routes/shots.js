@@ -50,11 +50,11 @@ router.post('/new', (req, res) => {
 
 router.put('/:id/success', (req, res) => {
   console.log('shots route req.body:', req.body)
-  shotData = req.body.success;
-  shotID = req.params.id;
+  let shotData = req.body.success;
+  let shotID = req.params.id;
 
   updateShotSuccess(shotData, shotID)
-    .then((response) => res.end())
+    .then(() => res.end())
     .catch((err) => console.log(err));
 });
 

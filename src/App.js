@@ -21,7 +21,7 @@ import {
 
 function App() {
   const [cookieValue, setCookieValue] = useState(cookies.get("userID"));
-  
+
   const isLoggedIn = function() {
     let cookie = cookies.get("userID")
     setCookieValue(cookie)
@@ -55,6 +55,7 @@ function AuthenticatedRouter(props) {
     addSession,
     shotUploadComplete,
     setShotUploadComplete
+
   } = useApplicationData(cookies.get("userID"));
 
   function refreshShotData() {
@@ -81,7 +82,8 @@ function AuthenticatedRouter(props) {
   return (
     <div>
       <Router>
-          <NavBar onLogout = {props.onLogout} currentUser={currentUser}/> 
+          <NavBar onLogout = {props.onLogout} currentUser={currentUser} cookieValue addSession={addSession} setShotUploadComplete={setShotUploadComplete}/> 
+        <div className="mainContainer">
         <Switch>
           <Route exact path="/">
             <DashboardScreen userData={userData} sessionData={sessionData} shotData={shotData} addSession={addSession} setShotUploadComplete={setShotUploadComplete}/>
@@ -102,6 +104,7 @@ function AuthenticatedRouter(props) {
             <Redirect to='/'/>
           </Route>
         </Switch>
+        </div>
       </Router>
     </div>
   )
@@ -109,8 +112,10 @@ function AuthenticatedRouter(props) {
 
 function UnauthenticatedRouter(props) {
   return (
+    
     <Router>
       <NavBar /> 
+      <div className="mainContainer">
       <Switch>
         <Route exact path="/">
           <LoginScreen onLogin = {props.onLogin}/>
@@ -119,7 +124,8 @@ function UnauthenticatedRouter(props) {
           <Redirect from='*' to='/' />
         </Route> 
       </Switch>
-    </Router>
+      </div>
+    </Router>  
   )
 }
 

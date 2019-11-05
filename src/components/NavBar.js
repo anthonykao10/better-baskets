@@ -5,21 +5,31 @@ import {
   Link
 } from 'react-router-dom'
 import './styles/Nav.css';
+import { whileStatement } from '@babel/types';
 
-export default function NavBar({ onLogout, currentUser }) {
+export default function NavBar({ onLogout, currentUser, cookieValue }) {
   // {shotUploadComplete ? <EndSessionButton addShot={addShot}></EndSessionButton> : <DashboardPageButton></DashboardPageButton>}
 // {cookies.get()}
+
+  const sessionCookie = cookies.get("sessionID");
+
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar className="navBar" expand="lg">
     <div className="leftContainer">
-      <i className="fas fa-basketball-ball fa-2x leftItem"></i>
-      <Link to="/dashboard" className="nav_logo leftItem">Better Baskets</Link>
+      <i className="fas fa-basketball-ball fa-3x"></i>
+      <Link to="/dashboard" className="nav_logo">BetterBaskets</Link>
     </div>
-    <Link to="/new_shot">New Shot</Link>
-    <Link to="/">Login</Link>
-    <Link to="/" onClick = {onLogout}>Logout</Link>
-    <h5>{currentUser}</h5>
-    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
+    {/* <div className="centerContainer">
+      {sessionCookie && <Link to="new_shot">Add Shot</Link>}  
+    </div> */}
+
+    <div className="rightContainer">
+    {!cookieValue && <strong><Link to="/">Login</Link></strong>}
+    {cookieValue && <p className="user">{currentUser} |</p>}
+    {cookieValue && <strong><Link to="/" onClick = {onLogout}>Logout</Link></strong>}
+    </div>
+    {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="mr-auto">
 
@@ -31,7 +41,7 @@ export default function NavBar({ onLogout, currentUser }) {
         </NavDropdown>
 
       </Nav>
-    </Navbar.Collapse>
+    </Navbar.Collapse> */}
   </Navbar>
   );
 }

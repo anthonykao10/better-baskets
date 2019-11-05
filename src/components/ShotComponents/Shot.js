@@ -2,15 +2,25 @@ import React from "react";
 import {
   Link
 } from 'react-router-dom'
+import { Card } from 'react-bootstrap';
+import '../styles/Carousel.css';
  
-export default function Shot({shotID, shotAngle}) {
+export default function Shot({shotID, shotAngle, success}) {
 
   return (
-    <div>
-      <p>Shot: {shotID}</p>
-      <p>Angle:{shotAngle}</p>
-      <Link to={`/shot/${shotID}`}>Shot Link</Link>
-      <p>*****</p>
+    <div className="shotCardDiv">
+      <Card bg="light" style={{ width: '16rem' }} className="shotCard">
+        {/* <Card.Header></Card.Header> */}
+        <Card.Body>
+        <strong><Link to={`/shot/${shotID}`}>Shot: {shotID}</Link></strong>
+          {/* <Card.Title>Title?</Card.Title> */}
+          <Card.Text>
+          <br/>
+          {success && <i className="fas fa-trophy fa-3x"></i>}
+          {!success && <i className="far fa-frown-open fa-3x"></i>}
+          </Card.Text>
+        </Card.Body>
+      </Card>
     </div> 
   );
 }

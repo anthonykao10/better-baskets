@@ -7,23 +7,14 @@ CREATE TABLE users (
   username VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
-  picture VARCHAR(255),
-  avg_angle FLOAT(2) DEFAULT NULL,
-  avg_arc_max JSON DEFAULT NULL,
-  avg_arc JSON DEFAULT NULL,
-  avg_sucess FLOAT(2) DEFAULT NUll
+  picture VARCHAR(255)
 );
 
 CREATE TABLE sessions (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  start_time TIME DEFAULT NOW(),
-  end_time TIME,
-  date DATE , -- DATE: Stores date in the format YYYY-MM-DD
-  avg_angle FLOAT(2) DEFAULT NULL,
-  avg_arc_max JSON DEFAULT NULL,
-  avg_arc JSON DEFAULT NULL,
-  avg_sucess FLOAT(2) DEFAULT NUll
+  start_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  end_time TIMESTAMP
 );
 
 CREATE TABLE shots (
@@ -34,7 +25,7 @@ CREATE TABLE shots (
   coordinates JSON,
   video_reference VARCHAR(255) NOT NULL,
   distance FLOAT(2),
-  success BOOLEAN DEFAULT TRUE
+  success BOOLEAN DEFAULT FALSE
 );
 
 

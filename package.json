@@ -11,9 +11,11 @@
     "js-cookie": "^2.2.1",
     "react": "^16.11.0",
     "react-bootstrap": "^1.0.0-beta.14",
+    "react-canvas-js": "^1.0.1",
     "react-dom": "^16.11.0",
     "react-google-charts": "^3.0.15",
     "react-media-recorder": "^0.7.1",
+    "react-multi-carousel": "^2.4.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "videojs-record": "^3.8.0"
@@ -48,5 +50,5 @@
     "@storybook/react": "^5.2.5",
     "react-app-rewired": "^2.1.4"
   },
-  "proxy": "http://localhost:8002"
+  "proxy": "http://localhost:8080"
 }
