@@ -16,7 +16,7 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
   let { id } = useParams();
 
   useEffect(() => {  
-    successValueFunction()
+    successValueFunction();
   }, [shotData])
 
   const successValueFunction = function() {
@@ -29,8 +29,8 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
     else {
       return
     }
-}
-  
+  }
+
   
   // const shots = shotData.map(
   //   shot => {
@@ -76,9 +76,9 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
         <ShotDeleteButton shotId={id} refreshShotData={refreshShotData}></ShotDeleteButton>
         <div className="videoChart">
         <VideoReplay {...singleShot}/>
+        <ShotChart {...singleShot}/>
         </div>
       </Jumbotron>      
-            
     </div> 
   );
 }

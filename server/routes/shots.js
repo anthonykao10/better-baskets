@@ -1,7 +1,7 @@
 
 const path = require('path')
 const router = require('express').Router();
-const fileUpload = require('../util/fileUpload')
+const fileUpload = require('../util/fileUpload');
 const { spawn } = require('child_process');
 const {getShotData, insertShot, updateShotSuccess, deleteShot} = require('../models/shots');
 
@@ -12,10 +12,15 @@ router.post('/new', (req, res) => {
       const child = spawn('python', [path.resolve(__dirname, '../lib/python/track.py'), '-v', path.resolve(__dirname, '../videos/downloads/unprocessedVideo.webm')]);
 
 
+      let scriptData = '';
       child.stdout.on('data', (data) => {
-        let pythonData = JSON.parse(data)
+        scriptData += data;
+      });
 
- 
+      child.stdout.on('end', () => {
+        let pythonData = JSON.parse(scriptData);
+        console.log('PYTHON DATA:', pythonData);
+
         const insertShotData = {
           session_id: req.body.session_id,
           angle: pythonData.angle,
@@ -30,7 +35,6 @@ router.post('/new', (req, res) => {
         .catch((err) => {
           console.log(err)
         })
-
       });
     
       child.on('close', (code) => {

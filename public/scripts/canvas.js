@@ -1,10 +1,8 @@
-console.log('HI');
-
-let c = document.getElementById("c");
+let canvas = document.getElementById("c");
 let ctx = c.getContext("2d");
 
-c.width = c.scrollWidth;
-c.height = c.scrollHeight;
+canvas.width = canvas.scrollWidth;
+canvas.height = canvas.scrollHeight;
 
 
 ctx.strokeStyle = "green";

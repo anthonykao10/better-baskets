@@ -5,9 +5,10 @@ import {
 import Shot from './ShotComponents/Shot';
 import SessionHeader from './SessionComponents/SessionHeader';
 import SessionDeleteButton from './SessionComponents/sessionDeleteButton'
-import {sessionFieldGoalCalculation, sessionAngleAverage} from '../services/sessionCalculations'
+import ShotChart from "./ShotComponents/ShotChart";
+import {sessionFieldGoalCalculation, sessionAngleAverage, sessionArcDetermination} from '../services/sessionCalculations'
 import SessionStatContainer from './SessionComponents/SessionStatContainer'
-import {userFieldGoalCalculation, userAngleAverage} from '../services/overallCalculations'
+import {userFieldGoalCalculation, userAngleAverage, userArcDetermination} from '../services/overallCalculations'
 
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -24,6 +25,9 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
   const [userArc, setUserArc] = useState("High");
 
   let { id } = useParams();
+  console.log('[sesh screen]: shotData:', shotData);
+  console.log('[sesh screen]: sessionData:', shotData);
+
 
 
   //find shots by the session and iterate
@@ -35,12 +39,15 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
     setSessionFG(successNumber + "/" + shotsBySession.length)
     setSessionFGPercentage(val)
     setSessionAngle(sessionAngleAverage(shotsBySession).toFixed(2)+ "°")
+    setArc(sessionArcDetermination(shotsBySession))
 
     let userSuccessNumber = userFieldGoalCalculation(shotData)
     let userVal = ((userSuccessNumber/shotData.length) * 100).toFixed(2) + "%"
     setUserFG(userSuccessNumber + "/" + shotData.length)
     setUserFGPercentage(userVal)
     setUserAngle(userAngleAverage(shotData).toFixed(2) + "°")
+    setUserArc(userArcDetermination(shotData))
+    
     
   }, [shotData, shotsBySession])
 
@@ -56,6 +63,36 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
       );
     }
   )
+
+  console.log('[sesh screen]: shotsBySession:', shotsBySession);
+
+
+  const generateAllShotCoordinates = (shotsArr) => {
+
+    console.log('shotsArr:', shotsArr);
+    if( shotsArr && shotsArr[0] && shotsArr[0].coordinates) {
+      
+      let output = [];
+      for(let [shotIndex, shot] of shotsArr.entries()) {
+        console.log('sdfs', shot)
+        for(let [index, coords] of shot.coordinates.entries()) {
+          if(!output[index]){
+            output[index] = [];
+          }
+          output[index][shotIndex]= coords[1];
+        }
+      }
+      return output;
+      
+    }
+    return [];
+  
+  };
+
+  console.log('generateAllShotCoords:', generateAllShotCoordinates(shotsBySession));
+
+  const coords = generateAllShotCoordinates(shotsBySession);
+
 
   //find information for the single session
   const singleSession = sessionData.find((item) => item.id === parseInt(id));
@@ -112,4 +149,5 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
       </div>
     </div> 
   );
+
 }

@@ -1,0 +1,8 @@
+.chart-container {
+  display: flex;
+  justify-content: center;
+}
+
+.shot-chart {
+  margin: 0 auto;
+}
