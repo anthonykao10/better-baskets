@@ -3,8 +3,9 @@ import React, {useState} from "react";
 import cookies from 'js-cookie'
 import axios from "axios";
 import {Redirect} from "react-router-dom";
+import { Button } from 'react-bootstrap';
 
-// console.log('setState:', useState);
+
 let sessionID;
 export default function EndSessionButton({addShot, finishShot, setFinishShot}) {
 
@@ -24,9 +25,9 @@ export default function EndSessionButton({addShot, finishShot, setFinishShot}) {
   return (
     !finishShot ?
     <div className="endSessionButton">
-      <button onClick = {submit}>
+      <Button onClick = {submit}>
         End session
-      </button>
+      </Button>
     </div>
     : 
     <Redirect to={{pathname: `/session/${sessionID}`}}/>

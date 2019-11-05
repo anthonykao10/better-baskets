@@ -10,8 +10,6 @@ import React from "react";
  
 export default function SessionStatContainer({sessionAngle, sessionFG, sessionFGPercentage, sessionArc, userFG, userFGPercentage, userAngle, userArc}) {
 
-console.log(sessionFGPercentage, userFGPercentage, "SDFADSFASDF")
-
 
   return (
      <>

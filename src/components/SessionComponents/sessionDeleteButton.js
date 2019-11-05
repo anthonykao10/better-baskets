@@ -3,6 +3,8 @@ import axios from "axios";
 import {
   Redirect
 } from 'react-router-dom'
+import { Button } from 'react-bootstrap';
+
 
 export default function SessionDeleteButton({sessionId, refreshShotData, refreshSessionData}) {
   const [redirect, setRedirect] = useState(false);
@@ -24,9 +26,9 @@ export default function SessionDeleteButton({sessionId, refreshShotData, refresh
   return (
     !redirect ?
     <div className="">
-      <button onClick = {submit}>
+      <Button onClick = {submit}>
         Delete session
-      </button>
+      </Button>
     </div>
       : 
       <Redirect to={{pathname: `/`}}/>
