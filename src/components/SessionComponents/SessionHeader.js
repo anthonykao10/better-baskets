@@ -1,7 +1,7 @@
 import React from "react";
  
-export default function SessionHeader({date}) {
-
+export default function SessionHeader({date, coords}) {
+let coordstring = JSON.stringify(coords);
   return (
     <div>
       <p>*****</p>
