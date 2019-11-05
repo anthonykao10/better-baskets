@@ -23,7 +23,7 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
   const successValueFunction = function() {
     // Create updated shot object
     const shotIdx = shotData.findIndex((item) => item.id === parseInt(id));
-    console.log("SHOT DATA LENGTH", shotData.length)
+    // console.log("SHOT DATA LENGTH", shotData.length)
     if (shotData.length > 0){
       setSuccessValue(shotData[shotIdx].success)
     }
@@ -47,6 +47,20 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
 
   const singleShot = shotData.find((item) => item.id === parseInt(id));
 
+  const generateShotCoordinates = (shot) => {
+    if( shot && shot.coordinates.length ) {
+      // console.log('IN GENERATE', [['x', shot.id], ...shot.coordinates]);
+      console.log('GENERATE SHOT COORDS', shot);
+      return [['x', `${shot.id}`], ...shot.coordinates];
+    }
+    return [];
+  };
+
+  const shotCoords = generateShotCoordinates(singleShot);
+
+
+  // console.log(shotCoords);
+
   //Average of shot angle (all shots from all sessions)
   const angleAverage = () => {
     let sum = 0
@@ -65,7 +79,7 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
 
   return (
     <div>
-      <h3>Shot {id} </h3>
+      <h3>Shot {id} </h3> 
       <div className="backButton">
         <i className="fas fa-arrow-left fa-3x" onClick={() => window.history.back()}></i><p>Back to Session</p>
       </div>
@@ -75,7 +89,7 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
       <ShotDeleteButton shotId={id} refreshShotData={refreshShotData}></ShotDeleteButton>
       <h3>success:</h3>
       <ShotSuccessButton shotId={id} updateSuccess={updateSuccess} successValue = {successValue} setSuccessValue={setSuccessValue} refreshShotData={refreshShotData}/>
-      <ShotChart {...singleShot}/>
+      <ShotChart coordinates={shotCoords}/>}
     </div> 
   );
 }
