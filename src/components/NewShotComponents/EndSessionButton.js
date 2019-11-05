@@ -5,7 +5,6 @@ import axios from "axios";
 import {Redirect} from "react-router-dom";
 import { Button } from 'react-bootstrap';
 
-
 let sessionID;
 export default function EndSessionButton({addShot, finishShot, setFinishShot}) {
 

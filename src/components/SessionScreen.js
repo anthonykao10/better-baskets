@@ -116,18 +116,19 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
 
   return (
     <div>
-      <h3>Session { id }</h3>
+      <h3>Session #{ id }</h3>
       <SessionHeader {...singleSession}/>
       <SessionDeleteButton sessionId={id} refreshShotData={refreshShotData} refreshSessionData={refreshSessionData}></SessionDeleteButton>
+      <br></br>
+      <br></br>
       <ShotChart coordinates={coords}/>
       <SessionStatContainer sessionFG={sessionFG} sessionFGPercentage={sessionFGPercentage} sessionAngle={sessionAngle} sessionArc={sessionArc} userFG={userFG} userFGPercentage={userFGPercentage} userAngle={userAngle} userArc={userArc}></SessionStatContainer>
       <br></br>
       <br></br>
-      {/* <br></br> */}
+      <div className="Carousel">
       <Carousel
         swipeable={false}
         draggable={true}
-        // showDots={true}
         responsive={responsive}
         ssr={true} // means to render carousel on server-side.
         infinite={true}
@@ -146,6 +147,7 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
       >
         {shots}
       </Carousel> 
+      </div>
     </div> 
   );
 

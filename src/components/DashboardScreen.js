@@ -58,7 +58,7 @@ export default function DashboardScreen({userData, sessionData, shotData, addSes
       <br></br>
       <br></br>
 
-
+      <div className="Carousel"> 
       <Carousel
         swipeable={false}
         draggable={true}
@@ -81,6 +81,7 @@ export default function DashboardScreen({userData, sessionData, shotData, addSes
       >
         {sessions}
       </Carousel> 
+      </div>
     </div> 
   );
 }
