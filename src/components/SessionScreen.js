@@ -9,6 +9,9 @@ import ShotChart from "./ShotComponents/ShotChart";
 import {sessionFieldGoalCalculation, sessionAngleAverage, sessionArcDetermination} from '../services/sessionCalculations'
 import SessionStatContainer from './SessionComponents/SessionStatContainer'
 import {userFieldGoalCalculation, userAngleAverage, userArcDetermination} from '../services/overallCalculations'
+import NewShotPageButton from './SessionComponents/NewShotButton'
+import cookies from 'js-cookie'
+
 
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -28,14 +31,18 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
   console.log('[sesh screen]: shotData:', shotData);
   console.log('[sesh screen]: sessionData:', shotData);
 
-
-
   //find shots by the session and iterate
   const shotsBySession = shotData.filter((item) => item.session_id === parseInt(id));
 
   useEffect(() => {  
     let successNumber = sessionFieldGoalCalculation(shotsBySession)
-    let val = ((successNumber/shotsBySession.length) * 100).toFixed(2) + "%"
+    let val = ((successNumber/shotsBySession.length) * 100)
+    if (!val) {
+      val = "0%"
+    }
+    else {
+      val = val.toFixed(2) + "%"
+    }
     setSessionFG(successNumber + "/" + shotsBySession.length)
     setSessionFGPercentage(val)
     setSessionAngle(sessionAngleAverage(shotsBySession).toFixed(2))
@@ -89,7 +96,6 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
     return [];
   };
 
-  // console.log('generateAllShotCoords:', generateAllShotCoordinates(shotsBySession));
 
   const coords = generateAllShotCoordinates(shotsBySession);
 
@@ -97,10 +103,15 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
   const singleSession = sessionData.find((item) => item.id === parseInt(id));
 
   const responsive = {
-    desktop: {
+    desktop_wide: {
       breakpoint: { max: 3000, min: 1024 },
       items: 5,
       slidesToSlide: 5, // optional, default to 1.
+    },
+    desktop: {
+      breakpoint: { max: 1599, min: 1025 },
+      items: 4,
+      slidesToSlide: 4, // optional, default to 1.
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -116,20 +127,24 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
 
   return (
     <div>
-      <h3>Session { id }</h3>
+      <h3>Session #{ id }</h3>
       <SessionHeader {...singleSession}/>
-      <SessionDeleteButton sessionId={id} refreshShotData={refreshShotData} refreshSessionData={refreshSessionData}></SessionDeleteButton>
-      <ShotChart coordinates={coords}/>
+      {cookies.get("sessionID") === id ? 
+      <div className="newShotPageButton">
+        <NewShotPageButton></NewShotPageButton>
+        <SessionDeleteButton sessionId={id} refreshShotData={refreshShotData} refreshSessionData={refreshSessionData}></SessionDeleteButton> 
+      </div> 
+      : <SessionDeleteButton sessionId={id} refreshShotData={refreshShotData} refreshSessionData={refreshSessionData}></SessionDeleteButton>}
+      <br></br>
+      <br></br>
+      {coords.length > 0 ?  <ShotChart coordinates={coords}/> : ""}
       <SessionStatContainer sessionFG={sessionFG} sessionFGPercentage={sessionFGPercentage} sessionAngle={sessionAngle} sessionArc={sessionArc} userFG={userFG} userFGPercentage={userFGPercentage} userAngle={userAngle} userArc={userArc}></SessionStatContainer>
       <br></br>
       <br></br>
-      {/* <br></br> */}
+      <div className="Carousel">
       <Carousel
-        swipeable={false}
-        draggable={true}
-        // showDots={true}
+        swipeable={true}
         responsive={responsive}
-        ssr={true} // means to render carousel on server-side.
         infinite={true}
         // autoPlay={this.props.deviceType !== "mobile" ? true : false}
         // autoPlay={true}
@@ -146,6 +161,7 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
       >
         {shots}
       </Carousel> 
+      </div>
     </div> 
   );
 

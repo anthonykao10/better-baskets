@@ -6,6 +6,7 @@ import {
 import MediaRecorder from './NewShotComponents/MediaRecorder';
 import EndSessionButton from './NewShotComponents/EndSessionButton'
 import DashboardPageButton from "./NewShotComponents/DashboardPageButton";
+import CurrentSessionButton from "./NewShotComponents/CurrentSessionButton"
 
 
 const videoJsOptions = {
@@ -23,18 +24,23 @@ const videoJsOptions = {
   }
 };
 
-export default function NewShotScreen({addShot, refreshShotData, shotUploadComplete}) {
+export default function NewShotScreen({addShot, refreshShotData, refreshSessionData, shotUploadComplete}) {
   const [finishShot, setFinishShot] = useState(false);
 
   
   return (
     <div>
-      <p>New Shot Screen</p>
-      <Link to="/dashboard">Dashboard</Link><br></br>
+      <h2>New Shot Screen</h2>
       <MediaRecorder { ...videoJsOptions } refreshShotData={refreshShotData}/>
+
+      <br></br>
+      <div className = "newShotButtons">
+      <CurrentSessionButton></CurrentSessionButton>
       {shotUploadComplete ? 
-      <EndSessionButton addShot={addShot} finishShot ={finishShot} setFinishShot = {setFinishShot}></EndSessionButton> 
-      : <DashboardPageButton finishShot ={finishShot} setFinishShot = {setFinishShot}></DashboardPageButton>}
+      <EndSessionButton addShot={addShot} finishShot={finishShot} setFinishShot={setFinishShot} refreshSessionData={refreshSessionData}></EndSessionButton> 
+      : <DashboardPageButton finishShot={finishShot} setFinishShot={setFinishShot}></DashboardPageButton>}
+     
+      </div>
     </div> 
   );
 }

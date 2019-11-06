@@ -3,13 +3,13 @@ import {
   useParams
 } from 'react-router-dom'
 
-import ShotHeader from "./ShotComponents/ShotHeader";
-import ShotChart from "./ShotComponents/ShotChart";
 import ShotSuccessButton from "./ShotComponents/ShotSuccessButton";
 import ShotDeleteButton from "./ShotComponents/shotDeleteButton";
 import VideoReplay from './ShotComponents/videoReplayComponent';
-
+import ShotChart from './ShotComponents/ShotChart';
+import { Jumbotron, Button } from 'react-bootstrap';
 import "./styles/backButton.css";
+import "./styles/shotHeader.css";
  
 export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
   const [successValue, setSuccessValue] = useState(false);
@@ -17,6 +17,7 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
   let { id } = useParams();
 
   useEffect(() => {  
+
     successValueFunction();
   }, [shotData])
 
@@ -32,7 +33,6 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
     }
   }
 
-  
   // const shots = shotData.map(
   //   shot => {
   //     return (
@@ -58,9 +58,6 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
 
   const shotCoords = generateShotCoordinates(singleShot);
 
-
-  // console.log(shotCoords);
-
   //Average of shot angle (all shots from all sessions)
   const angleAverage = () => {
     let sum = 0
@@ -76,20 +73,26 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
 
   const shotAngleAverage = angleAverage();
 
-
   return (
     <div>
-      <h3>Shot {id} </h3> 
-      <div className="backButton">
-        <i className="fas fa-arrow-left fa-3x" onClick={() => window.history.back()}></i><p>Back to Session</p>
-      </div>
-      {/* <button variant="primary" onClick={() => window.history.back()}>Back to Session</button> */}
-      <VideoReplay {...singleShot}/>
-      <ShotHeader {...singleShot} shotAngleAverage={shotAngleAverage}/>
-      <ShotDeleteButton shotId={id} refreshShotData={refreshShotData}></ShotDeleteButton>
-      <h3>success:</h3>
-      <ShotSuccessButton shotId={id} updateSuccess={updateSuccess} successValue = {successValue} setSuccessValue={setSuccessValue} refreshShotData={refreshShotData}/>
-      <ShotChart coordinates={shotCoords}/>
+      <Jumbotron className="shotHeader">
+        <h1>Shot #{id} Review</h1>
+        <Button variant="primary" onClick={() => window.history.back()}>Back to Session</Button>
+        <br></br>
+        <br></br>
+        <h3>Success:</h3>
+        <ShotSuccessButton shotId={id} updateSuccess={updateSuccess} successValue = {successValue} setSuccessValue={setSuccessValue} refreshShotData={refreshShotData}/>
+        <br></br>
+        <br></br>
+        <ShotDeleteButton shotId={id} refreshShotData={refreshShotData}></ShotDeleteButton>
+        <br></br>
+        <br></br>
+        <div className="videoChart">
+        {singleShot && <VideoReplay {...singleShot}/>}
+        <ShotChart coordinates={shotCoords}/>
+        </div>
+
+      </Jumbotron>      
     </div> 
   );
 }

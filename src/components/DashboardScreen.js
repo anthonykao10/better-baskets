@@ -27,10 +27,15 @@ export default function DashboardScreen({userData, sessionData, shotData, addSes
   )
 
   const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
+    desktop_wide: {
+      breakpoint: { max: 3000, min: 1600 },
       items: 5,
       slidesToSlide: 5, // optional, default to 1.
+    },
+    desktop: {
+      breakpoint: { max: 1599, min: 1025 },
+      items: 4,
+      slidesToSlide: 4, // optional, default to 1.
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -58,7 +63,7 @@ export default function DashboardScreen({userData, sessionData, shotData, addSes
       <br></br>
       <br></br>
 
-
+      <div className="Carousel"> 
       <Carousel
         swipeable={false}
         draggable={true}
@@ -81,6 +86,7 @@ export default function DashboardScreen({userData, sessionData, shotData, addSes
       >
         {sessions}
       </Carousel> 
+      </div>
     </div> 
   );
 }

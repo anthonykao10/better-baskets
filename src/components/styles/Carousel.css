@@ -1,8 +1,27 @@
 
+@media only screen and (min-width: 1600px) {
+
+  .Carousel {
+    width: 77%;
+  }
+}
+
+@media only screen and (max-width: 1599px) {
+
+  .Carousel {
+    width: 90%;
+  }
+}
+
+.Carousel {
+  /* width: 95%; */
+  margin: auto;
+}
+
 .sessionCardDiv {
   display: flex;
   justify-content: center;
-  /* align-items: center; */
+  margin-bottom: 50px;
 }
 
 .sessionCard {
@@ -14,8 +33,6 @@
   display: flex;
   justify-content: center; 
   margin-bottom: 50px;
-  /* align-items: center; */
-
 }
 
 .shotCard {

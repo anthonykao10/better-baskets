@@ -77,7 +77,7 @@ function AuthenticatedRouter(props) {
     })
   }
 
-  console.log('shotData:', shotData);
+  // console.log('shotData:', shotData);
 
   return (
     <div>
@@ -90,7 +90,7 @@ function AuthenticatedRouter(props) {
           </Route>
 
           <Route path="/new_shot">
-            <NewShotScreen addShot={addShot} refreshShotData={refreshShotData} shotUploadComplete={shotUploadComplete} />
+            <NewShotScreen addShot={addShot} refreshShotData={refreshShotData} refreshSessionData={refreshSessionData} shotUploadComplete={shotUploadComplete} />
           </Route>
 
           <Route exact path="/session/:id">
