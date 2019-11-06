@@ -1,6 +1,4 @@
-
-
-
+import { shotArcDetermination } from './shotCalculations';
 
 export const sessionFieldGoalCalculation = function(shots) {
   console.log("SessionCalculation: ", shots)
@@ -32,15 +30,6 @@ export const sessionArcDetermination = function(shots) {
   }
   arcAvg = arcAvg/shots.length
 
-  if (arcAvg < 560) {
-    return "Low"
-  }
-  else if (arcAvg > 620) {
-    return "High"
-  }
-  else {
-    return "Medium"
-  }
-
+  return shotArcDetermination(arcAvg);
 }
 
