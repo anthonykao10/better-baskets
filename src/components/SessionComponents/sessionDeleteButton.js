@@ -26,7 +26,7 @@ export default function SessionDeleteButton({sessionId, refreshShotData, refresh
   return (
     !redirect ?
     <div className="">
-      <Button onClick = {submit}>
+      <Button variant="danger"  onClick = {submit}>
         Delete session
       </Button>
     </div>
