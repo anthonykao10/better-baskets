@@ -14,9 +14,9 @@ export const successMessages = function() {
   const messages = [
     "Great Shot!",
     "OOOOOoooo that was cleannnnnnn",
-    "motivational WIINNER WINNER CHICKEN DINNER",
-    "motivational SWISH!",
-    "motivational NICE SHOT!!",
+    "WIINNER WINNER CHICKEN DINNER",
+    "SWISH!",
+    "NICE SHOT!!",
     "Acceptable shot",
     "NICE ARC"
   ];
@@ -29,8 +29,7 @@ export const successMessages = function() {
 export const failureMessages = function() {
   const messages = [
     "Better luck next time!",
-    "better luck message 2",
-    "better luck message 3",
+    "Nice Try!",
     "That was 1.385° too high, and 3.683° too far left, with way too much spin." 
   ];
   const min = 0;
