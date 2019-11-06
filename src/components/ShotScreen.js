@@ -15,11 +15,14 @@ import "./styles/shotHeader.css";
  
 export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
   const [successValue, setSuccessValue] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
+  const [failureMessage, setFailureMessage] = useState('');
 
   let { id } = useParams();
 
   useEffect(() => {  
-
+    setSuccessMessage(successMessages());
+    setFailureMessage(failureMessages());
     successValueFunction();
   }, [shotData])
 
@@ -116,7 +119,7 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
         <br></br>
         <br></br>
         <div style={singleShot && (singleShot.success ? successMessageStyles : failMessageStyles)}>
-          <h3><em>{singleShot && (singleShot.success ? successMessages() : failureMessages())}</em></h3>
+          <h3><em>{singleShot && (singleShot.success ? successMessage : failureMessage)}</em></h3>
           <br></br>
           <ShotSuccessButton shotId={id} updateSuccess={updateSuccess} successValue = {successValue} setSuccessValue={setSuccessValue} refreshShotData={refreshShotData}/>
         </div>
