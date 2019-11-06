@@ -1,6 +1,4 @@
-
-
-
+import { shotArcDetermination } from './shotCalculations';
 
 export const userFieldGoalCalculation = function(shots) {
   let count = 0;
@@ -40,15 +38,8 @@ export const userArcDetermination = function(shots) {
     }
   }
   arcAvg = arcAvg/count
-  if (arcAvg < 560) {
-    return "Low"
-  }
-  else if (arcAvg > 620) {
-    return "High"
-  }
-  else {
-    return "Medium"
-  }
+
+  return shotArcDetermination(arcAvg);
 }
 
 
