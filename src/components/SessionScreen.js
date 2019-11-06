@@ -96,7 +96,6 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
     return [];
   };
 
-  // console.log('generateAllShotCoords:', generateAllShotCoordinates(shotsBySession));
 
   const coords = generateAllShotCoordinates(shotsBySession);
 
@@ -138,7 +137,7 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
       : <SessionDeleteButton sessionId={id} refreshShotData={refreshShotData} refreshSessionData={refreshSessionData}></SessionDeleteButton>}
       <br></br>
       <br></br>
-      <ShotChart coordinates={coords}/>
+      {coords.length > 0 ?  <ShotChart coordinates={coords}/> : ""}
       <SessionStatContainer sessionFG={sessionFG} sessionFGPercentage={sessionFGPercentage} sessionAngle={sessionAngle} sessionArc={sessionArc} userFG={userFG} userFGPercentage={userFGPercentage} userAngle={userAngle} userArc={userArc}></SessionStatContainer>
       <br></br>
       <br></br>
