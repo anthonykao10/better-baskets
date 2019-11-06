@@ -17,7 +17,6 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
   let { id } = useParams();
 
   useEffect(() => {  
-    console.log("SOMETHING")
 
     successValueFunction();
   }, [shotData])
@@ -51,7 +50,7 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
   const generateShotCoordinates = (shot) => {
     if( shot && shot.coordinates.length ) {
       // console.log('IN GENERATE', [['x', shot.id], ...shot.coordinates]);
-      console.log('GENERATE SHOT COORDS', shot);
+      // console.log('GENERATE SHOT COORDS', shot);
       return [['x', `${shot.id}`], ...shot.coordinates];
     }
     return [];

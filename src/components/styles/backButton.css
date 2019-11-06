@@ -12,3 +12,14 @@
 .fa-arrow-left:hover {
   color: #6bd098;
 }
+
+
+.newShotButtons {
+  display: flex;
+  justify-content:space-evenly;
+}
+
+.newShotPageButton {
+  display: flex;
+  justify-content:space-evenly;
+}

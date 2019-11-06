@@ -9,6 +9,9 @@ import ShotChart from "./ShotComponents/ShotChart";
 import {sessionFieldGoalCalculation, sessionAngleAverage, sessionArcDetermination} from '../services/sessionCalculations'
 import SessionStatContainer from './SessionComponents/SessionStatContainer'
 import {userFieldGoalCalculation, userAngleAverage, userArcDetermination} from '../services/overallCalculations'
+import NewShotPageButton from './SessionComponents/NewShotButton'
+import cookies from 'js-cookie'
+
 
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -34,7 +37,15 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
 
   useEffect(() => {  
     let successNumber = sessionFieldGoalCalculation(shotsBySession)
-    let val = ((successNumber/shotsBySession.length) * 100).toFixed(2).replace(/\.00$/, '') + "%"
+
+    let val = ((successNumber/shotsBySession.length) * 100)
+    if (!val) {
+      val = "0%"
+    }
+    else {
+      val = val.toFixed(2).replace(/\.00$/, '') + "%"
+    }
+
     setSessionFG(successNumber + "/" + shotsBySession.length)
     setSessionFGPercentage(val)
     setSessionAngle(sessionAngleAverage(shotsBySession).toFixed(2).replace(/\.00$/, ''))
@@ -88,7 +99,6 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
     return [];
   };
 
-  // console.log('generateAllShotCoords:', generateAllShotCoordinates(shotsBySession));
 
   const coords = generateAllShotCoordinates(shotsBySession);
 
@@ -123,9 +133,15 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
   return (
     <div>
       <SessionHeader {...singleSession} id={id}/>
-      <SessionDeleteButton sessionId={id} refreshShotData={refreshShotData} refreshSessionData={refreshSessionData}></SessionDeleteButton> 
       <br></br>
-      {coords && <ShotChart coordinates={coords} chartTitle={chartTitle}/>} 
+      {cookies.get("sessionID") === id ? 
+      <div className="newShotPageButton">
+        <NewShotPageButton></NewShotPageButton>
+        <SessionDeleteButton sessionId={id} refreshShotData={refreshShotData} refreshSessionData={refreshSessionData}></SessionDeleteButton> 
+      </div> 
+      : <SessionDeleteButton sessionId={id} refreshShotData={refreshShotData} refreshSessionData={refreshSessionData}></SessionDeleteButton>}
+      <br></br>
+      {coords.length > 0 && <ShotChart coordinates={coords} chartTitle={chartTitle}/>} 
       <SessionStatContainer sessionFG={sessionFG} sessionFGPercentage={sessionFGPercentage} sessionAngle={sessionAngle} sessionArc={sessionArc} userFG={userFG} userFGPercentage={userFGPercentage} userAngle={userAngle} userArc={userArc}></SessionStatContainer>
       <br></br>
       <br></br>

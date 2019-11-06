@@ -9,6 +9,14 @@ import '../styles/SessionStatContainer.css'
 import React from "react";
  
 export default function SessionStatContainer({sessionAngle, sessionFG, sessionFGPercentage, sessionArc, userFG, userFGPercentage, userAngle, userArc}) {
+  
+  let newSessionAngle
+  if (isNaN(sessionAngle)) {
+    newSessionAngle = 0;
+  }
+  else {
+    newSessionAngle = sessionAngle
+  }
 
 
   return (
@@ -22,7 +30,7 @@ export default function SessionStatContainer({sessionAngle, sessionFG, sessionFG
 
 
         {/* IF GREATER THEN 3 DEGREES OFF */}
-        {Math.abs(sessionAngle - userAngle) < 3 ? <GreenStatCard name={"Session Average Angle"} statistic = {sessionAngle + "°"} ></GreenStatCard> : <RedStatCard name={"Session Average Angle"} statistic = {sessionAngle + "°"} ></RedStatCard>} 
+        {Math.abs(sessionAngle - userAngle) < 3 ? <GreenStatCard name={"Session Average Angle"} statistic = {newSessionAngle + "°"} ></GreenStatCard> : <RedStatCard name={"Session Average Angle"} statistic = {newSessionAngle + "°"} ></RedStatCard>} 
         
 
         {sessionArc === userArc ? <GreenStatCard name={"Session Average Arc"} statistic = {sessionArc} ></GreenStatCard> : <RedStatCard name={"Session Average Arc"} statistic = {sessionArc} ></RedStatCard>}
