@@ -1,6 +1,5 @@
-
 import React, {useState} from "react";
-
+import { Button } from 'react-bootstrap';
 
 export default function LoginForm(props) {
   const [username, setUsername] = useState("");
@@ -20,7 +19,7 @@ export default function LoginForm(props) {
         <strong><label>Password: </label></strong>
         <input type="password" placeholder="Enter Password" name="password" onChange = {e => setPassword(e.target.value)} required></input>
         <br></br>
-        <button onClick={onSubmit}>Login</button>
+        <Button onClick={onSubmit}>Login</Button>
       </form>
     </div>
     

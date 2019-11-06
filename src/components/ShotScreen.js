@@ -110,13 +110,12 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
   return (
     <div>
       <Jumbotron className="shotHeader">
-        <h1>Shot #{id} Review</h1>
+        <h2 className="titleHeader">Shot #{id} Review</h2>
         <Button variant="primary" onClick={() => window.history.back()}>Back to Session</Button>
         <br></br>
         <br></br>
         <h3>Angle: <em>{singleShot && singleShot.angle}°</em></h3>
-        <h3>Max Height: <em>{singleShot && shotArcDetermination(singleShot.arc_max)}</em></h3>
-        <br></br>
+        <h3>Shot Arc: <em>{singleShot && shotArcDetermination(singleShot.arc_max)}</em></h3>
         <br></br>
         <div style={singleShot && (singleShot.success ? successMessageStyles : failMessageStyles)}>
           <h3><em>{singleShot && (singleShot.success ? successMessage : failureMessage)}</em></h3>
