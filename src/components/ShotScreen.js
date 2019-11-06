@@ -87,9 +87,9 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
         <Button variant="primary" onClick={() => window.history.back()}>Back to Session</Button>
         <br></br>
         <br></br>
-        <h3>Angle: {singleShot && singleShot.angle}°</h3>
-        <h3>Max Height: {singleShot && shotArcDetermination(singleShot.arc_max)}</h3>
-        <h3>Success:</h3>
+        <h3>Angle: <em>{singleShot && singleShot.angle}°</em></h3>
+        <h3>Max Height: <em>{singleShot && shotArcDetermination(singleShot.arc_max)}</em></h3>
+        <h3>Success: <em>{singleShot && (singleShot.success ? "True" : "False")}</em></h3>
         <ShotSuccessButton shotId={id} updateSuccess={updateSuccess} successValue = {successValue} setSuccessValue={setSuccessValue} refreshShotData={refreshShotData}/>
         <br></br>
         <br></br>
