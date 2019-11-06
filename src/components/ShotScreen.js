@@ -74,6 +74,8 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
 
   const shotAngleAverage = angleAverage();
 
+  const chartTitle = "Shot Arc";
+
   return (
     <div>
       <Jumbotron className="shotHeader">
@@ -90,9 +92,8 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
         <br></br>
         <div className="videoChart">
         {singleShot && <VideoReplay {...singleShot}/>}
-        <ShotChart coordinates={shotCoords}/>
+        {shotCoords && <ShotChart coordinates={shotCoords} chartTitle={chartTitle}/>}
         </div>
-
       </Jumbotron>      
     </div> 
   );

@@ -29,9 +29,9 @@ export default function NewShotScreen({addShot, refreshShotData, refreshSessionD
   
   return (
     <div>
-      <p>New Shot Screen</p>
-      <Link to="/dashboard">Dashboard</Link><br></br>
+      <h3>Take Your Best Shot</h3>
       <MediaRecorder { ...videoJsOptions } refreshShotData={refreshShotData}/>
+      <br></br>
       {shotUploadComplete ? 
       <EndSessionButton addShot={addShot} finishShot={finishShot} setFinishShot={setFinishShot} refreshSessionData={refreshSessionData}></EndSessionButton> 
       : <DashboardPageButton finishShot={finishShot} setFinishShot={setFinishShot}></DashboardPageButton>}

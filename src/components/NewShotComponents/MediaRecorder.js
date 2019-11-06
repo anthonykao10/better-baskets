@@ -32,6 +32,8 @@ import 'videojs-record/dist/plugins/videojs.record.ts-ebml.js';
 class MediaRecorder extends Component {
   componentDidMount() {
       // instantiate Video.js
+      
+      
       this.player = videojs(this.videoNode, this.props, () => {
           // print version information at startup
           var version_info = 'Using video.js ' + videojs.VERSION +
@@ -82,7 +84,7 @@ class MediaRecorder extends Component {
       const script = document.createElement("script");
       script.src = "scripts/canvas.js";
       script.async = true;
-      document.body.appendChild(script);
+      document.getElementById('myVideo').appendChild(script);
 
     //   const canvasRef = React.useRef();
     //   const ctx = canvasRef.current.context;

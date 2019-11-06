@@ -78,8 +78,8 @@ export default function LoginScreen(props) {
       <strong><h3>Login to Start Practicing</h3></strong>
       <br></br>
       <LoginForm onSubmit = {submit} className="loginForm"/>
-      <Canvas options={sample3} className="canvas" />
-      <Canvas options={sample3} className="canvas" />
+      <Canvas options={sample3} className="canvasLogin" />
+      <Canvas options={sample3} className="canvasLogin" />
     </div>
       
   );

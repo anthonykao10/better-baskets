@@ -17,10 +17,10 @@ export default function DashboardStatContainer({shotData, sessionData}) {
   useEffect(() => {  
 
     let userSuccessNumber = userFieldGoalCalculation(shotData)
-    let userVal = ((userSuccessNumber/shotData.length) * 100).toFixed(2) + "%"
+    let userVal = ((userSuccessNumber/shotData.length) * 100).toFixed(2).replace(/\.00$/, '') + "%"
     setUserFG(userSuccessNumber + "/" + shotData.length)
     setUserFGPercentage(userVal)
-    setUserAngle(userAngleAverage(shotData).toFixed(2)+ "°")
+    setUserAngle(userAngleAverage(shotData).toFixed(2).replace(/\.00$/, '') + "°")
     setTotalSessions(sessionData.length)
     setAvgShotsInSession(shotData.length/sessionData.length)
     setUserArc(userArcDetermination(shotData))
@@ -43,7 +43,7 @@ export default function DashboardStatContainer({shotData, sessionData}) {
     <div className="statContainerBottom">
       <StatCard name={"Total Practice Sessions"} statistic = {totalSessions} ></StatCard>
       <StatCard name={"Total Practice Time"} statistic = {totalPracticeTime + " Minutes"} ></StatCard>
-      <StatCard name={"Average Shots Per Session"} statistic = {avgShotsInSession.toFixed(2)} ></StatCard>
+      <StatCard name={"Average Shots Per Session"} statistic = {avgShotsInSession.toFixed(2).replace(/\.00$/, '')} ></StatCard>
       <StatCard name={"Global Balling Ranking"} statistic = {"211th"} ></StatCard>
       <StatCard name={"Friends Balling Ranking"} statistic = {"31st"} ></StatCard>
     </div>

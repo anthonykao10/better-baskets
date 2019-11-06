@@ -24,7 +24,7 @@ export default function Session({sessionID, date, shotData}) {
     if(count === 0) {
       return 'Success: No Shots Taken';
     } else {
-      return "Success: " + successCount/count * 100 + "%";
+      return "Success: " + (successCount/count * 100).toFixed(2).replace(/\.00$/, '') + "%";
     }
   }
 
