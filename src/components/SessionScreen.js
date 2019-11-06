@@ -133,7 +133,7 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
   return (
     <div>
       <SessionHeader {...singleSession} id={id}/>
-      <br></br>
+      {/* <br></br> */}
       {cookies.get("sessionID") === id ? 
       <div className="newShotPageButton">
         <NewShotPageButton></NewShotPageButton>
