@@ -3,7 +3,7 @@ import { Chart } from "react-google-charts";
 import '../styles/ShotChart.css';
 import { whileStatement } from "@babel/types";
  
-export default function ShotChart({ coordinates }) {
+export default function ShotChart({ coordinates, chartTitle }) {
   if (coordinates !== undefined) {
     return (
       <>
@@ -18,19 +18,21 @@ export default function ShotChart({ coordinates }) {
               curveType: 'function',
               backgroundColor: '#f1f8e9',
               chartArea: { width: '70%' },
-              title: "chart title",
+              title: chartTitle,
+              fontSize: "18",
               hAxis: {
                 minValue: 0,
                 maxValue: 1280,
                 textPosition: 'none',
-                title: 'x-axis'
+                title: 'Distance'
               },
               vAxis: {
                 maxValue: 720,
                 textPosition: 'none',
-                title: "y-axis"
+                title: "Height"
               },
-              legend: 'none',
+              legend:{textStyle:{fontSize:'14', fontName:'Helvetica'}},
+              tooltip:{textStyle:{fontSize:'12', fontName:'Helvetica'}},
               pointSize: 3
             }}
           />

@@ -16,6 +16,7 @@ import cookies from 'js-cookie'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import './styles/Carousel.css';
+import './styles/sessionHeader.css';
 
 export default function SessionScreen({shotData, sessionData, refreshShotData, refreshSessionData}) {
   const [sessionFG, setSessionFG] = useState(0);
@@ -36,23 +37,25 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
 
   useEffect(() => {  
     let successNumber = sessionFieldGoalCalculation(shotsBySession)
+
     let val = ((successNumber/shotsBySession.length) * 100)
     if (!val) {
       val = "0%"
     }
     else {
-      val = val.toFixed(2) + "%"
+      val = val.toFixed(2).replace(/\.00$/, '') + "%"
     }
+
     setSessionFG(successNumber + "/" + shotsBySession.length)
     setSessionFGPercentage(val)
-    setSessionAngle(sessionAngleAverage(shotsBySession).toFixed(2))
+    setSessionAngle(sessionAngleAverage(shotsBySession).toFixed(2).replace(/\.00$/, ''))
     setArc(sessionArcDetermination(shotsBySession))
 
     let userSuccessNumber = userFieldGoalCalculation(shotData)
-    let userVal = ((userSuccessNumber/shotData.length) * 100).toFixed(2) + "%"
+    let userVal = ((userSuccessNumber/shotData.length) * 100).toFixed(2).replace(/\.00$/, '') + "%"
     setUserFG(userSuccessNumber + "/" + shotData.length)
     setUserFGPercentage(userVal)
-    setUserAngle(userAngleAverage(shotData).toFixed(2))
+    setUserAngle(userAngleAverage(shotData).toFixed(2).replace(/\.00$/, ''))
     setUserArc(userArcDetermination(shotData))
     
     
@@ -125,10 +128,12 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
     },
   };
 
+  const chartTitle = "Session Arcs";
+
   return (
     <div>
-      <h3>Session #{ id }</h3>
-      <SessionHeader {...singleSession}/>
+      <SessionHeader {...singleSession} id={id}/>
+      <br></br>
       {cookies.get("sessionID") === id ? 
       <div className="newShotPageButton">
         <NewShotPageButton></NewShotPageButton>
@@ -136,8 +141,7 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
       </div> 
       : <SessionDeleteButton sessionId={id} refreshShotData={refreshShotData} refreshSessionData={refreshSessionData}></SessionDeleteButton>}
       <br></br>
-      <br></br>
-      {coords.length > 0 ?  <ShotChart coordinates={coords}/> : ""}
+      {coords.length > 0 && <ShotChart coordinates={coords} chartTitle={chartTitle}/>} 
       <SessionStatContainer sessionFG={sessionFG} sessionFGPercentage={sessionFGPercentage} sessionAngle={sessionAngle} sessionArc={sessionArc} userFG={userFG} userFGPercentage={userFGPercentage} userAngle={userAngle} userArc={userArc}></SessionStatContainer>
       <br></br>
       <br></br>

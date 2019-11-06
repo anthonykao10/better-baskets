@@ -1,14 +1,12 @@
-console.log("from canvas.js")
-let c = document.getElementById("c");
-let ctx = c.getContext("2d");
+//var is needed here
+var c = document.getElementById("c");
+var ctx = c.getContext("2d");
 
 c.width = c.scrollWidth;
 c.height = c.scrollHeight;
 
-
 console.log('C:', c.width)
 console.log('C:', c.height)
-
 
 ctx.strokeStyle = "green";
 ctx.lineWidth = 2;

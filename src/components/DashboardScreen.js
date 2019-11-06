@@ -52,14 +52,13 @@ export default function DashboardScreen({userData, sessionData, shotData, addSes
   return (
     <div>
       <h3>{userData.username}'s Dashboard</h3>
+      <img src="https://ca.slack-edge.com/TP0A7PQ7N-UP2KPLWLF-c8993b93ecf6-512" alt="profile" className="profilepic"></img>
+      <br></br>
+      <br></br>
       <NewSessionButton addSession={addSession} setShotUploadComplete={setShotUploadComplete}/>
-
       <br></br>
       <br></br>
-
-
       <DashboardStatContainer shotData={shotData} sessionData={sessionData}></DashboardStatContainer>
-
       <br></br>
       <br></br>
 
