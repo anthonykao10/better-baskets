@@ -17,7 +17,7 @@ export default function ShotSuccessButton({shotId, updateSuccess, setSuccessValu
   
   return (
     <div className="" onClick = {submit}>
-        {!successValue ? <Button> Score </Button> :<Button variant="danger">Miss</Button>}
+        {!successValue ? <Button>Change to Score</Button> :<Button variant="danger">Change to Miss</Button>}
     </div>
   );
 };
