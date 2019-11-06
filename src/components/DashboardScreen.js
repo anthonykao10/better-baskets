@@ -10,6 +10,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import './styles/Carousel.css';
 import DashboardStatContainer from './DashboardComponents/DashboardStatContainer'
+// import PracticeTimeBarChart from './DashboardComponents/PracticeTimeBarChart'
 
 export default function DashboardScreen({userData, sessionData, shotData, addSession, setShotUploadComplete}) {
 
@@ -57,7 +58,10 @@ export default function DashboardScreen({userData, sessionData, shotData, addSes
       <br></br>
       <br></br>
 
+      {/* <PracticeTimeBarChart></PracticeTimeBarChart> */}
 
+      <br></br>
+      <br></br>
       <DashboardStatContainer shotData={shotData} sessionData={sessionData}></DashboardStatContainer>
 
       <br></br>

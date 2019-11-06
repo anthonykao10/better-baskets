@@ -26,9 +26,9 @@ router.post('/new', (req, res) => {
           angle: pythonData.angle,
           arc_max: pythonData.arcMax,
           coordinates: JSON.stringify(pythonData.coordinates),
-          reference: req.body.reference
+          reference: req.body.reference,
+          success: pythonData.success
         }
-        console.log(insertShotData)
         insertShot(insertShotData)
         .then((response) => {
         })
