@@ -1,12 +1,18 @@
 .chart-container {
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
+ 
+  
+
 }
 
 .shot-chart {
   margin: 0 auto;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  border-radius: 2px;
+
 }
 
-.backToSession {
-  float: left;
-}

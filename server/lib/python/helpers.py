@@ -71,9 +71,20 @@ def checkSuccess(x1, x2, y1, y2, y_res, arc):
   # calibrate y values with frame resolution
   y1 = y_res - y1
   y2 = y_res - y2
+
+  if (x2 < x1):
+    temp = x2
+    x2 = x1
+    x1 = temp
+  
+  if (y2 < y1):
+    temp = y2
+    y2 = y1
+    y1 = temp
+
   for i in range(x1, x2 + 1):
     arc_y = int(f(i, arc[2], arc[1], arc[0]))
-    if arc_y in range(y2, y1 + 1):
+    if arc_y in range(y1, y2 + 1):
       return True
   
 def formatCoordinates(arc, start, end):
@@ -89,7 +100,7 @@ def formatCoordinates(arc, start, end):
   
     y = f(i, arc[2], arc[1], arc[0])
     # add coord if within screen bounds
-    if (y < 900) and (y > 0):
+    if (y < 720) and (y > 0):
       coords.append([i, y])
     else:
       coords.append([i, 0])

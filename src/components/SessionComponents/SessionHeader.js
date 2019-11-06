@@ -2,7 +2,7 @@ import React from "react";
 
 import { totalPracticeTimeFunction} from '../../services/overallCalculations';
  
-export default function SessionHeader({start_time = '', end_time}) {
+export default function SessionHeader({start_time = '', end_time, id}) {
 
 const dateString = (time) => {
   return time.slice(0, 10)
@@ -17,6 +17,7 @@ const dateString = (time) => {
 
   return (
     <div>
+      <h3>Session #{ id }</h3>
       <p>Session Date: {sessionDate}</p>
       <p>Length of Practice: {practiceTime} minutes</p>
     </div> 

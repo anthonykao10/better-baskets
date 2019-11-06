@@ -49,3 +49,9 @@
   text-decoration: none;
   font-weight: bold;
 }
+
+.profilepic {
+  border-radius: 80%;
+  height: 60px;
+  width: 60px;
+}

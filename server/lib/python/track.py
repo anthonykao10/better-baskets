@@ -15,13 +15,40 @@ import helpers
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
 ap.add_argument("-v", "--video")
-ap.add_argument("-b", "--buffer", type=int, default=64)
+ap.add_argument("-b", "--buffer", type=int, default=100)
 args = vars(ap.parse_args())
 
 # set lower and upper bounds for mask
-greenLower = (25, 93, 101)
-greenUpper = (55, 255, 255)
+MASK_LOWER = (25, 93, 101)
+MASK_UPPER = (55, 255, 255)
+
 success = False
+
+tracking = False
+stopTracking = False
+
+Y_THRESHOLD = 400
+X_THRESHOLD = 1050
+
+# Y_THRESHOLD_START = 400
+# Y_THRESHOLD_END = 350
+
+OUTER_BOX_X1 = 1000
+OUTER_BOX_X2 = 1100
+OUTER_BOX_Y1 = 350
+OUTER_BOX_Y2 = 450
+
+INNER_BOX_X1 = 1030
+INNER_BOX_X2 = 1070
+INNER_BOX_Y1 = 380
+INNER_BOX_Y2 = 420
+
+SUCCESS_X1 = 1020
+SUCCESS_X2 = 1080
+SUCCESS_Y1 = 370
+SUCCESS_Y2 = 430
+
+SCREEN_RES_Y = 720
 
 # initialize list of coordinates
 pts = deque(maxlen=args["buffer"])
@@ -57,11 +84,11 @@ while True:
 	# draw success box
 	# cv2.rectangle(frame,(950,250),(1050,350),(0,255,0),3)
 	# cv2.rectangle(frame,(980,280),(1020,320),(255,0,0),3)
-	cv2.rectangle(frame,(1000,350),(1100,450),(0,255,0),3)
-	cv2.rectangle(frame,(1030,380),(1070,420),(255,0,0),3)
+	cv2.rectangle(frame,(OUTER_BOX_X1,OUTER_BOX_Y1),(OUTER_BOX_X2,OUTER_BOX_Y2),(0,255,0),3)
+	cv2.rectangle(frame,(INNER_BOX_X1,INNER_BOX_Y1),(INNER_BOX_X2,INNER_BOX_Y2),(255,0,0),3)
 
 	# create mask
-	mask = cv2.inRange(hsv, greenLower, greenUpper)
+	mask = cv2.inRange(hsv, MASK_LOWER, MASK_UPPER)
 
 	# filter noise
 	mask = cv2.erode(mask, None, iterations=2)
@@ -76,40 +103,44 @@ while True:
 	cnts = imutils.grab_contours(cnts)
 	center = None
 
-	# only proceed if at least one contour was found
+	# draw enclosing circle and centroid if contour found
 	if len(cnts) > 0:
-		# find the largest contour in the mask, then use
-		# it to compute the minimum enclosing circle and
-		# centroid
 		c = max(cnts, key=cv2.contourArea)
 		((x, y), radius) = cv2.minEnclosingCircle(c)
 		M = cv2.moments(c)
 		center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
 
-		# only proceed if the radius meets a minimum size
 		if radius > 10:
-			# draw the circle and centroid on the frame,
-			# then update the list of tracked points
 			cv2.circle(frame, (int(x), int(y)), int(radius),
 				(0, 255, 255), 2)
 			cv2.circle(frame, center, 5, (0, 0, 255), -1)
 
-	if center != None and center[1] < 350:
-	  pts.appendleft(center)
+	# *******************************************************
+	# if center != None and center[1] < 350:
+	#   pts.appendleft(center)
 
-	# loop over the set of tracked points
+	# limit tracking area by X and Y thresholds
+	if (center is not None and center[1] < Y_THRESHOLD and center[0] < X_THRESHOLD):
+		if (tracking is False and center[1] < Y_THRESHOLD):
+			# time.sleep(0.5)
+			tracking = True
+
+		if (tracking is True and stopTracking is False):
+			pts.appendleft(center)
+	
+	if (center is not None and tracking is True and stopTracking is False and center[1] > Y_THRESHOLD):
+		stopTracking = True
+	# *******************************************************
+
+	# draw shot arc by connecting tracked points
 	for i in range(1, len(pts)):
-		# if either of the tracked points are None, ignore
-		# them
 		if pts[i - 1] is None or pts[i] is None:
 			continue
 
-		# otherwise, compute the thickness of the line and
-		# draw the connecting lines
 		thickness = int(np.sqrt(args["buffer"] / float(i + 1)) * 2.5)
 		cv2.line(frame, pts[i - 1], pts[i], (0, 0, 255), thickness)
-		
 	
+	# write video
 	frame = imutils.resize(frame, width=int(vs.get(3)))
 	writer.write(frame)
 
@@ -120,7 +151,7 @@ for pt in pts:
 
 # get shot arc and shot angle:
 x_vals = helpers.getXVals(output)
-y_vals = helpers.getYVals(output, 720)
+y_vals = helpers.getYVals(output, SCREEN_RES_Y)
 arc = helpers.getArc(x_vals, y_vals)
 
 # generate formatted coordinates
@@ -131,8 +162,8 @@ if arc is not None:
 	angle = helpers.getArcAngle( arc[2], arc[1], arc[0] )
 
 	# if helpers.checkSuccess(980, 1020, 280, 320, 720, arc):
-	# 	success = True	
-	if helpers.checkSuccess(1020, 1080, 370, 430, 720, arc):
+	# 	success = True
+	if helpers.checkSuccess(SUCCESS_X1, SUCCESS_X2, SUCCESS_Y1, SUCCESS_Y2, SCREEN_RES_Y, arc):
 		success = True
 else: 
 	arcMax = None
