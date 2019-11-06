@@ -22,7 +22,7 @@ export default function ShotDeleteButton({shotId, refreshShotData}) {
   return (
     !redirect ?
     <div className="">
-      <Button onClick = {submit}>
+      <Button variant="danger" onClick = {submit}>
         Delete shot
       </Button>
     </div>
