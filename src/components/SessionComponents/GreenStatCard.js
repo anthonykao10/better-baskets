@@ -11,7 +11,7 @@ export default function GreenStatCard({name, statistic}) {
   return (
      <>
       <Card border="success" style={{ width: '10rem' }} className="statCard greenStatCard">
-        <Card.Header>{name}</Card.Header>
+        <Card.Header className="titleHeader">{name}</Card.Header>
         <Card.Body>
           <Card.Title>{statistic}</Card.Title>
         </Card.Body>
