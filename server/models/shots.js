@@ -12,10 +12,10 @@ const getShotData = (userID) => {
 const insertShot = (input) => {
   // console.log(input)
   return pool.query(`
-  INSERT INTO shots (session_id, angle, arc_max, coordinates, video_reference)
-  VALUES ($1, $2, $3, $4, $5)
+  INSERT INTO shots (session_id, angle, arc_max, coordinates, video_reference, success)
+  VALUES ($1, $2, $3, $4, $5, $6)
   RETURNING *
-  `, [Number(input.session_id), input.angle, input.arc_max, input.coordinates, input.reference])
+  `, [Number(input.session_id), input.angle, input.arc_max, input.coordinates, input.reference, input.success])
 };
 
 const updateShotSuccess = (success, shotId) => {
