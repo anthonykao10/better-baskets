@@ -17,7 +17,7 @@ const dateString = (time) => {
 
   return (
     <div>
-      <h2>Session #{ id }</h2>
+      <h2 className="titleHeader">Session #{ id }</h2>
       <p>Session Date: {sessionDate}</p>
       <p>Length of Practice: {practiceTime} minutes</p>
     </div> 

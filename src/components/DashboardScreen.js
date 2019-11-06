@@ -52,7 +52,7 @@ export default function DashboardScreen({userData, sessionData, shotData, addSes
   
   return (
     <div>
-      <h2>{userData.username}'s Dashboard</h2>
+      <h2 className="titleHeader">{userData.username}'s Dashboard</h2>
       <img src="https://ca.slack-edge.com/TP0A7PQ7N-UP2KPLWLF-c8993b93ecf6-512" alt="profile" className="profilepic"></img>
       <br></br>
       <br></br>
