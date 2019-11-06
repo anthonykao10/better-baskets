@@ -30,7 +30,6 @@ export const failureMessages = function() {
   const messages = [
     "Better luck next time!",
     "Nice Try!",
-    "That was 1.385° too high, and 3.683° too far left, with way too much spin." 
   ];
   const min = 0;
   const max = messages.length - 1;
