@@ -7,6 +7,7 @@ import ShotSuccessButton from "./ShotComponents/ShotSuccessButton";
 import ShotDeleteButton from "./ShotComponents/shotDeleteButton";
 import VideoReplay from './ShotComponents/videoReplayComponent';
 import ShotChart from './ShotComponents/ShotChart';
+import { shotArcDetermination } from '../services/shotCalculations';
 import { Jumbotron, Button } from 'react-bootstrap';
 import "./styles/backButton.css";
 import "./styles/shotHeader.css";
@@ -47,6 +48,10 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
 
   const singleShot = shotData.find((item) => item.id === parseInt(id));
 
+  console.log('SINGLE SHOT', singleShot);
+  console.log('SINGLE SHOT', singleShot);
+  console.log('SINGLE SHOT', singleShot);
+
   const generateShotCoordinates = (shot) => {
     if( shot && shot.coordinates.length ) {
       // console.log('IN GENERATE', [['x', shot.id], ...shot.coordinates]);
@@ -82,7 +87,9 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
         <Button variant="primary" onClick={() => window.history.back()}>Back to Session</Button>
         <br></br>
         <br></br>
-        <h3>Success:</h3>
+        <h3>Angle: <em>{singleShot && singleShot.angle}°</em></h3>
+        <h3>Max Height: <em>{singleShot && shotArcDetermination(singleShot.arc_max)}</em></h3>
+        <h3>Success: <em>{singleShot && (singleShot.success ? "True" : "False")}</em></h3>
         <ShotSuccessButton shotId={id} updateSuccess={updateSuccess} successValue = {successValue} setSuccessValue={setSuccessValue} refreshShotData={refreshShotData}/>
         <br></br>
         <br></br>
