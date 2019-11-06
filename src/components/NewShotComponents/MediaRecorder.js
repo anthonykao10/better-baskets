@@ -31,7 +31,7 @@ import 'videojs-record/dist/plugins/videojs.record.ts-ebml.js';
 
 class MediaRecorder extends Component {
   componentDidMount() {
-      // instantiate Video.js
+    //   instantiate Video.js
       this.player = videojs(this.videoNode, this.props, () => {
           // print version information at startup
           var version_info = 'Using video.js ' + videojs.VERSION +
