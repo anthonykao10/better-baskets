@@ -78,7 +78,7 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
   return (
     <div>
       <Jumbotron className="shotHeader">
-        <h1>Shot #{id} Review</h1>
+        <h2>Shot #{id} Review</h2>
         <Button variant="primary" onClick={() => window.history.back()}>Back to Session</Button>
         <br></br>
         <br></br>
