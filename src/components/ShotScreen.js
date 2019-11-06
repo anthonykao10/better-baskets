@@ -59,8 +59,6 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
 
   const shotCoords = generateShotCoordinates(singleShot);
 
-
-
   //Average of shot angle (all shots from all sessions)
   const angleAverage = () => {
     let sum = 0
@@ -76,13 +74,11 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
 
   const shotAngleAverage = angleAverage();
 
-
   return (
     <div>
       <Jumbotron className="shotHeader">
         <h1>Shot #{id} Review</h1>
         <Button variant="primary" onClick={() => window.history.back()}>Back to Session</Button>
-
         <br></br>
         <br></br>
         <h3>Success:</h3>
