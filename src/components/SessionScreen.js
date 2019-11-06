@@ -9,6 +9,9 @@ import ShotChart from "./ShotComponents/ShotChart";
 import {sessionFieldGoalCalculation, sessionAngleAverage, sessionArcDetermination} from '../services/sessionCalculations'
 import SessionStatContainer from './SessionComponents/SessionStatContainer'
 import {userFieldGoalCalculation, userAngleAverage, userArcDetermination} from '../services/overallCalculations'
+import NewShotPageButton from './SessionComponents/NewShotButton'
+import cookies from 'js-cookie'
+
 
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -33,7 +36,13 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
 
   useEffect(() => {  
     let successNumber = sessionFieldGoalCalculation(shotsBySession)
-    let val = ((successNumber/shotsBySession.length) * 100).toFixed(2) + "%"
+    let val = ((successNumber/shotsBySession.length) * 100)
+    if (!val) {
+      val = "0%"
+    }
+    else {
+      val = val.toFixed(2) + "%"
+    }
     setSessionFG(successNumber + "/" + shotsBySession.length)
     setSessionFGPercentage(val)
     setSessionAngle(sessionAngleAverage(shotsBySession).toFixed(2))
@@ -121,7 +130,12 @@ export default function SessionScreen({shotData, sessionData, refreshShotData, r
     <div>
       <h3>Session #{ id }</h3>
       <SessionHeader {...singleSession}/>
-      <SessionDeleteButton sessionId={id} refreshShotData={refreshShotData} refreshSessionData={refreshSessionData}></SessionDeleteButton>
+      {cookies.get("sessionID") === id ? 
+      <div className="newShotPageButton">
+        <NewShotPageButton></NewShotPageButton>
+        <SessionDeleteButton sessionId={id} refreshShotData={refreshShotData} refreshSessionData={refreshSessionData}></SessionDeleteButton> 
+      </div> 
+      : <SessionDeleteButton sessionId={id} refreshShotData={refreshShotData} refreshSessionData={refreshSessionData}></SessionDeleteButton>}
       <br></br>
       <br></br>
       <ShotChart coordinates={coords}/>

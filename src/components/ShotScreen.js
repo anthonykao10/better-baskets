@@ -17,7 +17,6 @@ export default function ShotScreen({shotData, updateSuccess, refreshShotData}) {
   let { id } = useParams();
 
   useEffect(() => {  
-    console.log("SOMETHING")
 
     successValueFunction();
   }, [shotData])
