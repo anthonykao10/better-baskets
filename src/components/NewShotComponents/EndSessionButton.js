@@ -27,7 +27,7 @@ export default function EndSessionButton({addShot, finishShot, refreshSessionDat
   return (
     !finishShot ?
     <div className="endSessionButton">
-      <Button onClick = {submit}>
+      <Button onClick = {submit} variant="success">
         End session
       </Button>
     </div>

@@ -24,8 +24,8 @@ export default function SessionStatContainer({sessionAngle, sessionFG, sessionFG
      <div className="statContainer">
 
        <div className="statContainerTop">
-         {sessionFG >= userFG ? <GreenStatCard name={"Session FG Percentage"} statistic = {sessionFGPercentage} ></GreenStatCard> : <RedStatCard name={"Session FG Percentage"} statistic = {sessionFGPercentage} ></RedStatCard> }
-         {sessionFG >= userFG ? <GreenStatCard name={"Session Field Goals"} statistic = {sessionFG} ></GreenStatCard> : <RedStatCard name={"Session Field Goals"} statistic = {sessionFG} ></RedStatCard>}
+         {eval(sessionFG) >= eval(userFG) ? <GreenStatCard name={"Session FG Percentage"} statistic = {sessionFGPercentage} ></GreenStatCard> : <RedStatCard name={"Session FG Percentage"} statistic = {sessionFGPercentage} ></RedStatCard> }
+         {eval(sessionFG) >= eval(userFG) ? <GreenStatCard name={"Session Field Goals"} statistic = {sessionFG} ></GreenStatCard> : <RedStatCard name={"Session Field Goals"} statistic = {sessionFG} ></RedStatCard>}
 
 
         {/* IF GREATER THEN 3 DEGREES OFF */}

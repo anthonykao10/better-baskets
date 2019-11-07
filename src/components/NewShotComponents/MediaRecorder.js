@@ -48,6 +48,7 @@ class MediaRecorder extends Component {
 
       // user clicked the record button and started recording
       this.player.on('startRecord', () => {
+          this.props.setShotUploadComplete(null);
           console.log('started recording!');
       });
 
