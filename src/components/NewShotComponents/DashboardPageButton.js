@@ -8,12 +8,14 @@ import {
 } from 'react-router-dom'
 
 let sessionID;
-export default function DashboardPageButton({finishShot}) {
+export default function DashboardPageButton({finishShot, refreshShotData, refreshSessionData}) {
   const [redirect, setRedirect] = useState(false);
 
 
   const submit = function() {
     setRedirect("/dashboard")
+    refreshSessionData();
+    refreshShotData();
   }
 
   return (

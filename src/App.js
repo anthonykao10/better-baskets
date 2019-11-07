@@ -82,7 +82,7 @@ function AuthenticatedRouter(props) {
   return (
     <div>
       <Router>
-          <NavBar onLogout = {props.onLogout} currentUser={currentUser} cookieValue addSession={addSession} setShotUploadComplete={setShotUploadComplete}/> 
+          <NavBar onLogout = {props.onLogout} currentUser={currentUser} cookieValue addSession={addSession} setShotUploadComplete={setShotUploadComplete} refreshSessionData={refreshSessionData} refreshShotData={refreshShotData}/> 
         <div className="mainContainer">
         <Switch>
           <Route exact path="/">
@@ -90,7 +90,7 @@ function AuthenticatedRouter(props) {
           </Route>
 
           <Route path="/new_shot">
-            <NewShotScreen addShot={addShot} refreshShotData={refreshShotData} refreshSessionData={refreshSessionData} shotUploadComplete={shotUploadComplete} />
+            <NewShotScreen addShot={addShot} refreshShotData={refreshShotData} refreshSessionData={refreshSessionData} shotUploadComplete={shotUploadComplete} setShotUploadComplete={setShotUploadComplete} />
           </Route>
 
           <Route exact path="/session/:id">

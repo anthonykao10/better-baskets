@@ -24,20 +24,20 @@ const videoJsOptions = {
   }
 };
 
-export default function NewShotScreen({addShot, refreshShotData, refreshSessionData, shotUploadComplete}) {
+export default function NewShotScreen({addShot, refreshShotData, refreshSessionData, shotUploadComplete, setShotUploadComplete}) {
   const [finishShot, setFinishShot] = useState(false);
 
   
   return (
     <div>
-      <h3>Take Your Best Shot</h3>
-      <MediaRecorder { ...videoJsOptions } refreshShotData={refreshShotData}/>
+      <h2 className="titleHeader">Take Your Best Shot</h2>
+      <MediaRecorder { ...videoJsOptions } refreshShotData={refreshShotData} setShotUploadComplete={setShotUploadComplete} />
       <br></br>
       <div className = "newShotButtons">
       <CurrentSessionButton></CurrentSessionButton>
       {shotUploadComplete ? 
       <EndSessionButton addShot={addShot} finishShot={finishShot} setFinishShot={setFinishShot} refreshSessionData={refreshSessionData}></EndSessionButton> 
-      : <DashboardPageButton finishShot={finishShot} setFinishShot={setFinishShot}></DashboardPageButton>} 
+      : <DashboardPageButton finishShot={finishShot} setFinishShot={setFinishShot} refreshSessionData={refreshSessionData} refreshShotData={refreshShotData}></DashboardPageButton>} 
       </div>
     </div> 
   );
