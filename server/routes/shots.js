@@ -62,7 +62,7 @@ router.post('/:id/delete', (req, res) => {
   console.log(req.params.id)
   deleteShot(req.params.id)
   .then((response) => {
-    res.end()
+    res.json(response.session_id);
   })
 });
 

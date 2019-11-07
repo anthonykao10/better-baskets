@@ -33,8 +33,16 @@ const updateShotSuccess = (success, shotId) => {
 };
 
 const deleteShot = (shotId) => {
-  return pool.query(`DELETE FROM shots
-  WHERE id = $1`, [shotId])
+  return pool.query(`
+    DELETE FROM shots
+    WHERE id = $1
+    RETURNING *;
+  `, [shotId])
+    .then(res => {
+      if (!res.rows.length) return null;
+      return res.rows[0];
+    })
+    .catch(err => console.log('ERR deleteShot:', err));
 }
 
 module.exports = {
