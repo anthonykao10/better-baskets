@@ -1,4 +1,4 @@
-import cookies from 'js-cookie'
+import cookies from 'js-cookie';
 import axios from "axios";
 
 const insertShotData = function(referenceString) {
@@ -6,9 +6,7 @@ const insertShotData = function(referenceString) {
     session_id: cookies.get("sessionID"),
     reference: referenceString
   });
-
 }
  
-
-export default insertShotData
+export default insertShotData;
 

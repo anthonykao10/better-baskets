@@ -6,7 +6,7 @@ const getSessionData = (userID) => {
   FROM sessions
   WHERE sessions.user_id = $1
   ORDER BY sessions.id 
-  `, [userID])
+  `, [userID]);
 };
 
 const createNewSession = (id) => {
@@ -14,7 +14,7 @@ const createNewSession = (id) => {
   INSERT INTO sessions (user_id)
   VALUES ($1)
   RETURNING *
-  `, [id])
+  `, [id]);
 }
 
 const updateSession = (id) => {
@@ -24,13 +24,13 @@ const updateSession = (id) => {
     SET end_time = CURRENT_TIMESTAMP
     WHERE id = $1
     RETURNING *
-    `, [id])
+    `, [id]);
 }
 
 const deleteSession = (sessionId) => {
   return pool.query(`
   DELETE FROM sessions
-  WHERE id =  $1`, [sessionId])
+  WHERE id =  $1`, [sessionId]);
 }
 
-module.exports = {getSessionData, createNewSession, updateSession, deleteSession}
+module.exports = {getSessionData, createNewSession, updateSession, deleteSession};

@@ -1,10 +1,8 @@
 import React, {useState} from "react";
 import { Button } from 'react-bootstrap';
-import cookies from 'js-cookie'
-
 import {
   Redirect
-} from 'react-router-dom'
+} from 'react-router-dom';
 
 export default function NewShotPageButton({finishShot}) {
   const [redirect, setRedirect] = useState(false);

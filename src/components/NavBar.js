@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar} from 'react-bootstrap';
 import {
   Link
-} from 'react-router-dom'
+} from 'react-router-dom';
 import './styles/Nav.css';
 
 export default function NavBar({ onLogout, currentUser, cookieValue, refreshSessionData, refreshShotData }) {

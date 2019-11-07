@@ -1,7 +1,6 @@
 import React from "react";
 import { Chart } from "react-google-charts";
 import '../styles/ShotChart.css';
-import { whileStatement } from "@babel/types";
  
 export default function ShotChart({ coordinates, chartTitle }) {
   if (coordinates !== undefined) {

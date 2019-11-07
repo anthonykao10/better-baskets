@@ -5,7 +5,7 @@ const getUserData = (userID) => {
   SELECT * 
   FROM users
   WHERE users.id = $1 
-  `, [userID])
+  `, [userID]);
 };
 
 const getLoginData = (inputUsername) => {
@@ -13,7 +13,7 @@ const getLoginData = (inputUsername) => {
   SELECT *
   FROM users
   WHERE username = $1;
-  `, [inputUsername])
+  `, [inputUsername]);
 };
 
 module.exports = {getUserData, getLoginData}

@@ -1,12 +1,5 @@
-const fileUpload = require('../util/fileUpload')
-const path = require('path');
 const router = require('express').Router();
-const { spawn } = require('child_process');
 require('dotenv').config();
-
-router.get('/', (req, res) => {
-  res.send('homepage');
-});
 
 router.get('/S3creds', (req, res) => {
  
@@ -16,7 +9,7 @@ router.get('/S3creds', (req, res) => {
         secretAccessKey: process.env.AWS_KEY_SECRET
       });
   } else {
-    res.status(403).json("You are not logged in enough to access this endpoint")
+    res.status(403).json("You are not logged in enough to access this endpoint");
   }
 });
 
