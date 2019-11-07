@@ -2,7 +2,7 @@
 @media only screen and (min-width: 1600px) {
 
   .Carousel {
-    width: 73%;
+    width: 80%;
   }
 }
 
@@ -14,7 +14,6 @@
 }
 
 .Carousel {
-  /* width: 95%; */
   margin: auto;
 }
 
@@ -25,7 +24,6 @@
 }
 
 .sessionCard {
-  /* box-shadow: 0 6px 15px -4px rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -36,7 +34,6 @@
 }
 
 .shotCard {
-  /* box-shadow: 0 6px 15px -4px rgba(0, 0, 0, 0.15); */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
