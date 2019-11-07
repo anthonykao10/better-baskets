@@ -7,7 +7,7 @@ export default function LoginForm(props) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    props.onSubmit(username,password)
+    props.onSubmit(username,password);
   } 
   
   return (

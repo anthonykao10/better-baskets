@@ -1,9 +1,7 @@
-import StatCard from '../SessionComponents/StatCard'
-import {userFieldGoalCalculation, userAngleAverage, userArcDetermination, totalPracticeTimeFunction} from '../../services/overallCalculations'
-
-import '../styles/SessionStatContainer.css'
-
 import React, { useEffect, useState } from "react";
+import StatCard from '../SessionComponents/StatCard';
+import {userFieldGoalCalculation, userAngleAverage, userArcDetermination, totalPracticeTimeFunction} from '../../services/overallCalculations';
+import '../styles/SessionStatContainer.css';
  
 export default function DashboardStatContainer({shotData, sessionData}) {
   const [userFG, setUserFG] = useState(0);
@@ -26,7 +24,7 @@ export default function DashboardStatContainer({shotData, sessionData}) {
     setUserArc(userArcDetermination(shotData))
     setTotalPracticeTime(totalPracticeTimeFunction(sessionData))
     
-  }, [shotData])
+  }, [shotData]);
 
   return (
      <>
@@ -42,13 +40,12 @@ export default function DashboardStatContainer({shotData, sessionData}) {
 
     <div className="statContainerBottom">
       <StatCard name={"Total Practice Sessions"} statistic = {totalSessions} ></StatCard>
-      <StatCard name={"Total Practice Time"} statistic = {totalPracticeTime + " Minutes"} ></StatCard>
+      <StatCard name={"Total Practice Time"} statistic = {totalPracticeTime + " Min"} ></StatCard>
       <StatCard name={"Average Shots Per Session"} statistic = {avgShotsInSession.toFixed(2).replace(/\.00$/, '')} ></StatCard>
       <StatCard name={"Global Balling Ranking"} statistic = {"211th"} ></StatCard>
       <StatCard name={"Friends Balling Ranking"} statistic = {"31st"} ></StatCard>
     </div>
     
-
     </div>
      </>
   );

@@ -1,23 +1,52 @@
-
-@media only screen and (min-width: 1600px) {
+/* @media only screen and (min-width: 1900px) {
 
   .statContainer {
-    width: 70%;
+    width: 80%;
+    height: 500px;
+  }
+
+  .cardHeader {
+    font-size: 24px;
+  }
+
+  .statCard {
+    width: 300px;
+    height: 180px;
+    margin-right: 100px;
+  }
+
+} */
+
+@media only screen and (min-width: 1401px) {
+
+  .statContainer {
+    width: 82%;
+  }
+
+  .statCard {
+    width: 14rem;
+    height: 10rem;
+    margin-right: 70px;
   }
 }
 
-@media only screen and (max-width: 1599px) {
+@media only screen and (max-width: 1400px) {
 
   .statContainer {
     width: 90%;
   }
+
+  .statCard {
+    width: 11rem;
+    height: 10rem;
+    margin-right: 70px;
+  }
+
 }
 
 .statContainer {
-  /* width: 90%; */
   display: block;
   margin: auto;
-  /* background-color: lightgrey; */
   border-style: solid;
   border-color: #c2bebe;
   border-width: 1px;
@@ -27,7 +56,6 @@
   padding-top: 40px;
   padding-bottom: 40px;
   flex-direction: column;
-  /* box-shadow: 0 6px 15px -4px rgba(0, 0, 0, 0.15); */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 
@@ -36,18 +64,17 @@
     flex-direction: row;
     justify-content: center;
     margin-bottom: 30px;
-    margin-right: -90px;
+    margin-right: -70px;
   }
 
   .statContainerBottom {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-right: -90px;
+    margin-right: -70px;
   }
   
   .statCard {
-    margin-right: 100px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 
@@ -58,3 +85,5 @@
   .greenStatCard {
     border-width: 5px;
   }
+
+  

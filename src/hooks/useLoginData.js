@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import axios from "axios";
 
-export default function useLoginData(username) {
+export default function useLoginData() {
 
   useEffect(() => {
     Promise.all([

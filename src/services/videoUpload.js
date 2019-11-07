@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 **/
-import insertShotData from './insertShotData'
+import insertShotData from './insertShotData';
 
 // Load the SDK and UUID
 const AWS = require('aws-sdk');
@@ -27,11 +27,11 @@ const uploadVideo = async function (video, reference) {
   const awsConfig = new AWS.Config({
     credentials,
     region: 'us-west-1'
-  })
+  });
   
   const s3 = new AWS.S3(awsConfig);
 
-  const bucketName = 'betterbaskets'
+  const bucketName = 'betterbaskets';
 
   var params = { Bucket: bucketName, Key: `${reference}.webm`, Body: video, ACL: 'public-read' };
 
@@ -41,4 +41,4 @@ const uploadVideo = async function (video, reference) {
 
 }
 
-export default uploadVideo
+export default uploadVideo;

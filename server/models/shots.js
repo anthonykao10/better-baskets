@@ -10,12 +10,11 @@ const getShotData = (userID) => {
 };
 
 const insertShot = (input) => {
-  // console.log(input)
   return pool.query(`
   INSERT INTO shots (session_id, angle, arc_max, coordinates, video_reference, success)
   VALUES ($1, $2, $3, $4, $5, $6)
   RETURNING *
-  `, [Number(input.session_id), input.angle, input.arc_max, input.coordinates, input.reference, input.success])
+  `, [Number(input.session_id), input.angle, input.arc_max, input.coordinates, input.reference, input.success]);
 };
 
 const updateShotSuccess = (success, shotId) => {
@@ -33,8 +32,16 @@ const updateShotSuccess = (success, shotId) => {
 };
 
 const deleteShot = (shotId) => {
-  return pool.query(`DELETE FROM shots
-  WHERE id = $1`, [shotId])
+  return pool.query(`
+    DELETE FROM shots
+    WHERE id = $1
+    RETURNING *;
+  `, [shotId])
+    .then(res => {
+      if (!res.rows.length) return null;
+      return res.rows[0];
+    })
+    .catch(err => console.log('ERR deleteShot:', err));
 }
 
 module.exports = {
@@ -42,4 +49,4 @@ module.exports = {
   insertShot,
   updateShotSuccess,
   deleteShot
-}
+};

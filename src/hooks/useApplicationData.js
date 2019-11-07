@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import {userFieldGoalCalculation, userAngleAverage} from '../services/overallCalculations';
 
 export default function useDashboardData(id) {
 
@@ -10,8 +9,6 @@ export default function useDashboardData(id) {
   const [shotUploadComplete, setShotUploadComplete] = useState(false);
 
   const currentUser = userData.username;
-
-  console.log("SHOTDATA", shotData);
 
   const updateSuccess = (newShots) => {
     setShot(newShots);
@@ -31,9 +28,6 @@ export default function useDashboardData(id) {
       Promise.resolve(axios.get(`/sessions/${id}/data`)), //all sessions for that user
       Promise.resolve(axios.get(`/shots/${id}/data`)) //all shots for that user
     ]).then((all) => {
-      console.log(all[0].data[0])
-      console.log(all[1].data)
-      console.log(all[2].data)
       const {id, username, picture} = all[0].data[0];
       setUser({id, username, picture});
       setSession(all[1].data);

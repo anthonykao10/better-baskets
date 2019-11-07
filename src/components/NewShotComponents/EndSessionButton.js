@@ -1,12 +1,12 @@
 
-import React, {useState} from "react";
+import React from "react";
 import cookies from 'js-cookie'
 import axios from "axios";
 import {Redirect} from "react-router-dom";
 import { Button } from 'react-bootstrap';
 
 let sessionID;
-export default function EndSessionButton({addShot, finishShot, refreshSessionData, setFinishShot}) {
+export default function EndSessionButton({ finishShot, refreshSessionData, setFinishShot}) {
 
   sessionID = sessionID || cookies.get('sessionID');
 
@@ -20,14 +20,12 @@ export default function EndSessionButton({addShot, finishShot, refreshSessionDat
       .catch((err) => {
         console.log(err);
       })
-    // cookies.remove('sessionID')
-    // setFinishShot(true);  
   }
  
   return (
     !finishShot ?
     <div className="endSessionButton">
-      <Button onClick = {submit}>
+      <Button onClick = {submit} variant="success">
         End session
       </Button>
     </div>

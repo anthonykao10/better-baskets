@@ -1,6 +1,6 @@
 import React from "react";
-import LoginForm from './LoginComponents/LoginForm'
-import {getClient, refreshClient} from '../services/axiosClient'
+import LoginForm from './LoginComponents/LoginForm';
+import {getClient, refreshClient} from '../services/axiosClient';
 import cookies from 'js-cookie';
 import { Canvas } from 'react-canvas-js';
 
@@ -13,12 +13,12 @@ export default function LoginScreen(props) {
         password: password
       },)
       .then((response) => {
-        cookies.set('userID', response.data.ID)
-        refreshClient()
-        props.onLogin()
+        cookies.set('userID', response.data.ID);
+        refreshClient();
+        props.onLogin();
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err);
       });
   }
 

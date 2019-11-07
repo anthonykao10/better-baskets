@@ -1,17 +1,18 @@
-
-const path = require('path')
+const path = require('path');
 const router = require('express').Router();
 const fileUpload = require('../util/fileUpload');
 const { spawn } = require('child_process');
 const {getShotData, insertShot, updateShotSuccess, deleteShot} = require('../models/shots');
 
-
 router.post('/new', (req, res) => {
+  // download raw video from s3
   require('../util/fileDownload')(req.body.reference)
-    .then((x) => {
+    .then(() => {
+
+      // process video with opencv
       const child = spawn('python', [path.resolve(__dirname, '../lib/python/track.py'), '-v', path.resolve(__dirname, '../videos/downloads/unprocessedVideo.webm')]);
 
-
+      // get all buffer data from stdout
       let scriptData = '';
       child.stdout.on('data', (data) => {
         scriptData += data;
@@ -19,7 +20,6 @@ router.post('/new', (req, res) => {
 
       child.stdout.on('end', () => {
         let pythonData = JSON.parse(scriptData);
-        console.log('PYTHON DATA:', pythonData);
 
         const insertShotData = {
           session_id: req.body.session_id,
@@ -28,12 +28,10 @@ router.post('/new', (req, res) => {
           coordinates: JSON.stringify(pythonData.coordinates),
           reference: req.body.reference,
           success: pythonData.success
-        }
+        };
         insertShot(insertShotData)
-        .then((response) => {
-        })
         .catch((err) => {
-          console.log(err)
+          console.log(err);
         })
       });
     
@@ -62,7 +60,7 @@ router.post('/:id/delete', (req, res) => {
   console.log(req.params.id)
   deleteShot(req.params.id)
   .then((response) => {
-    res.end()
+    res.json(response.session_id);
   })
 });
 

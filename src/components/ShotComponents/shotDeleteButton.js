@@ -2,18 +2,21 @@ import React, {useState} from 'react';
 import axios from "axios";
 import {
   Redirect
-} from 'react-router-dom'
+} from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-
 
 export default function ShotDeleteButton({shotId, refreshShotData}) {
   const [redirect, setRedirect] = useState(false);
 
+  let id = "";
+
   const submit = function() {
     axios.post(`http://localhost:8080/shots/${shotId}/delete`, {
     })
-    .then((updatedShots) => {
-      setRedirect("/")
+    .then((res) => {
+      console.log(res.data);
+      id = res.data;
+      setRedirect(`/session/${id}`)
       refreshShotData()
     })
     .catch((err) => console.log(err));
@@ -27,6 +30,6 @@ export default function ShotDeleteButton({shotId, refreshShotData}) {
       </Button>
     </div>
       : 
-      <Redirect to={{pathname: `/`}}/>
+      <Redirect to={{pathname: `${redirect}`}}/>
   );
 };
