@@ -1,11 +1,10 @@
 import React from "react";
-
 import { totalPracticeTimeFunction} from '../../services/overallCalculations';
  
 export default function SessionHeader({start_time = '', end_time, id}) {
 
 const dateString = (time) => {
-  return time.slice(0, 10)
+  return time.slice(0, 10);
  }
 
  const sessionDate = dateString(start_time);

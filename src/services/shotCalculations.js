@@ -30,6 +30,8 @@ export const failureMessages = function() {
   const messages = [
     "Better luck next time!",
     "Nice Try!",
+    "Nice Brick",
+    "Keep Using Better Baskets"
   ];
   const min = 0;
   const max = messages.length - 1;

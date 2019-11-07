@@ -2,9 +2,8 @@ import React, {useState} from 'react';
 import axios from "axios";
 import {
   Redirect
-} from 'react-router-dom'
+} from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-
 
 export default function SessionDeleteButton({sessionId, refreshShotData, refreshSessionData}) {
   const [redirect, setRedirect] = useState(false);
@@ -12,13 +11,10 @@ export default function SessionDeleteButton({sessionId, refreshShotData, refresh
   const submit = function() {
     axios.post(`http://localhost:8080/sessions/${sessionId}/delete`, {
     })
-    .then((updatedShots) => {
-      
-      refreshShotData()
-      refreshSessionData()
-      setRedirect("true")
-
-      
+    .then((updatedShots) => {    
+      refreshShotData();
+      refreshSessionData();
+      setRedirect("true");
     })
     .catch((err) => console.log(err));
   }
@@ -26,7 +22,7 @@ export default function SessionDeleteButton({sessionId, refreshShotData, refresh
   return (
     !redirect ?
     <div className="">
-      <Button variant="danger"  onClick = {submit}>
+      <Button variant="danger"  onClick={submit}>
         Delete session
       </Button>
     </div>

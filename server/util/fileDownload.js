@@ -13,8 +13,6 @@ const awsConfig = new AWS.Config({
 })
 
 var s3 = new AWS.S3(awsConfig);
-
-
 var bucketName = 'betterbaskets'
 
 const fileDownload = function(referenceID) {
@@ -23,8 +21,6 @@ const fileDownload = function(referenceID) {
     Bucket: bucketName, 
     Key: `${referenceID}.webm`
   };
-
-  console.log(params)
 
   return (() => {
     return new Promise((resolve, reject) => {

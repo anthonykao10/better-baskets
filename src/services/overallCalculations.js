@@ -8,7 +8,7 @@ export const userFieldGoalCalculation = function(shots) {
     }
   }
 
-    return count
+    return count;
 }
 
 export const userAngleAverage = function(shots) {
@@ -24,7 +24,7 @@ export const userAngleAverage = function(shots) {
   }
   result = result/count
 
-  return result
+  return result;
 }
 
 export const userArcDetermination = function(shots) {
@@ -37,25 +37,22 @@ export const userArcDetermination = function(shots) {
       count ++
     }
   }
-  arcAvg = arcAvg/count
+  arcAvg = arcAvg/count;
 
   return shotArcDetermination(arcAvg);
 }
-
 
 export const totalPracticeTimeFunction = function(sessions) {
   let time = 0;
   for (const i in sessions) {
     if (sessions[i].start_time && sessions[i].end_time) {
-      let start_time = sessions[i].start_time.split(":")
-      let end_time = sessions[i].end_time.split(":")
-      start_time = (start_time[0].slice(-2) * 60) + Number(start_time[1])
-      end_time = (end_time[0].slice(-2) * 60) + Number(end_time[1])
+      let start_time = sessions[i].start_time.split(":");
+      let end_time = sessions[i].end_time.split(":");
+      start_time = (start_time[0].slice(-2) * 60) + Number(start_time[1]);
+      end_time = (end_time[0].slice(-2) * 60) + Number(end_time[1]);
   
-      time += end_time - start_time
-  
+      time += end_time - start_time;
     }
-
   }
   return time;
 }

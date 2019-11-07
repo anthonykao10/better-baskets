@@ -2,9 +2,8 @@ import React, {useState} from 'react';
 import axios from "axios";
 import {
   Redirect
-} from 'react-router-dom'
+} from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-
 
 export default function ShotDeleteButton({shotId, refreshShotData}) {
   const [redirect, setRedirect] = useState(false);

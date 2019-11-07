@@ -23,7 +23,6 @@ MASK_LOWER = (25, 93, 101)
 MASK_UPPER = (55, 255, 255)
 
 success = False
-
 tracking = False
 stopTracking = False
 
@@ -82,8 +81,6 @@ while True:
 	hsv = cv2.cvtColor(blurred, cv2.COLOR_BGR2HSV)
 
 	# draw success box
-	# cv2.rectangle(frame,(950,250),(1050,350),(0,255,0),3)
-	# cv2.rectangle(frame,(980,280),(1020,320),(255,0,0),3)
 	cv2.rectangle(frame,(OUTER_BOX_X1,OUTER_BOX_Y1),(OUTER_BOX_X2,OUTER_BOX_Y2),(0,255,0),3)
 	cv2.rectangle(frame,(INNER_BOX_X1,INNER_BOX_Y1),(INNER_BOX_X2,INNER_BOX_Y2),(255,0,0),3)
 

@@ -1,13 +1,11 @@
 
 import React, {useState} from "react";
-import cookies from 'js-cookie'
+import cookies from 'js-cookie';
 import axios from "axios";
 import {
-  Redirect,
-  Link
-} from 'react-router-dom'
+  Redirect
+} from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-
 
 export default function NewSessionButton({addSession, setShotUploadComplete}) {
   const [redirect, setRedirect] = useState(false);
@@ -18,7 +16,6 @@ export default function NewSessionButton({addSession, setShotUploadComplete}) {
       cookie: cookies.get('userID')
     })
     .then((response) => {
-      console.log(response.data)
       cookies.set('sessionID', response.data.id)
       setRedirect("/new_shot")  
       setShotUploadComplete(false)    
@@ -29,7 +26,6 @@ export default function NewSessionButton({addSession, setShotUploadComplete}) {
   }
 
   return (
-
     !redirect ?
     <div className="newSessionButton">
       <Button variant="primary" to="/dashboard" onClick = {submit} >
