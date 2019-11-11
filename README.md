@@ -1,21 +1,21 @@
 BetterBaskets is 
 
-!["Dashboard of BetterBaskets"]()
+!["Dashboard of BetterBaskets"](https://github.com/anthonykao10/better-baskets/blob/master/ReadmeScreenshots/dashboard.png)
 
 Dashboard for BetterBaskets. It identifies statistical cards that. 
 
 
-!["Shot Page Display"]()
+!["Shot Page Display"](https://github.com/anthonykao10/better-baskets/blob/master/ReadmeScreenshots/ShotPageGif.gif)
 
 Shot page display with successful shot
 
 
-!["Session Data to Shot Display"]()
+!["Session Data to Shot Display"](https://github.com/anthonykao10/better-baskets/blob/master/ReadmeScreenshots/SessionToShotGif.gif)
 
 Session Data to shot display
 
 
-!["Session Data to Shot Display"]()
+!["Session Data to Shot Display"](https://github.com/anthonykao10/better-baskets/blob/master/ReadmeScreenshots/SessionStatCards.png)
 
 Session Stat Cards
 
