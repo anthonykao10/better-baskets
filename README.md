@@ -25,6 +25,11 @@ These session stat cards identifies your basketball weaknesses and help you impr
 This is the user dashboard of BetterBaskets. It collates all data from your user profile for this application. BetterBaskets provides lifetime statistics from all your shots, and all your sessions combined in this dashboard.
 
 
+!["Taking New Shots"](https://github.com/anthonykao10/better-baskets/blob/master/ReadmeScreenshots/newShot.gif)
+
+From the dashboard, you can navigate to the new session page, which will redirect you to create a new shot. When on this page, click the recorder button, and line up the blue and green box to be right under the basket like above. This is critical for our success algorithim to accurately calculate the success of the shot. Shoot away, and click "end session" when you are done your session. It will redirect you to your results! 
+
+
 
 
 ## How to deploy?
