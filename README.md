@@ -1,3 +1,25 @@
+BetterBaskets is 
+
+!["Dashboard of BetterBaskets"]()
+
+Dashboard for BetterBaskets. It identifies statistical cards that. 
+
+
+!["Shot Page Display"]()
+
+Shot page display with successful shot
+
+
+!["Session Data to Shot Display"]()
+
+Session Data to shot display
+
+
+!["Session Data to Shot Display"]()
+
+Session Stat Cards
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

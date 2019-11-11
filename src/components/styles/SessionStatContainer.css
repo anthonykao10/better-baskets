@@ -64,14 +64,18 @@
     flex-direction: row;
     justify-content: center;
     margin-bottom: 30px;
-    margin-right: -70px;
+    margin-right: -30px;
+    /* margin-right: -70px; */
+    margin-left: 40px;
   }
 
   .statContainerBottom {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-right: -70px;
+    /* margin-right: -70px; */
+    margin-left: 40px;
+    margin-right: -30px;
   }
   
   .statCard {
