@@ -1,4 +1,10 @@
-BetterBaskets is 
+#BetterBaskets Introduction
+
+The BetterBaskets web application improves your basketball abilities. It takes recordings of you playing basketball, and leverages computer vision video processing to identify key weaknesses in your basketball game. It provides the users with benchmarks so they can constantly improve their basketball capabilities. 
+
+This was a 2-week final project produced by [Andrew Hui](https://github.com/AndrewHui), [Anthony Kao](https://github.com/anthonykao10), and [Sarah Mahovlich](https://github.com/SarahMahovlich). During this time, the group learned new technologies such as **OpenCV, AWS S3, VideoJs, Google Charts**, while also improving their understanding of **React (Hooks), Node, Express, Postgres, and Bootstrap**. 
+
+#How to use?
 
 !["Dashboard of BetterBaskets"](https://github.com/anthonykao10/better-baskets/blob/master/ReadmeScreenshots/dashboard.png)
 
@@ -18,6 +24,8 @@ Session Data to shot display
 !["Session Data to Shot Display"](https://github.com/anthonykao10/better-baskets/blob/master/ReadmeScreenshots/SessionStatCards.png)
 
 Session Stat Cards
+
+#How to deploy?
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
