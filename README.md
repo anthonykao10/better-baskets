@@ -42,3 +42,6 @@ There are multiple steps to deploy this project.
 6) In the terminal under the "betterBaskets/server" folder, enter "node app.js". This will host your server on "localhost:8080"
 
 Once completed, please go ahead and take some shots in the betterBaskets web application!
+
+
+For any additional questions, please reach out to any one of the members: [Andrew Hui](https://github.com/AndrewHui), [Anthony Kao](https://github.com/anthonykao10), and [Sarah Mahovlich](https://github.com/SarahMahovlich).
