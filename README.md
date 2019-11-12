@@ -30,16 +30,31 @@ This is the user dashboard of BetterBaskets. It collates all data from your user
 From the dashboard, you can navigate to the new session page, which will redirect you to create a new shot. When on this page, click the recorder button, and line up the blue and green box to be right under the basket like above. This is critical for our success algorithim to accurately calculate the success of the shot. Shoot away, and click "end session" when you are done your session. It will redirect you to your results! 
 
 
-## How to deploy?
+## Setup and Install
 
 There are multiple steps to deploy this project.
 
-1) Clone the project onto your local server. 
-2) Setup an AWS S3 account with a basket named "betterbaskets"
-3) Setup a POSTGRES Database named of your choice, and create the tables using our script in "server/db/migrations/create.sql"
-4) Setup a .env file in the "server" folder with your AWS S3 credentials, and Database information.
-5) In the terminal under the "betterBaskets" folder, enter "npm start". This will host your client on "localhost:3002"
-6) In the terminal under the "betterBaskets/server" folder, enter "node app.js". This will host your server on "localhost:8080"
+1) Clone the project onto your local server.
+2) Install dependencies:
+ - from `root` directory, install client dependencies: 
+ ```
+ $ npm i
+ ```
+ - from `server` directory, install server dependencies: 
+ ```
+ $ cd server 
+ $ npm i
+ ```
+ - from `server/lib/python` directory, install python dependencies:
+ ```
+ $ cd server/lib/python
+ $ pip install -r requirements.txt
+ ```
+3) Setup an AWS S3 account with a basket named "betterbaskets"
+4) Setup a POSTGRES Database named of your choice, and create the tables using our script in `server/db/migrations/create.sql`
+5) Setup a .env file in the "server" folder with your AWS S3 credentials, and Database information.
+6) In the terminal under the "betterBaskets" folder, enter `npm start`. This will host your client on `localhost:3000`
+7) In the terminal under the "betterBaskets/server" folder, enter `node app.js`. This will host your server on `localhost:8080`
 
 Once completed, please go ahead and take some shots in the betterBaskets web application!
 
